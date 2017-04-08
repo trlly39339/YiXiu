@@ -1,9 +1,9 @@
-package com.zykj.yixiu.activity;
+package com.zykj.yixiu.app.activity.activity;
 
 import android.os.Bundle;
 
 import com.zykj.yixiu.R;
-import com.zykj.yixiu.base.BaseActivity;
+import com.zykj.yixiu.app.activity.base.BaseActivity;
 
 /**
  * Created by zykj on 2017/4/8.

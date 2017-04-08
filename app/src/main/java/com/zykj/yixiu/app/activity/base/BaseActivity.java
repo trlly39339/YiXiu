@@ -1,4 +1,4 @@
-package com.zykj.yixiu.base;
+package com.zykj.yixiu.app.activity.base;
 
 import android.app.Activity;
 import android.os.Bundle;
