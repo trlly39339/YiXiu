@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyTopBer">
+        <!--左侧按钮-->
+        <attr name="leftText" format="string"/>
+        <attr name="leftTextSizc" format="dimension"/>
+        <attr name="leftGB" format="color|reference"/>
+        <!--中间titi-->
+        <attr name="titleText" format="string"/>
+        <attr name="titleTextSizc" format="dimension"/>
+        <attr name="titleGB" format="color|reference"/>
+        <!--右侧按钮-->
+        <attr name="rightText" format="string"/>
+        <attr name="rightTextSizc" format="dimension"/>
+        <attr name="rightGB" format="color|reference"/>
+    </declare-styleable>
+
+
+</resources>
