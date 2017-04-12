@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -28,6 +29,7 @@ public class MyTopBer extends RelativeLayout {
     private String rightText;
     private float rightTextSizc;
     private Drawable rightGB;
+
     private TextView lefe;
     private TextView title;
     private TextView rightview;
@@ -67,32 +69,32 @@ public class MyTopBer extends RelativeLayout {
 //        赋值属性
         lefe.setText(leftText);
         lefe.setTextSize(leftTextSizc);
-        lefe.setGravity(ALIGN_PARENT_RIGHT);
         lefe.setBackgroundDrawable(leftGB);
+
 //        居中
         title.setText(titleText);
         title.setTextSize(titleTextSizc);
-        title.setGravity(CENTER_IN_PARENT);
+        title.setGravity(Gravity.CENTER);
         title.setBackgroundDrawable(titleGB);
 //        右侧图片按钮
         rightview.setText(rightText);
         rightview.setTextSize(rightTextSizc);
-        rightview.setGravity(ALIGN_PARENT_RIGHT);
+        rightview.setGravity(Gravity.CENTER_VERTICAL);
         rightview.setBackgroundDrawable(rightGB);
 //        把控件绑定到RL
 //        绑定左侧按钮
         LayoutParams leftParams=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         leftParams.addRule(ALIGN_PARENT_LEFT);
-
         addView(lefe,leftParams);
 //        绑定居中TextView
-        LayoutParams titleParams=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        leftParams.addRule(CENTER_IN_PARENT);
+        LayoutParams titleParams=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        titleParams.addRule(CENTER_IN_PARENT);
         addView(title,titleParams);
 
 //        绑定右侧图片按钮
         LayoutParams rightParams=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        leftParams.addRule(ALIGN_PARENT_RIGHT);
+        rightParams.addRule(ALIGN_PARENT_RIGHT);
+
         addView(rightview,rightParams);
 
     }

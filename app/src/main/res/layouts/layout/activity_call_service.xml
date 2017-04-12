@@ -5,11 +5,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        MyTopBer:titleText="手机维修"
+        MyTopBer:titleText="呼叫服务"
         android:padding="12dp"
         MyTopBer:leftGB="@mipmap/phon_fanhui"
         MyTopBer:titleTextSizc="10sp"
@@ -55,12 +54,12 @@
         android:orientation="horizontal"
         android:background="@mipmap/pinpai_bj"
         >
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="品牌"
-            android:layout_margin="15dp"
-            android:textSize="20sp"
+            android:src="@mipmap/shizhong"
+            android:layout_margin="7dp"
+
             />
         <ImageView
             android:layout_width="1dp"
@@ -71,9 +70,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="14sp"
+            android:padding="10dp"
+            android:textSize="16sp"
             android:singleLine="true"
-            android:hint="请对您手机的故障进行简单的描述"/>
+            android:hint="请选择您的服务时间"/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
@@ -91,22 +91,22 @@
         <!--android:layout_height="1dp"-->
         <!--android:layout_marginTop="5dp"-->
         <!--android:background="@mipmap/xian_xi"/>-->
+    <!--类型开始-->
 
-    <!--型号开始-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center_vertical"
         android:layout_marginTop="5dp"
-        android:background="@mipmap/pinpai_bj"
         android:orientation="horizontal"
+        android:background="@mipmap/pinpai_bj"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="型号"
-            android:layout_margin="15dp"
-            android:textSize="20sp"
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/dingwei"
+            android:layout_margin="7dp"
+
             />
         <ImageView
             android:layout_width="1dp"
@@ -117,9 +117,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="14sp"
+            android:padding="10dp"
+            android:textSize="16sp"
             android:singleLine="true"
-            android:hint="请对您手机的故障进行简单的描述"/>
+            android:hint="请选择您的服务地址"/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
@@ -127,98 +128,7 @@
             android:background="@mipmap/hui_fanhui"/>
 
     </LinearLayout>
-    <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:background="@mipmap/xian_xi"/>-->
-    <!--型号结束-->
-
-    <!--故障开始-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginTop="5dp"
-        android:background="@mipmap/pinpai_bj"
-        android:orientation="vertical"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="故障"
-                android:layout_margin="15dp"
-                android:textSize="20sp"
-                />
-            <ImageView
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:background="@mipmap/shu_fenge"/>
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="14sp"
-                android:singleLine="true"
-                android:hint="请对您手机的故障进行简单的描述"/>
-            <ImageView
-                android:layout_width="10dp"
-                android:layout_height="20dp"
-                android:layout_margin="18dp"
-                android:background="@mipmap/hui_fanhui"/>
-        </LinearLayout>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@mipmap/xian_xi"/>
-        <!--评价故障开始-->
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="10dp"
-            android:textSize="14sp"
-            android:singleLine="true"
-            android:hint="请对您手机的故障进行简单的描述"/>
-        <!--评价故障结束-->
-    </LinearLayout>
-    <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:background="@mipmap/xian_xi"/>-->
-    <!--故障结束-->
-    <!--上传图片开始-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        android:background="@mipmap/pinpai_bj"
-        >
-        <FrameLayout
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            >
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:src="@mipmap/yuanquan"/>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@mipmap/jiahao"/>
-        </FrameLayout>
-
-    </LinearLayout>
-    <!--上传图片结束-->
+    <!--类型结束-->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -228,7 +138,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="25dp"
-        android:text="确 认"
+        android:text="确认发布"
         android:textSize="20sp"
         android:textColor="#ffffff"
         android:background="@mipmap/but_lan"/>

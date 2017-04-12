@@ -5,11 +5,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        MyTopBer:titleText="手机维修"
+        MyTopBer:titleText="电脑维修"
         android:padding="12dp"
         MyTopBer:leftGB="@mipmap/phon_fanhui"
         MyTopBer:titleTextSizc="10sp"
@@ -67,13 +66,15 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:background="@mipmap/shu_fenge"/>
-        <EditText
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:singleLine="true"
-            android:hint="请对您手机的故障进行简单的描述"/>
+            android:textColor="#02cccc"
+            android:gravity="center_vertical|right"
+            android:text="联想"/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
@@ -91,7 +92,49 @@
         <!--android:layout_height="1dp"-->
         <!--android:layout_marginTop="5dp"-->
         <!--android:background="@mipmap/xian_xi"/>-->
+    <!--类型开始-->
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:background="@mipmap/pinpai_bj"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="类型"
+            android:layout_margin="15dp"
+            android:textSize="20sp"
+            />
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:background="@mipmap/shu_fenge"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:singleLine="true"
+            android:textColor="#02cccc"
+            android:gravity="center_vertical|right"
+            android:text="笔记本"/>
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_margin="18dp"
+            android:background="@mipmap/hui_fanhui"/>
+
+    </LinearLayout>
+    <!--类型结束-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@mipmap/xian_xi"/>
     <!--型号开始-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -113,13 +156,15 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:background="@mipmap/shu_fenge"/>
-        <EditText
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:singleLine="true"
-            android:hint="请对您手机的故障进行简单的描述"/>
+            android:textColor="#02cccc"
+            android:gravity="center_vertical|right"
+            android:text="Y460A-ITH"/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
@@ -159,13 +204,15 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:background="@mipmap/shu_fenge"/>
-            <EditText
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:singleLine="true"
-                android:hint="请对您手机的故障进行简单的描述"/>
+                android:textColor="#02cccc"
+                android:gravity="center_vertical|right"
+                android:text="主板"/>
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="20dp"
@@ -181,10 +228,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="10dp"
+            android:paddingLeft="25dp"
             android:textSize="14sp"
             android:singleLine="true"
-            android:hint="请对您手机的故障进行简单的描述"/>
+            android:hint="开机系统进不去，黑屏白字"/>
         <!--评价故障结束-->
     </LinearLayout>
     <!--<ImageView-->
