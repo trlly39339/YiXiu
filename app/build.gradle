@@ -7,7 +7,9 @@ android {
         main{
             res.srcDirs=[
                     'src/main/res',
+                    'src/main/res/drawable/ratingbar',
                     'src/main/res/layouts',
+                    'src/main/res/layouts/wdzl',
                     'src/main/res/layouts/grzx',
                     'src/main/res/layouts/item'
 

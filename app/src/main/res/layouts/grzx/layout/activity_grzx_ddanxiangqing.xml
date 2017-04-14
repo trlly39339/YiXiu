@@ -47,6 +47,7 @@
             android:scaleType="fitXY"/>
     </LinearLayout>
     <!--绿线深浅结束-->
+    <!--评星————————————————————————开始-->
     <LinearLayout
         android:layout_width="match_parent"
         android:gravity="center_vertical"
@@ -91,41 +92,59 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:padding="2dp"
                 android:layout_marginLeft="25dp"
-                android:src="@mipmap/grzx_ddanxiangqing_pingxing_huang"/>
+                android:src="@drawable/grzx_ddanxiangqing_pingxing_huang"/>
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:padding="2dp"
                 android:layout_marginLeft="5dp"
-                android:src="@mipmap/grzx_ddanxiangqing_pingxing_huang"/>
+                android:src="@drawable/grzx_ddanxiangqing_pingxing_huang"/>
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:padding="2dp"
                     android:layout_marginLeft="5dp"
-                    android:src="@mipmap/grzx_ddanxiangqing_pingxing_hui"/>
+                    android:src="@drawable/grzx_ddanxiangqing_pingxing_hui"/>
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:padding="2dp"
                     android:layout_marginLeft="5dp"
-                    android:src="@mipmap/grzx_ddanxiangqing_pingxing_hui"/>
+                    android:src="@drawable/grzx_ddanxiangqing_pingxing_hui"/>
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:padding="2dp"
                     android:layout_marginLeft="5dp"
-                    android:src="@mipmap/grzx_ddanxiangqing_pingxing_hui"/>
+                    android:src="@drawable/grzx_ddanxiangqing_pingxing_hui"/>
             </LinearLayout>
         </LinearLayout>
+        <!--拨打电话———————————————————开始-->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:src="@mipmap/grzx_ddanxiangqing_pingxing_dianhua_bj"/>
+            <ImageView
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:padding="18dp"
+                android:layout_marginBottom="8dp"
+                android:src="@mipmap/grzx_ddanxiangqing_pingxing_dianhua"/>
+        </FrameLayout>
+        <!--拨打电话———————————————————结束-->
     </LinearLayout>
-    <!--分——————————————————————————————————割线-->
+    <!--分———评星结束———————————————————————————————割线-->
     <!--订单跟踪开始-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -433,6 +452,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="18974387487"
+                        android:autoLink="phone"
                         android:layout_marginLeft="25dp"
                         android:textColor="#a5a5a5"
                         android:textSize="14sp"/>
