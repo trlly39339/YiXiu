@@ -43,129 +43,16 @@
             android:scaleType="fitXY"/>
     </LinearLayout>
     <!--绿线深浅结束-->
-    <!--rlv开始-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:background="@mipmap/pinpai_bj"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:layout_height="60dp">
-               <LinearLayout
-                   android:layout_width="120dp"
-                   android:orientation="vertical"
-                   android:layout_marginLeft="10dp"
-                   android:gravity="center"
-                   android:layout_marginRight="10dp"
-                   android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="20160617"
-                    android:id="@+id/tv_date"
-                    android:textSize="16sp"
-                    android:textColor="#d4d4d4"/>
-                   <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="13:00"
-                       android:id="@+id/tv_xitong_shijian"
-                       android:textSize="16sp"
-                       android:textColor="#d4d4d4"/>
-               </LinearLayout>
-                <ImageView
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="8dp"
-                    android:background="@mipmap/shu_fenge"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="类型 :"
-                        android:textSize="16sp"
-                        android:textColor="#ababab"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="手机"
-                            android:id="@+id/tv_leixing"
-                            android:textSize="16sp"
-                            android:textColor="#ababab"/>
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="-159.00"
-                        android:id="@+id/tv_danjia"
-                        android:textSize="18sp"
-                        android:textColor="#525252"/>
-                </LinearLayout>
-            </LinearLayout>
-    <!--rlv开始-->
-    <!--rlv开始-->
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:background="@mipmap/pinpai_bj"
-        android:gravity="center_vertical"
-        android:paddingLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:id="@+id/ll_zhifubao"
-        android:layout_marginBottom="5dp"
-        android:layout_height="60dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="支付宝"
-            android:layout_marginLeft="10dp"
-            android:textSize="16sp"
-            android:textColor="#6d6d6d"/>
-        <ImageView
-            android:layout_width="1dp"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:background="@mipmap/shu_fenge"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="未绑定"
-            android:visibility="invisible"
-            android:gravity="right"
-            android:textSize="16sp"
-            android:textColor="#b2b2b2"/>
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_margin="20dp"
-            android:visibility="visible"
-            android:id="@+id/img_zhifubao_xz"
-            android:src="@mipmap/grzx_ddxq_genzong_s"
-            android:scaleType="fitXY"/>
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_margin="20dp"
-            android:visibility="gone"
-            android:id="@+id/img_zhifubao_wxz"
-            android:src="@mipmap/grzx_ddxq_genzong_q"
-            android:scaleType="fitXY"/>
-    </LinearLayout>
+            android:id="@+id/rlv_mx">
 
 
 
+        </android.support.v7.widget.RecyclerView>
+    </ScrollView>
 </LinearLayout>
