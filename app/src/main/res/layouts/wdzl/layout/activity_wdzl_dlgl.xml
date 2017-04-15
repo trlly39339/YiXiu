@@ -8,7 +8,7 @@
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        MyTopBer:titleText="地区"
+        MyTopBer:titleText="地理管理"
         android:padding="12dp"
         MyTopBer:leftGB="@mipmap/phon_fanhui"
         MyTopBer:titleTextSizc="10sp"
@@ -43,55 +43,54 @@
             android:scaleType="fitXY"/>
     </LinearLayout>
     <!--绿线深浅结束-->
-    <!--绿线深浅-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:background="@mipmap/pinpai_bj"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="中国"
-            android:layout_margin="15dp"
-            android:textSize="18sp"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:textColor="#b0b0b0"
-            android:gravity="center_vertical|right"
-            android:text="已选地区"
-            android:minLines="1"
-            />
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="20dp"
-            android:layout_margin="18dp"
-            android:background="@mipmap/hui_fanhui"/>
-    </LinearLayout>
-    <!--品牌结束-->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#e6e4e4"/>
     <!--rlv开始-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
             android:layout_height="wrap_content">
 
 
 
 
-
         </android.support.v7.widget.RecyclerView>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center|center_vertical"
+                android:background="@mipmap/pinpai_bj"
+                android:layout_marginTop="3dp"
+                android:layout_height="60dp">
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/dzgl_tianjia_bj"
+                        android:scaleType="fitXY"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                       android:layout_gravity="center"
+                        android:src="@mipmap/dzgl_tianjia"
+                        android:scaleType="fitXY"/>
+                </FrameLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="新增地址"
+                    android:paddingLeft="10dp"
+                    android:textSize="18sp"
+                    android:textColor="#bbbbbb"/>
+            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

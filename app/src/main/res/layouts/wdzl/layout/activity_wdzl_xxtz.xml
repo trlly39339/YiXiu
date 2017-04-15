@@ -5,15 +5,17 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        MyTopBer:titleText="地区"
+        MyTopBer:titleText="消息通知"
         android:padding="12dp"
         MyTopBer:leftGB="@mipmap/phon_fanhui"
         MyTopBer:titleTextSizc="10sp"
         >
     </com.zykj.yixiu.app.activity.activity_styles.MyTopBer>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp">
@@ -43,55 +45,43 @@
             android:scaleType="fitXY"/>
     </LinearLayout>
     <!--绿线深浅结束-->
-    <!--绿线深浅-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:background="@mipmap/pinpai_bj"
-        >
+    <!--rlv开始-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:background="@mipmap/pinpai_bj"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/ll_xgmm"
+                android:layout_marginBottom="5dp"
+                android:layout_height="50dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="接收消息通知"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="17sp"
+                    android:textColor="#6d6d6d"/>
+
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/switch1_kg"
+                    android:checked="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+    <!--rlv开始-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="中国"
-            android:layout_margin="15dp"
-            android:textSize="18sp"
+            android:text="关闭后，您将无法接收到来自一修哥的消息通知"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            android:textColor="#b6b6b6"/>
+
             />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:textColor="#b0b0b0"
-            android:gravity="center_vertical|right"
-            android:text="已选地区"
-            android:minLines="1"
-            />
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="20dp"
-            android:layout_margin="18dp"
-            android:background="@mipmap/hui_fanhui"/>
-    </LinearLayout>
-    <!--品牌结束-->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#e6e4e4"/>
-    <!--rlv开始-->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-
-
-
-        </android.support.v7.widget.RecyclerView>
-
-    </ScrollView>
 </LinearLayout>
