@@ -8,6 +8,7 @@
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:background="@mipmap/pinpai_bj"
         MyTopBer:titleText="订单详情"
         android:padding="12dp"
         MyTopBer:leftGB="@mipmap/phon_fanhui"

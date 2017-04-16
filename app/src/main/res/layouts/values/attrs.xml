@@ -9,10 +9,11 @@
         <attr name="titleText" format="string"/>
         <attr name="titleTextSizc" format="dimension"/>
         <attr name="titleGB" format="color|reference"/>
+
         <!--右侧按钮-->
         <attr name="rightText" format="string"/>
         <attr name="rightTextSizc" format="dimension"/>
-        <attr name="rightGB" format="color|reference"/>
+        <attr name="rightGB" format="color|reference" />
     </declare-styleable>
 
 

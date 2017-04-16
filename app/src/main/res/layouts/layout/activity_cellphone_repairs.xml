@@ -67,19 +67,27 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:background="@mipmap/shu_fenge"/>
-        <EditText
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ll_pinpai"
+            android:layout_weight="1">
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="14sp"
             android:singleLine="true"
-            android:hint="请对您手机的故障进行简单的描述"/>
+            android:gravity="center_vertical"
+            android:id="@+id/tv_pinpai"
+            android:textColor="#afadad"
+            android:text="请对您手机的故障进行简单的描述"/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
             android:layout_margin="18dp"
             android:background="@mipmap/hui_fanhui"/>
-
+        </LinearLayout>
     </LinearLayout>
     <!--品牌结束-->
     <ImageView
@@ -113,19 +121,27 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:background="@mipmap/shu_fenge"/>
-        <EditText
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="14sp"
-            android:singleLine="true"
-            android:hint="请对您手机的故障进行简单的描述"/>
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="20dp"
-            android:layout_margin="18dp"
-            android:background="@mipmap/hui_fanhui"/>
-
+            android:id="@+id/ll_xinghao"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:gravity="center_vertical"
+                android:id="@+id/tv_xinghao"
+                android:textColor="#afadad"
+                android:text="请对您手机的故障进行简单的描述"/>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="20dp"
+                android:layout_margin="18dp"
+                android:background="@mipmap/hui_fanhui"/>
+        </LinearLayout>
     </LinearLayout>
     <!--<ImageView-->
         <!--android:layout_width="match_parent"-->
@@ -159,19 +175,27 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:background="@mipmap/shu_fenge"/>
-            <EditText
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="14sp"
-                android:singleLine="true"
-                android:hint="请对您手机的故障进行简单的描述"/>
-            <ImageView
-                android:layout_width="10dp"
-                android:layout_height="20dp"
-                android:layout_margin="18dp"
-                android:background="@mipmap/hui_fanhui"/>
-        </LinearLayout>
+                android:id="@+id/ll_guzhang"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:gravity="center_vertical"
+                    android:id="@+id/tv_guzhang"
+                    android:textColor="#afadad"
+                    android:text="请对您手机的故障进行简单的描述"/>
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="18dp"
+                    android:background="@mipmap/hui_fanhui"/>
+            </LinearLayout>        </LinearLayout>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -182,6 +206,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="10dp"
+            android:background="@null"
+            android:id="@+id/ev_guzhang_miaoshu"
             android:textSize="14sp"
             android:singleLine="true"
             android:hint="请对您手机的故障进行简单的描述"/>
@@ -198,11 +224,13 @@
         android:layout_height="90dp"
         android:orientation="horizontal"
         android:layout_marginTop="8dp"
+        android:id="@+id/ll_fl_tianjiatupian"
         android:gravity="center_vertical"
         android:background="@mipmap/pinpai_bj"
         >
         <FrameLayout
             android:layout_width="80dp"
+            android:id="@+id/fl_tianjiatupian"
             android:layout_height="80dp"
             >
         <ImageView
@@ -229,6 +257,7 @@
         android:layout_height="50dp"
         android:layout_margin="25dp"
         android:text="确 认"
+        android:id="@+id/but_queren"
         android:textSize="20sp"
         android:textColor="#ffffff"
         android:background="@mipmap/but_lan"/>
