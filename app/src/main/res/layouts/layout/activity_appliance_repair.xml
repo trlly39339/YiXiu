@@ -10,8 +10,11 @@
         android:layout_height="50dp"
         MyTopBer:titleText="家电维修"
         android:padding="12dp"
+        android:id="@+id/biaoti"
         MyTopBer:leftGB="@mipmap/phon_fanhui"
         MyTopBer:titleTextSizc="10sp"
+        MyTopBer:titleGB="#00cccc"
+
         >
     </com.zykj.yixiu.app.activity.activity_styles.MyTopBer>
 
@@ -66,20 +69,28 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:background="@mipmap/shu_fenge"/>
-        <EditText
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ll_pinpai"
+            android:layout_weight="1">
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="10dp"
+            android:id="@+id/pinpai_xianshi"
+            android:gravity="center_vertical"
             android:textSize="16sp"
             android:singleLine="true"
-            android:hint="请选择您的家电品牌"/>
+            android:text="请选择您的家电品牌"/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
             android:layout_margin="18dp"
             android:background="@mipmap/hui_fanhui"/>
 
+    </LinearLayout>
     </LinearLayout>
     <!--品牌结束-->
     <ImageView
@@ -113,20 +124,27 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:background="@mipmap/shu_fenge"/>
-        <EditText
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ll_leixing"
+            android:layout_weight="1">
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="10dp"
+            android:gravity="center_vertical"
             android:textSize="16sp"
             android:singleLine="true"
-            android:hint="请选择您的家电类型"/>
+            android:text="请选择您的家电类型"/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
             android:layout_margin="18dp"
             android:background="@mipmap/hui_fanhui"/>
 
+    </LinearLayout>
     </LinearLayout>
     <!--类型结束-->
     <ImageView
@@ -154,20 +172,28 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:background="@mipmap/shu_fenge"/>
-        <EditText
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ll_xinghao"
+            android:layout_weight="1">
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="10dp"
+            android:gravity="center_vertical"
+            android:id="@+id/xinghao_xianshi"
             android:textSize="16sp"
             android:singleLine="true"
-            android:hint="请选择您的家电型号"/>
+            android:text="请选择您的家电型号"/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
             android:layout_margin="18dp"
             android:background="@mipmap/hui_fanhui"/>
 
+    </LinearLayout>
     </LinearLayout>
     <!--<ImageView-->
         <!--android:layout_width="match_parent"-->
@@ -201,19 +227,27 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:background="@mipmap/shu_fenge"/>
-            <EditText
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/ll_guzhang"
+                android:layout_weight="1">
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:id="@+id/guzhang_xianshi"
                 android:singleLine="true"
-                android:hint="请选择您的家电品故障点"/>
+                android:text="请选择您的家电品故障点"/>
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="20dp"
                 android:layout_margin="18dp"
                 android:background="@mipmap/hui_fanhui"/>
+        </LinearLayout>
         </LinearLayout>
         <ImageView
             android:layout_width="match_parent"
@@ -227,7 +261,8 @@
             android:paddingLeft="25dp"
             android:textSize="14sp"
             android:singleLine="true"
-            android:hint="开机系统进不去，黑屏白字"/>
+            android:hint="开机系统进不去，黑屏白字"
+            android:id="@+id/ev_guzhang_xiangqing" />
         <!--评价故障结束-->
     </LinearLayout>
     <!--<ImageView-->
@@ -247,6 +282,7 @@
         <FrameLayout
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:id="@+id/fl_tianjiatupian"
             >
         <ImageView
             android:layout_width="50dp"
@@ -272,6 +308,7 @@
         android:layout_height="50dp"
         android:layout_margin="25dp"
         android:text="确 认"
+        android:id="@+id/but_queren"
         android:textSize="20sp"
         android:textColor="#ffffff"
         android:background="@mipmap/but_lan"/>

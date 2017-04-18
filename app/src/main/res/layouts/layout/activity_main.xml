@@ -16,11 +16,12 @@
             android:orientation="horizontal"
             android:padding="10dp"
             android:gravity="center_vertical"
-            android:id="@+id/fanhui_ll">
+            android:id="@+id/xuanze_chrngshi_ll">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="哈尔滨"
+            android:id="@+id/xianshi_chrngshi_tv"
             android:textColor="#00cccc"
             />
             <ImageView
@@ -41,7 +42,7 @@
             android:layout_width="45dp"
             android:layout_height="43dp"
             android:padding="11dp"
-            android:id="@+id/main_tianjia_right"
+            android:id="@+id/grzx_img"
             android:src="@mipmap/main_tianjia_right"/>
     </LinearLayout>
     <LinearLayout
@@ -92,6 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@mipmap/phon_bj"
+        android:id="@+id/shoujiweixiu_ll"
         android:layout_weight="1">
         <!--手机图片开始-->
         <ImageView
@@ -154,6 +156,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@mipmap/phon_bj"
+        android:id="@+id/diannaoweixiu_ll"
         android:layout_weight="1">
 
         <!--电脑设置开始-->
@@ -220,6 +223,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@mipmap/phon_bj"
+        android:id="@+id/jiadianweixiu_ll"
         android:layout_weight="1">
         <!--家电图片开始-->
         <FrameLayout

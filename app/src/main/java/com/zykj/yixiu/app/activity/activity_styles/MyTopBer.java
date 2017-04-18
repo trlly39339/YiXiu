@@ -2,9 +2,12 @@ package com.zykj.yixiu.app.activity.activity_styles;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -24,15 +27,32 @@ public class MyTopBer extends RelativeLayout {
     //    自定义成员属性  居中
     private String titleText;
     private float titleTextSizc;
-    private Drawable titleGB;
+    private int titleGB;
     //    自定义成员属性  右侧
     private String rightText;
     private float rightTextSizc;
-    private Drawable rightGB;
+    private int rightGB;
 
     private TextView lefe;
     private TextView title;
     private TextView rightview;
+//    自定义点击事件-------------------------------------------------------
+//    左侧回调事件函数
+    private OnLeftClickListener onLeftClickListener;
+    public interface OnLeftClickListener {
+        public void onLeftClickListener();
+    }
+public void setOnLeftClickListener(OnLeftClickListener onLeftClickListener) {
+    this.onLeftClickListener = onLeftClickListener;
+}
+//    右侧回调事件函数---------------------------------------------
+    private OnRightClickListener onRightClickListener;
+    public interface OnRightClickListener{
+        public void onRightClickListener();
+    }
+    public void setOnRightClickListener(OnRightClickListener onRightClickListener){
+        this.onRightClickListener=onRightClickListener;
+    }
 
 
     //    初始化构造函数
@@ -52,20 +72,36 @@ public class MyTopBer extends RelativeLayout {
 
         titleText=ta.getString(R.styleable.MyTopBer_titleText);
         titleTextSizc=ta.getDimension(R.styleable.MyTopBer_titleTextSizc,0);
-        titleGB=ta.getDrawable(R.styleable.MyTopBer_titleGB);
+        titleGB=ta.getColor(R.styleable.MyTopBer_titleGB,0);
 //        右侧
         rightText=ta.getString(R.styleable.MyTopBer_rightText);
         rightTextSizc=ta.getDimension(R.styleable.MyTopBer_rightTextSizc,0);
-        rightGB=ta.getDrawable(R.styleable.MyTopBer_rightGB);
+        rightGB=ta.getColor(R.styleable.MyTopBer_rightGB,0);
         //      关闭资源
         ta.recycle();
 //      创建控件
 //        左侧按钮控件TextView
         lefe = new TextView(context);
+
 //        居中TextView
         title = new TextView(context);
 //        右侧图片按钮
         rightview=new TextView(context);
+//        左侧按钮点击事件
+        lefe.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onLeftClickListener.onLeftClickListener();
+            }
+        });
+//        右侧点击事件
+        rightview.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRightClickListener.onRightClickListener();
+            }
+        });
+
 //        赋值属性
         lefe.setText(leftText);
         lefe.setTextSize(leftTextSizc);
@@ -75,12 +111,12 @@ public class MyTopBer extends RelativeLayout {
         title.setText(titleText);
         title.setTextSize(titleTextSizc);
         title.setGravity(Gravity.CENTER);
-        title.setBackgroundDrawable(titleGB);
+        title.setTextColor(titleGB);
 //        右侧图片按钮
         rightview.setText(rightText);
         rightview.setTextSize(rightTextSizc);
         rightview.setGravity(Gravity.CENTER_VERTICAL);
-        rightview.setBackgroundDrawable(rightGB);
+        rightview.setTextColor(rightGB);
 //        把控件绑定到RL
 //        绑定左侧按钮
         LayoutParams leftParams=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -94,7 +130,6 @@ public class MyTopBer extends RelativeLayout {
 //        绑定右侧图片按钮
         LayoutParams rightParams=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         rightParams.addRule(ALIGN_PARENT_RIGHT);
-
         addView(rightview,rightParams);
 
     }
@@ -102,4 +137,5 @@ public class MyTopBer extends RelativeLayout {
     public MyTopBer(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
 }

@@ -9,13 +9,14 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!--友盟开始-->
     <uses-sdk android:minSdkVersion="8"></uses-sdk>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--重了-->
     <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>-->
     <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
-    <!--重了-->
     <!--<uses-permission android:name="android.permission.INTERNET"/>-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <!--友盟结束-->
 
     <application
@@ -41,6 +42,7 @@
         <meta-data android:value="YOUR_APP_KEY" android:name="UMENG_APPKEY"/>
         <meta-data android:value="58eb06bdc89576323f0012b5" android:name="UMENG_CHANNEL"/>
         <!--友盟结束-->
+        <activity android:name=".app.activity.activity.PhoneWeiXiuActivity"/>
     </application>
 
 </manifest>

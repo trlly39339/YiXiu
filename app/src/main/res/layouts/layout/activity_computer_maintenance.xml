@@ -8,6 +8,8 @@
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/biaoti"
+        MyTopBer:titleGB="#00cccc"
         MyTopBer:titleText="电脑维修"
         android:padding="12dp"
         MyTopBer:leftGB="@mipmap/phon_fanhui"
@@ -66,12 +68,18 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:background="@mipmap/shu_fenge"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ll_pinpai"
+            android:layout_weight="1">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="18sp"
             android:singleLine="true"
+            android:id="@+id/tv_pinpai_xianshi"
             android:textColor="#02cccc"
             android:gravity="center_vertical|right"
             android:text="联想"/>
@@ -81,6 +89,7 @@
             android:layout_margin="18dp"
             android:background="@mipmap/hui_fanhui"/>
 
+    </LinearLayout>
     </LinearLayout>
     <!--品牌结束-->
     <ImageView
@@ -114,6 +123,11 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:background="@mipmap/shu_fenge"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ll_leixing"
+            android:layout_weight="1">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -121,6 +135,7 @@
             android:textSize="18sp"
             android:singleLine="true"
             android:textColor="#02cccc"
+            android:id="@+id/tv_leixing_xianshi"
             android:gravity="center_vertical|right"
             android:text="笔记本"/>
         <ImageView
@@ -129,6 +144,7 @@
             android:layout_margin="18dp"
             android:background="@mipmap/hui_fanhui"/>
 
+    </LinearLayout>
     </LinearLayout>
     <!--类型结束-->
     <ImageView
@@ -156,6 +172,11 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:background="@mipmap/shu_fenge"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ll_xinghao"
+            android:layout_weight="1">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -163,6 +184,7 @@
             android:textSize="18sp"
             android:singleLine="true"
             android:textColor="#02cccc"
+            android:id="@+id/tv_xinghao_xianshi"
             android:gravity="center_vertical|right"
             android:text="Y460A-ITH"/>
         <ImageView
@@ -171,6 +193,7 @@
             android:layout_margin="18dp"
             android:background="@mipmap/hui_fanhui"/>
 
+    </LinearLayout>
     </LinearLayout>
     <!--<ImageView-->
         <!--android:layout_width="match_parent"-->
@@ -204,6 +227,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:background="@mipmap/shu_fenge"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/ll_guzhang"
+                android:layout_weight="1">
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -211,6 +239,7 @@
                 android:textSize="18sp"
                 android:singleLine="true"
                 android:textColor="#02cccc"
+                android:id="@+id/tv_guzhang_xianshi"
                 android:gravity="center_vertical|right"
                 android:text="主板"/>
             <ImageView
@@ -218,6 +247,7 @@
                 android:layout_height="20dp"
                 android:layout_margin="18dp"
                 android:background="@mipmap/hui_fanhui"/>
+        </LinearLayout>
         </LinearLayout>
         <ImageView
             android:layout_width="match_parent"
@@ -230,6 +260,7 @@
             android:layout_weight="1"
             android:paddingLeft="25dp"
             android:textSize="14sp"
+            android:id="@+id/ev_guzhang_xiangqing"
             android:singleLine="true"
             android:hint="开机系统进不去，黑屏白字"/>
         <!--评价故障结束-->
@@ -251,17 +282,20 @@
         <FrameLayout
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:id="@+id/fl_tianjiatupian"
             >
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:src="@mipmap/yuanquan"/>
+
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/jiahao"/>
+                android:src="@mipmap/jiahao"
+                android:id="@+id/imageView" />
         </FrameLayout>
 
     </LinearLayout>
@@ -276,6 +310,7 @@
         android:layout_height="50dp"
         android:layout_margin="25dp"
         android:text="确 认"
+        android:id="@+id/but_queren"
         android:textSize="20sp"
         android:textColor="#ffffff"
         android:background="@mipmap/but_lan"/>

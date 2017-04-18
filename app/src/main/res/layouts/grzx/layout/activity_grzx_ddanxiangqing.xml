@@ -13,8 +13,10 @@
         android:padding="12dp"
         MyTopBer:leftGB="@mipmap/phon_fanhui"
         MyTopBer:titleTextSizc="10sp"
+        MyTopBer:titleGB="#00cccc"
         MyTopBer:rightText="取消订单"
         MyTopBer:rightTextSizc="8sp"
+        MyTopBer:rightGB="#00cccc"
         >
     </com.zykj.yixiu.app.activity.activity_styles.MyTopBer>
     <!--绿线深浅-->

@@ -8,12 +8,12 @@
         <!--中间titi-->
         <attr name="titleText" format="string"/>
         <attr name="titleTextSizc" format="dimension"/>
-        <attr name="titleGB" format="color|reference"/>
+        <attr name="titleGB" format="reference|color"/>
 
         <!--右侧按钮-->
         <attr name="rightText" format="string"/>
         <attr name="rightTextSizc" format="dimension"/>
-        <attr name="rightGB" format="color|reference" />
+        <attr name="rightGB" format="reference|color" />
     </declare-styleable>
 
 
