@@ -81,11 +81,7 @@
         android:layout_height="150dp"
         android:id="@+id/banner_main"
         >
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/banner_main"
-            android:scaleType="centerCrop"/>
+
     </com.youth.banner.Banner>
     <!--图片轮播结束-->
     <!--手机开始-->

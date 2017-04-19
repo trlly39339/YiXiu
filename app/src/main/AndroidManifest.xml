@@ -43,6 +43,7 @@
         <meta-data android:value="58eb06bdc89576323f0012b5" android:name="UMENG_CHANNEL"/>
         <!--友盟结束-->
         <activity android:name=".app.activity.activity.PhoneWeiXiuActivity"/>
+        <activity android:name=".app.activity.activity.DianNaoWeiXiu"/>
     </application>
 
 </manifest>

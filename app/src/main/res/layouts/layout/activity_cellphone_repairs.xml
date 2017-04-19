@@ -84,7 +84,7 @@
             android:id="@+id/tv_pp"
             android:visibility="visible"
             android:textColor="#afadad"
-            android:text="请对您手机的故障进行简单的描述"/>
+            android:text="请选择品牌"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -150,7 +150,7 @@
                 android:id="@+id/tv_xh"
                 android:gravity="center_vertical"
                 android:textColor="#afadad"
-                android:text="请对您手机的故障进行简单的描述"/>
+                android:text="请选择型号"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -217,7 +217,7 @@
                     android:id="@+id/tv_gz"
                     android:gravity="center_vertical"
                     android:textColor="#afadad"
-                    android:text="请对您手机的故障进行简单的描述"/>
+                    android:text="请选择故障原因"/>
 
                 <TextView
                     android:layout_width="0dp"
