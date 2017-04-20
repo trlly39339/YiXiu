@@ -185,7 +185,6 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                         if (Y.getRespCode(result)) {
                             //成功
                             lists = JSON.parseArray(Y.getData(result), PhoneWeiXiuBean.class);
-
                             //创建选择器
                             OptionsPickerView opv = new OptionsPickerView.Builder(PhoneWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
                                 @Override

@@ -44,6 +44,12 @@
         <!--友盟结束-->
         <activity android:name=".app.activity.activity.PhoneWeiXiuActivity"/>
         <activity android:name=".app.activity.activity.DianNaoWeiXiu"/>
+        <activity android:name=".app.activity.activity.JiaDianWeiXiuActivity"/>
+        <activity android:name=".app.activity.activity.HuJiaoFuWuActivity"/>
+        <activity android:name=".app.activity.activity.BianJiDiZhiActivity"/>
+        <activity android:name=".app.activity.activity.BaiDuDiZhiActivity"/>
+        <activity android:name=".app.activity.activity.GengHuanShouJiHaoActivity"/>
+        <activity android:name=".app.activity.activity.grzx_activity.GRZXActivity"/>
     </application>
 
 </manifest>

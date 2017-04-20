@@ -14,6 +14,6 @@ public class GRZXActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grzx_zhifu);
+        setContentView(R.layout.activity_grzx);
     }
 }

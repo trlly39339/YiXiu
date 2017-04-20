@@ -79,11 +79,24 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="10dp"
+            android:visibility="visible"
             android:id="@+id/pinpai_xianshi"
             android:gravity="center_vertical"
             android:textSize="16sp"
             android:singleLine="true"
             android:text="请选择您的家电品牌"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:id="@+id/pinpai_x"
+                android:gravity="center_vertical|right"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:singleLine="true"
+                android:textColor="#02cccc"
+                android:text=""/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
@@ -136,8 +149,22 @@
             android:padding="10dp"
             android:gravity="center_vertical"
             android:textSize="16sp"
+            android:id="@+id/leixing_xianshi"
+            android:visibility="visible"
             android:singleLine="true"
             android:text="请选择您的家电类型"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:gravity="center_vertical|right"
+                android:textSize="16sp"
+                android:id="@+id/leixing_x"
+                android:singleLine="true"
+                android:visibility="gone"
+                android:textColor="#02cccc"
+                android:text=""/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
@@ -185,8 +212,21 @@
             android:gravity="center_vertical"
             android:id="@+id/xinghao_xianshi"
             android:textSize="16sp"
+            android:visibility="visible"
             android:singleLine="true"
             android:text="请选择您的家电型号"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:gravity="center_vertical|right"
+                android:id="@+id/xinghao_x"
+                android:textSize="16sp"
+                android:singleLine="true"
+                android:visibility="gone"
+                android:textColor="#02cccc"
+                android:text=""/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
@@ -232,17 +272,33 @@
                 android:layout_height="match_parent"
                 android:id="@+id/ll_guzhang"
                 android:layout_weight="1">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:textSize="16sp"
-                android:gravity="center_vertical"
-                android:id="@+id/guzhang_xianshi"
-                android:singleLine="true"
-                android:text="请选择您的家电品故障点"/>
-            <ImageView
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical|right"
+                    android:id="@+id/guzhang_x"
+                    android:visibility="gone"
+                    android:singleLine="true"
+                    android:textColor="#02cccc"
+                    android:text=""/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/guzhang_xianshi"
+                    android:visibility="visible"
+                    android:singleLine="true"
+                    android:text="请选择您的家电品故障点"/>
+
+                <ImageView
                 android:layout_width="10dp"
                 android:layout_height="20dp"
                 android:layout_margin="18dp"
@@ -260,6 +316,7 @@
             android:layout_weight="1"
             android:paddingLeft="25dp"
             android:textSize="14sp"
+            android:background="@null"
             android:singleLine="true"
             android:hint="开机系统进不去，黑屏白字"
             android:id="@+id/ev_guzhang_xiangqing" />

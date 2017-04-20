@@ -18,7 +18,9 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.loader.ImageLoader;
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.app.activity.activity.grzx_activity.GRZXActivity;
 import com.zykj.yixiu.app.activity.base.BaseActivity;
+import com.zykj.yixiu.app.activity.yixiuge_utils.OptionsPicke;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +48,7 @@ public class MainActivity extends BaseActivity {
     LinearLayout diannaoweixiuLl;
     @Bind(R.id.jiadianweixiu_ll)
     LinearLayout jiadianweixiuLl;
+//    图片轮播资源数组
     private int[] bannd = {R.mipmap.bannder_a, R.mipmap.bannder_b, R.mipmap.bannder_c, R.mipmap.bannder_d};
     private List list = new ArrayList();
     private ArrayList<String> citys;
@@ -79,31 +82,18 @@ public class MainActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.xuanze_chrngshi_ll:
-                citys = new ArrayList<String>();
-                citys.add("哈尔滨");
-                citys.add("齐齐哈尔");
-                citys.add("牡丹江");
-                citys.add("佳木斯");
-                citys.add("大庆");
-                citys.add("鹤岗");
-                citys.add("鸡西");
-                citys.add("双鸭山");
-                citys.add("伊春");
-                citys.add("七台河");
-                citys.add("黑河");
-                citys.add("绥化");
-                citys.add("大兴安岭地区");
-                OptionsPickerView view1=new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+                 //                全国省市区三级联动开始
+                OptionsPicke optionsPicke=new OptionsPicke();
+                optionsPicke.showOptionsPicke(this, new OptionsPicke.OptionsSelectListener() {
                     @Override
-                    public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                        xianshiChrngshiTv.setText(citys.get(options1));
+                    public void selectListener(String province, String city, String district) {
+                        xianshiChrngshiTv.setText(city);
                     }
-                }).build();
-                view1.setPicker(citys);
-                view1.show();
+                });
+                //                全国省市区三级联动开始
                 break;
             case R.id.grzx_img:
-                Intent intentgrzx = new Intent(this, PhoneWeiXiuActivity.class);
+                Intent intentgrzx = new Intent(this, GRZXActivity.class);
                 startActivity(intentgrzx);
                 break;
             case R.id.shoujiweixiu_ll:
