@@ -178,6 +178,7 @@ public class DianNaoWeiXiu extends BaseActivity {
 //                            添加数据
                                 opv.setPicker(strings, null, null);
 //                            显示选择器
+                                if (!opv.isShowing())
                                 opv.show();
                             } else {
 //                            失败
@@ -227,6 +228,7 @@ public class DianNaoWeiXiu extends BaseActivity {
 //                            添加数据
                                 opv.setPicker(strings, null, null);
 //                            显示选择器
+                                if (!opv.isShowing())
                                 opv.show();
                             } else {
 //                            失败
@@ -246,13 +248,15 @@ public class DianNaoWeiXiu extends BaseActivity {
                         if (Y.getRespCode(result)){
                             listdn = JSON.parseArray(Y.getData(result), DianNaoWeiXiuBean.class);
 //                            创建选择器
-                            OptionsPickerView opv=new OptionsPickerView.Builder(DianNaoWeiXiu.this, new OptionsPickerView.OnOptionsSelectListener() {
+                            if (opv==null)
+                            opv=new OptionsPickerView.Builder(DianNaoWeiXiu.this, new OptionsPickerView.OnOptionsSelectListener() {
                                 @Override
                                 public void onOptionsSelect(int options1, int options2, int options3, View v) {
 //                                    选择后的监听器
                                     tvGuzhangXianshi.setVisibility(View.VISIBLE);//显示品牌
                                     tvGz.setVisibility(View.GONE);//提示信息
                                     tvGuzhangXianshi.setText(listdn.get(options1).getName());//把解析出来的数据设置到控件里
+                                    opv=null;
 
                                 }
                             }).build();
@@ -264,6 +268,7 @@ public class DianNaoWeiXiu extends BaseActivity {
 //                            添加数据
                             opv.setPicker(strings,null,null);
 //                            显示选择器
+                            if (!opv.isShowing())
                             opv.show();
                         }else {
 //                            失败

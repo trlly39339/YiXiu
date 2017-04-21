@@ -63,7 +63,7 @@
             android:id="@+id/et_phone"
             android:singleLine="true"
             android:background="@null"
-            android:inputType="number|phone|textCapSentences"
+            android:inputType="phone"
             android:paddingLeft="10dp"
             android:textColor="#9f9e9e"/>
     </LinearLayout>
@@ -91,7 +91,7 @@
             android:textSize="13sp"
             android:id="@+id/et_yzm"
             android:singleLine="true"
-            android:inputType="number|phone|textCapSentences"
+            android:inputType="phone"
             android:paddingLeft="10dp"
             android:textColor="#9f9e9e"/>
 

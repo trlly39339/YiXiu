@@ -70,6 +70,12 @@ public class JiaDianWeiXiuActivity extends BaseActivity {
     private List<DianNaoFenLeiBean> lists;//品牌数据源
     int index = -1;
 
+    private List<DianNaoFenLeiBean> listslx;//品牌数据源
+    int indexlx = -1;
+
+    private List<DianNaoFenLeiBean> listsxh;//品牌数据源
+    int indexxh = -1;
+    OptionsPickerView opv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,13 +94,15 @@ public class JiaDianWeiXiuActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_pinpai:
-                Y.get(JIADIANL.FIND_BY_APPLIANCE_BRAND, null, new Y.MyCommonCall<String>() {
+//                品牌对接
+                Y.get(JIADIANL.FIND_BY_APPLIANCE_BRAND, null,   new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         StyledDialog.dismissLoading();
                         if (Y.getRespCode(result)) {
                             lists = JSON.parseArray(Y.getData(result), DianNaoFenLeiBean.class);
-                            OptionsPickerView optionsPickerView = new OptionsPickerView.Builder(JiaDianWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
+                            if (opv==null)
+                            opv = new OptionsPickerView.Builder(JiaDianWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
                                 @Override
                                 public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                     pinpaiXianshi.setVisibility(View.GONE);
@@ -106,6 +114,7 @@ public class JiaDianWeiXiuActivity extends BaseActivity {
                                         xinghaoXianshi.setVisibility(View.VISIBLE);//型号提示
                                         xinghaoX.setVisibility(View.GONE);//型号显示
                                         index=options1;
+                                        opv=null;
                                     }
 
                                 }
@@ -116,9 +125,10 @@ public class JiaDianWeiXiuActivity extends BaseActivity {
 
                             }
 //                        添加数据
-                            optionsPickerView.setPicker(list, null, null);
+                            opv.setPicker(list, null, null);
 //                        显示
-                            optionsPickerView.show();
+                            if (!opv.isShowing())
+                            opv.show();
                         } else {
                             Y.t("数据解析失败");
                         }
@@ -127,6 +137,7 @@ public class JiaDianWeiXiuActivity extends BaseActivity {
 
                 break;
             case R.id.ll_leixing:
+// 类型对接
                 //检测是否选择了品牌
                 if (index == -1) {
                     Y.t("请您先选择品牌");
@@ -141,30 +152,33 @@ public class JiaDianWeiXiuActivity extends BaseActivity {
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)) {
                                 //成功
-                                lists = JSON.parseArray(Y.getData(result), DianNaoFenLeiBean.class);
+                                listslx = JSON.parseArray(Y.getData(result), DianNaoFenLeiBean.class);
                                 //创建选择器
-                                OptionsPickerView opv = new OptionsPickerView.Builder(JiaDianWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
+                                if (opv==null)
+                                opv = new OptionsPickerView.Builder(JiaDianWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         //选择后的监听器
                                         leixingXianshi.setVisibility(View.GONE);
                                         leixingX.setVisibility(View.VISIBLE);
-                                        leixingX.setText(lists.get(options1).getName());
-//                                        if (index!=1){
-//                                            xinghaoXianshi.setVisibility(View.VISIBLE);//型号提示
-//                                            xinghaoX.setVisibility(View.GONE);//型号显示
-//                                            index=options1;
-//                                        }
+                                        leixingX.setText(listslx.get(options1).getName());
+                                        if (indexlx!=options1){
+                                            xinghaoXianshi.setVisibility(View.VISIBLE);//型号提示
+                                            xinghaoX.setVisibility(View.GONE);//型号显示
+                                            indexlx=options1;
+                                            opv=null;
+                                        }
                                     }
                                 }).build();
                                 //把lists 进行转换
                                 List<String> strs = new ArrayList<String>();
-                                for (DianNaoFenLeiBean mb : lists) {
+                                for (DianNaoFenLeiBean mb : listslx) {
                                     strs.add(mb.getName());
                                 }
                                 //添加数据
                                 opv.setPicker(strs, null, null);
                                 //显示选择器
+                                if (!opv.isShowing())
                                 opv.show();
                             } else {
                                 //失败
@@ -177,38 +191,42 @@ public class JiaDianWeiXiuActivity extends BaseActivity {
             case R.id.ll_xinghao:
                 if (index==-1){
                     Y.t("请先选择品牌");
+                }else if (indexlx==-1){
+                    Y.t("请先选择类型");
                 }else {
                     //                发起型号请求
                     HashMap<String, String> map = new HashMap<>();
-                    map.put("category","1");
                     map.put("pid",lists.get(index).getId()+"");
+                    map.put("category",listslx.get(indexlx).getId()+"");
                     Y.get(JIADIANL.FIND_BY_APPLIANCE_MODEL, map, new Y.MyCommonCall<String>() {
                         @Override
                         public void onSuccess(String result) {
 //                        成功刷新进度条fl
                             StyledDialog.dismissLoading();
                             if (Y.getRespCode(result)) {
-                                lists = JSON.parseArray(Y.getData(result), DianNaoFenLeiBean.class);
+                                listsxh = JSON.parseArray(Y.getData(result), DianNaoFenLeiBean.class);
 //                            创建选择器
-                                OptionsPickerView opv = new OptionsPickerView.Builder(JiaDianWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
+                                if (opv==null)
+                                opv = new OptionsPickerView.Builder(JiaDianWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
 //                                    选择后的监听器
                                         xinghaoX.setVisibility(View.VISIBLE);//显示品牌
                                         xinghaoXianshi.setVisibility(View.GONE);//提示信息
-                                        xinghaoX.setText(lists.get(options1).getName());//把解析出来的数据设置到控件里
-                                        index = options1;//当前的索引
-
+                                        xinghaoX.setText(listsxh.get(options1).getName());//把解析出来的数据设置到控件里
+                                        indexxh = options1;//当前的索引
+                                        opv=null;
                                     }
                                 }).build();
 //                            把list进行转换
                                 List<String> strings = new ArrayList<String>();
-                                for (DianNaoFenLeiBean mb : lists) {
+                                for (DianNaoFenLeiBean mb : listsxh) {
                                     strings.add(mb.getName());
                                 }
 //                            添加数据
                                 opv.setPicker(strings, null, null);
 //                            显示选择器
+                                if (!opv.isShowing())
                                 opv.show();
                             } else {
 //                            失败
@@ -227,15 +245,16 @@ public class JiaDianWeiXiuActivity extends BaseActivity {
                         if (Y.getRespCode(result)) {
                             //成功
                             lists = JSON.parseArray(Y.getData(result), DianNaoFenLeiBean.class);
-
                             //创建选择器
-                            OptionsPickerView opv = new OptionsPickerView.Builder(JiaDianWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
+                            if (opv==null)
+                            opv = new OptionsPickerView.Builder(JiaDianWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
                                 @Override
                                 public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                     //选择后的监听器
                                     guzhangXianshi.setVisibility(View.GONE);
                                     guzhangX.setVisibility(View.VISIBLE);
                                     guzhangX.setText(lists.get(options1).getName());
+                                    opv=null;
                                 }
                             }).build();
                             //把lists 进行转换
@@ -246,6 +265,7 @@ public class JiaDianWeiXiuActivity extends BaseActivity {
                             //添加数据
                             opv.setPicker(strs, null, null);
                             //显示选择器
+                            if (!opv.isShowing())
                             opv.show();
                         } else {
                             //失败

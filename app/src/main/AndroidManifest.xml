@@ -42,14 +42,32 @@
         <meta-data android:value="YOUR_APP_KEY" android:name="UMENG_APPKEY"/>
         <meta-data android:value="58eb06bdc89576323f0012b5" android:name="UMENG_CHANNEL"/>
         <!--友盟结束-->
+        <!--手机维修PhoneWeiXiuActivity-->
         <activity android:name=".app.activity.activity.PhoneWeiXiuActivity"/>
+        <!--电脑维修DianNaoWeiXiu-->
         <activity android:name=".app.activity.activity.DianNaoWeiXiu"/>
+        <!--家电维修JiaDianWeiXiuActivity-->
         <activity android:name=".app.activity.activity.JiaDianWeiXiuActivity"/>
+        <!--呼叫服务HuJiaoFuWuActivity-->
         <activity android:name=".app.activity.activity.HuJiaoFuWuActivity"/>
+        <!--编辑地址BianJiDiZhiActivity-->
         <activity android:name=".app.activity.activity.BianJiDiZhiActivity"/>
+        <!--百度地址BaiDuDiZhiActivity-->
         <activity android:name=".app.activity.activity.BaiDuDiZhiActivity"/>
+        <!--更换手机号GengHuanShouJiHaoActivity-->
         <activity android:name=".app.activity.activity.GengHuanShouJiHaoActivity"/>
+        <!--个人中心GRZXActivity-->
         <activity android:name=".app.activity.activity.grzx_activity.GRZXActivity"/>
+        <!--登录DengLuActivity-->
+        <activity android:name=".app.activity.activity.denglu_zhuce.DengLuActivity"/>
+        <!--设置密码DengLuMiMaActivity-->
+        <activity android:name=".app.activity.activity.denglu_zhuce.DengLuMiMaActivity"/>
+        <!--忘记密码WangJiMiMaActivity-->
+        <activity android:name=".app.activity.activity.denglu_zhuce.WangJiMiMaActivity"/>
+        <!--注册ZhuCeActivity-->
+        <activity android:name=".app.activity.activity.denglu_zhuce.ZhuCeActivity"/>
+
+
     </application>
 
 </manifest>

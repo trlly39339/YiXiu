@@ -17,4 +17,10 @@ public class YURL {
     public static final String FIND_PHONE_MODEL=HOST+"findPhoneModel";
     //查询手机故障
     public static final String FIND_PHONE_FAULT=HOST+"findPhoneFault";
+//   注册对接
+    public static final String REGISTER=HOST+"register";
+//    密码对接
+    public static final String SETPASSWORD=HOST+"setpassword";
+//    登录对接
+    public static final String LOGIN=HOST+"login";
 }

@@ -8,6 +8,7 @@
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/biaoti"
         MyTopBer:titleText="注册"
         MyTopBer:titleGB="#00cccc"
         android:padding="12dp"
@@ -63,9 +64,9 @@
             android:id="@+id/et_phone"
             android:singleLine="true"
             android:background="@null"
-            android:inputType="number|phone|textCapSentences"
+            android:inputType="phone"
             android:paddingLeft="10dp"
-            android:textColor="#9f9e9e"/>
+            android:textColor="#252424"/>
     </LinearLayout>
     <!--rlv开始-->
     <View
@@ -90,9 +91,9 @@
             android:textSize="13sp"
             android:id="@+id/et_yzm"
             android:singleLine="true"
-            android:inputType="number|phone|textCapSentences"
+            android:inputType="numberPassword"
             android:paddingLeft="10dp"
-            android:textColor="#9f9e9e"/>
+            android:textColor="#252424"/>
         <FrameLayout
             android:layout_width="140dp"
             android:id="@+id/but_hqyzm"

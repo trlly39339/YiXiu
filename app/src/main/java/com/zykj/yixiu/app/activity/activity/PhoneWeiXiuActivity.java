@@ -64,6 +64,7 @@ public class PhoneWeiXiuActivity extends BaseActivity {
     TextView tvXh;
     @Bind(R.id.tv_gz)
     TextView tvGz;
+    private OptionsPickerView opv;
 
 
     @Override
@@ -94,7 +95,10 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                             lists = JSON.parseArray(Y.getData(result), PhoneWeiXiuBean.class);
                             //创建选择器
 
-                            OptionsPickerView opv = new OptionsPickerView.Builder(PhoneWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
+                            //选择后的监听器
+// 当前选择的索引
+                            if(opv==null)
+                            opv = new OptionsPickerView.Builder(PhoneWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
                                 @Override
                                 public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                     //选择后的监听器
@@ -105,6 +109,7 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                                         tvXh.setVisibility(View.VISIBLE);
                                         tvXinghao.setVisibility(View.GONE);
                                         mobileIndex = options1;// 当前选择的索引
+                                        opv=null;
                                     }
                                 }
                             }).build();
@@ -116,10 +121,8 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                             //添加数据
                             opv.setPicker(strs, null, null);
                             //显示选择器
-
-                            opv.show();
-
-
+                            if (!opv.isShowing())
+                                opv.show();
                         } else {
                             //失败
                             Y.t("数据解析失败");
@@ -147,14 +150,15 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                                 //成功
                                 lists = JSON.parseArray(Y.getData(result), PhoneWeiXiuBean.class);
                                 //创建选择器
-                                OptionsPickerView opv = new OptionsPickerView.Builder(PhoneWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
+                                if (opv==null)
+                                opv = new OptionsPickerView.Builder(PhoneWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
                                     @Override
                                     public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                         //选择后的监听器
                                         tvXh.setVisibility(View.GONE);
                                         tvXinghao.setVisibility(View.VISIBLE);
                                         tvXinghao.setText(lists.get(options1).getName());
-
+                                        opv=null;
 
                                     }
                                 }).build();
@@ -167,6 +171,7 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                                 //添加数据
                                 opv.setPicker(strs, null, null);
                                 //显示选择器
+                                if (!opv.isShowing())
                                 opv.show();
                             } else {
                                 //失败
@@ -186,13 +191,15 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                             //成功
                             lists = JSON.parseArray(Y.getData(result), PhoneWeiXiuBean.class);
                             //创建选择器
-                            OptionsPickerView opv = new OptionsPickerView.Builder(PhoneWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
+                            if (opv==null)
+                            opv = new OptionsPickerView.Builder(PhoneWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
                                 @Override
                                 public void onOptionsSelect(int options1, int options2, int options3, View v) {
                                     //选择后的监听器
                                     tvGz.setVisibility(View.GONE);
                                     tvGuzhang.setVisibility(View.VISIBLE);
                                     tvGuzhang.setText(lists.get(options1).getName());
+                                    opv=null;
                                 }
                             }).build();
                             //把lists 进行转换
@@ -203,6 +210,7 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                             //添加数据
                             opv.setPicker(strs, null, null);
                             //显示选择器
+                            if (!opv.isShowing())
                             opv.show();
                         } else {
                             //失败
