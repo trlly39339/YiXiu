@@ -24,7 +24,9 @@ import java.util.Map;
 public class Y {
     public static Context Context;//全局上下文
     public static boolean isLog = true;//控制打印日志的开关
-    public static User user;//
+    public static User USER;//
+    public static String TOKEN;
+    public static  int REQUEST_CODE_GALLERY = 1;//个人中心头像值
 
     /**
      * 吐司功能 只需要传入一个 字符串

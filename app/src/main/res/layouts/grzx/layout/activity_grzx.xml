@@ -14,12 +14,13 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginLeft="10dp"
+            android:id="@+id/fanhui"
             android:src="@mipmap/grzx_fanhui"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="个人中心"
-            android:layout_marginLeft="113dp"
+            android:layout_marginLeft="103dp"
             android:textSize="21dp"
             android:textColor="#ffffff"/>
     </LinearLayout>
@@ -33,35 +34,19 @@
             android:layout_height="0dp"
             android:layout_weight="1">
             <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_gravity="center_horizontal"
+            android:id="@+id/grzx_tx"
             android:src="@mipmap/grzx_tx"
                 />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingLeft="60dp"
-                android:paddingTop="20dp"
-                android:src="@mipmap/grzx_tx_wrz"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingLeft="60dp"
-                android:paddingTop="20dp"
-                android:text="未认证"
-                android:textSize="8dp"
-                android:textColor="#fea78a"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
                 android:layout_marginBottom="10dp"
                 android:text="Candy"
+                android:id="@+id/tv_name"
                 android:textSize="17dp"
                 android:textColor="#ffffff"/>
             <ImageView
@@ -69,10 +54,31 @@
                 android:layout_height="12dp"
                 android:layout_gravity="center|bottom"
                 android:src="@mipmap/grzx_nv"
+                android:id="@+id/name_image_nv"
                 android:layout_marginLeft="33dp"
                 android:layout_marginBottom="14dp"
                 android:scaleType="fitXY"
                 />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/grzx_tx_wrz"
+                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:text="未认证"
+                android:id="@+id/tv_wrz"
+                android:textSize="8dp"
+                android:textColor="#fea78a"/>
         </FrameLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,11 +86,13 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:background="#02bdbd"
+                android:gravity="center"
                 android:layout_height="match_parent">
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#02bdbd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:id="@+id/fl_wwc"
                     >
                 <ImageView
                     android:layout_width="wrap_content"
@@ -125,11 +133,13 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:background="#02aeae"
+                android:gravity="center"
                 android:layout_height="match_parent">
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#02aeae"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fl_ywc"
                     >
                     <ImageView
                         android:layout_width="wrap_content"
@@ -150,14 +160,17 @@
                 </FrameLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:background="#029a9a"
+                android:gravity="center"
                 android:layout_height="match_parent">
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#029a9a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fl_yqx"
                     >
                     <ImageView
                         android:layout_width="wrap_content"
@@ -187,6 +200,7 @@
         android:layout_height="40dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:id="@+id/ll_wdzl"
         android:background="@mipmap/pinpai_bj"
         >
         <ImageView
@@ -227,6 +241,7 @@
         android:layout_height="40dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:id="@+id/ll_wdqb"
         android:background="@mipmap/pinpai_bj"
         >
         <ImageView
@@ -266,6 +281,7 @@
         android:layout_height="40dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:id="@+id/ll_rzgl"
         android:background="@mipmap/pinpai_bj"
         >
         <ImageView
@@ -305,6 +321,7 @@
         android:layout_height="40dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:id="@+id/ll_rzxx"
         android:background="@mipmap/pinpai_bj"
         >
         <ImageView
@@ -346,6 +363,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
+        android:id="@+id/ll_ptfw"
         android:background="@mipmap/pinpai_bj"
         >
         <ImageView
@@ -385,6 +403,7 @@
         android:layout_height="40dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:id="@+id/ll_gywm"
         android:background="@mipmap/pinpai_bj"
         >
         <ImageView
@@ -425,6 +444,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
+        android:id="@+id/ll_sz"
         android:background="@mipmap/pinpai_bj"
         >
         <ImageView

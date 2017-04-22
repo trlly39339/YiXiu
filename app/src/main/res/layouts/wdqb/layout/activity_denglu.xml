@@ -49,6 +49,7 @@
                 android:gravity="center"
                 android:textColor="#ffffff"
                 android:background="@null"
+                android:inputType="textPassword"
                 android:textColorHint="#e7e5e5"/>
         </LinearLayout>
         <FrameLayout

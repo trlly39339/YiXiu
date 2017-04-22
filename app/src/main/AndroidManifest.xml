@@ -30,8 +30,8 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="MrKHrHbUD6kv93x6sVAKRq62BGyLGIr8" />
 
-
-        <activity android:name=".app.activity.activity.MainActivity">
+        <!--登录DengLuActivity-->
+        <activity android:name=".app.activity.activity.denglu_zhuce.DengLuActivity">
             <intent-filter>
 
                 <action android:name="android.intent.action.MAIN"/>
@@ -58,14 +58,16 @@
         <activity android:name=".app.activity.activity.GengHuanShouJiHaoActivity"/>
         <!--个人中心GRZXActivity-->
         <activity android:name=".app.activity.activity.grzx_activity.GRZXActivity"/>
-        <!--登录DengLuActivity-->
-        <activity android:name=".app.activity.activity.denglu_zhuce.DengLuActivity"/>
+        <!--主页MainActivity-->
+        <activity android:name=".app.activity.activity.MainActivity"/>
         <!--设置密码DengLuMiMaActivity-->
         <activity android:name=".app.activity.activity.denglu_zhuce.DengLuMiMaActivity"/>
         <!--忘记密码WangJiMiMaActivity-->
         <activity android:name=".app.activity.activity.denglu_zhuce.WangJiMiMaActivity"/>
         <!--注册ZhuCeActivity-->
         <activity android:name=".app.activity.activity.denglu_zhuce.ZhuCeActivity"/>
+        <!--我的资料-->
+        <activity android:name=".app.activity.activity.grzx_activity.WoDeZiLiaoActivity"/>
 
 
     </application>

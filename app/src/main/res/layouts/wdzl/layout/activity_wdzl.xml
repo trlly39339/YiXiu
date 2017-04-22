@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         MyTopBer:titleText="我的资料"
+        android:id="@+id/biaoti"
         MyTopBer:titleGB="#00cccc"
         android:padding="12dp"
         MyTopBer:leftGB="@mipmap/phon_fanhui"
@@ -53,6 +54,7 @@
         android:layout_height="90dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:id="@+id/wdzl_genggaitx_ll"
         android:background="@mipmap/pinpai_bj"
         >
         <TextView
@@ -71,13 +73,17 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="right|center_vertical"
-            android:background="@mipmap/wdzl_tx_bj"/>
+            android:scaleType="fitXY"
+            android:id="@+id/wdzl_tx_img"
+            android:src="@mipmap/wdzl_tx_bj"/>
+
             <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-                android:layout_marginRight="8dp"
+            android:layout_marginRight="8dp"
             android:layout_gravity="right|center_vertical"
-            android:background="@mipmap/wdzl_tx_ren"/>
+            android:src="@mipmap/wdzl_tx_ren"
+            android:id="@+id/wdzl_gong_img" />
         </FrameLayout>
         <ImageView
             android:layout_width="10dp"
@@ -117,8 +123,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@null"
             android:padding="10dp"
             android:textSize="16sp"
+            android:id="@+id/ev_name"
             android:singleLine="true"
             android:hint="请输入您的姓名"/>
         <ImageView
@@ -166,11 +174,13 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
+                android:id="@+id/rb_nan"
                 android:checked="true"
                 android:text="男"/>
             <RadioButton
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:id="@+id/rb_nv"
                 android:layout_height="wrap_content"
                 android:text="女"
                 android:textSize="18sp"/>
@@ -204,16 +214,19 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:background="@mipmap/shu_fenge"/>
-        <TextView
+
+        <EditText
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="16sp"
             android:gravity="center_vertical|right"
             android:text="18947893453"
-            android:minLines="1"
-            android:autoLink="email|phone"
-           />
+            android:background="@null"
+            android:singleLine="true"
+            android:autoLink="phone"
+            android:id="@+id/et_phone_h" />
+
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
@@ -248,11 +261,18 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:background="@mipmap/shu_fenge"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:id="@+id/ll_diqu"
+            android:layout_height="match_parent">
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="黑龙江"
+            android:id="@+id/tv_sheng"
             android:gravity="right"
             android:textSize="20sp"
             />
@@ -260,6 +280,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="哈尔滨"
+            android:id="@+id/tv_shi"
             android:layout_marginLeft="10dp"
             android:textSize="20sp"
             />
@@ -268,14 +289,24 @@
             android:layout_height="20dp"
             android:layout_margin="18dp"
             android:background="@mipmap/hui_fanhui"/>
-
+        </LinearLayout>
     </LinearLayout>
     <!--品牌结束-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#e6e4e4"/>
-
+    <!--确定开始-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="25dp"
+        android:text="确认上传"
+        android:id="@+id/but_queren"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:background="@mipmap/but_lan"/>
+    <!--确定结束-->
 
 
 

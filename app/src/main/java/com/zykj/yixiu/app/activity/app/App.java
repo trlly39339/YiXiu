@@ -9,12 +9,19 @@ import com.bumptech.glide.Glide;
 import com.hss01248.dialog.MyActyManager;
 import com.hss01248.dialog.StyledDialog;
 import com.umeng.analytics.MobclickAgent;
+import com.zykj.yixiu.app.activity.yixiuge_utils.MyImageLD;
 import com.zykj.yixiu.app.activity.yixiuge_utils.Y;
 
 import org.xutils.x;
 
+import cn.finalteam.galleryfinal.CoreConfig;
+import cn.finalteam.galleryfinal.FunctionConfig;
+import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.ImageLoader;
+import cn.finalteam.galleryfinal.ThemeConfig;
 import cn.finalteam.galleryfinal.widget.GFImageView;
+
+import static com.hss01248.dialog.StyledDialog.context;
 
 /**
  * Created by zykj on 2017/4/8.
@@ -49,5 +56,22 @@ public class App extends Application {
         @Override
         public void onActivityDestroyed(Activity activity) {}
     });
+        //设置主题
+//ThemeConfig.CYAN
+        ThemeConfig theme = new ThemeConfig.Builder() .build();
+//配置功能
+        FunctionConfig functionConfig = new FunctionConfig.Builder()
+                .setEnableCamera(true)
+                .setEnableEdit(true)
+                .setEnableCrop(true)
+                .setEnableRotate(true)
+                .setCropSquare(true)
+                .setEnablePreview(true).build();
+
+//配置imageloader
+        ImageLoader imageloader = new MyImageLD();
+        CoreConfig coreConfig = new CoreConfig.Builder(context, imageloader, theme)
+                .setFunctionConfig(functionConfig).build();
+        GalleryFinal.init(coreConfig);
 }
 }

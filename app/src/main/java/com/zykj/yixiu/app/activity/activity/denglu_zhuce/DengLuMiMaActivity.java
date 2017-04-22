@@ -38,6 +38,8 @@ public class DengLuMiMaActivity extends BaseActivity {
     @Bind(R.id.but_queren)
     FrameLayout butQueren;
     private String data;
+    private String mm;
+    private String zcmm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +60,8 @@ public class DengLuMiMaActivity extends BaseActivity {
 
     @OnClick(R.id.but_queren)
     public void onViewClicked() {
-        String mm = etMm.getText().toString().trim();
-        String zcmm = etZcmm.getText().toString().trim();
+        mm = etMm.getText().toString().trim();
+        zcmm = etZcmm.getText().toString().trim();
         if (TextUtils.isEmpty(mm)) {
             Y.t("密码不能为空");
             return;
@@ -70,12 +72,12 @@ public class DengLuMiMaActivity extends BaseActivity {
             return;
         }
         //判断俩次输入的密码是否一样
-        if (mm != zcmm) {
+        if (!mm.equals(zcmm)) {
             Y.t("两次输入的密码不一致");
             return;
         }
         Map<String,String> map=new HashMap<String, String>();
-        map.put("password",mm);
+        map.put("password", mm);
         map.put("token",data);
         Y.get(YURL.SETPASSWORD, map, new Y.MyCommonCall<String>() {
             @Override
@@ -83,9 +85,7 @@ public class DengLuMiMaActivity extends BaseActivity {
                 StyledDialog.dismissLoading();
                 if (Y.getRespCode(result)){
                     Y.t("密码设置成功");
-                    User user = JSON.parseObject(Y.getData(result), User.class);
-                    Y.user=user;
-                    startActivity(new Intent(DengLuMiMaActivity.this,DengLuActivity.class));
+                    startActivity(new Intent(DengLuMiMaActivity.this,DengLuActivity.class).putExtra("data",data));
                 }else {
                     Y.t("密码设置失败");
                 }

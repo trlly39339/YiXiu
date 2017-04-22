@@ -64,7 +64,7 @@
             android:id="@+id/et_mm"
             android:singleLine="true"
             android:background="@null"
-            android:inputType="number|phone|textCapSentences"
+            android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:textColor="#9f9e9e"/>
     </LinearLayout>
@@ -83,6 +83,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_height="50dp">
+
         <EditText
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -91,7 +92,7 @@
             android:textSize="13sp"
             android:id="@+id/et_zcmm"
             android:singleLine="true"
-            android:inputType="number|phone|textCapSentences"
+            android:inputType="textPassword"
             android:paddingLeft="10dp"
             android:textColor="#9f9e9e"/>
     </LinearLayout>

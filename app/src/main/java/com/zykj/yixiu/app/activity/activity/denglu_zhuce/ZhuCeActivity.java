@@ -68,8 +68,8 @@ public class ZhuCeActivity extends BaseActivity {
                 }
                 if (!Y.isMobileNO(phone)){
                     Y.t("请输入合法的手机号");
+                    return;
                 }
-
                 if (TextUtils.isEmpty(yzm)){
                     Y.t("请输入验证码");
                     return;
@@ -86,11 +86,9 @@ public class ZhuCeActivity extends BaseActivity {
                     public void onSuccess(String result) {
                         StyledDialog.dismissLoading();
                         if (Y.getRespCode(result)){
-                            ZhuCeBase zhuce = JSON.parseObject(Y.getData(result), ZhuCeBase.class);
-                            Y.t("注册成功"+zhuce);
                             startActivity(new Intent(ZhuCeActivity.this,DengLuMiMaActivity.class).putExtra("data",Y.getData(result)));
                         }else {
-                            Y.t("注册失败");
+                            Y.t("用户已存在");
                         }
                     }
                 });
