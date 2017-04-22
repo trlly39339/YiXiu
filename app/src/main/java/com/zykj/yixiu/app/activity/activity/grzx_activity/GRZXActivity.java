@@ -72,6 +72,7 @@ public class GRZXActivity extends BaseActivity {
         setContentView(R.layout.activity_grzx);
         ButterKnife.bind(this);
         if (!TextUtils.isEmpty(Y.USER.getIcon())){//图片不为空的时候直接加载到控件上
+
             ImageOptions options=new ImageOptions.Builder().setCircular(true).setUseMemCache(true).build();
             x.image().bind(grzxTx,Y.USER.getIcon(),options);
         }

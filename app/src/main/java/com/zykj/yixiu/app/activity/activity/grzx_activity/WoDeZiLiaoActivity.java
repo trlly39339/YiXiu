@@ -2,6 +2,7 @@ package com.zykj.yixiu.app.activity.activity.grzx_activity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -92,6 +93,7 @@ public class WoDeZiLiaoActivity extends BaseActivity {
         }
         if (!TextUtils.isEmpty(Y.USER.getUsername())){
             evName.setText(Y.USER.getUsername());//
+            evName.setText(Gravity.RIGHT);
             if (SEX.equals(rbNan)){
                 rbNan.setChecked(true);
                 return;
@@ -173,11 +175,9 @@ public class WoDeZiLiaoActivity extends BaseActivity {
                 nan = rbNan.getText().toString();
                 nv = rbNv.getText().toString();
                 if (rbNan.isChecked()){
-                    Y.t(nan);
                     SEX= nan;
                     return;
                 }else if (rbNv.isChecked()){//是否选中  如果选中女 设置到user.setSex里  否则什么也不干
-                        Y.t(nv);
                         SEX= nv;
                         return;
                     }
@@ -192,11 +192,12 @@ public class WoDeZiLiaoActivity extends BaseActivity {
                     @Override
                     public void onSuccess(String result) {
                         StyledDialog.dismissLoading();
-                        Y.USER.setUsername(name);//姓名设置到USER
-                        Y.USER.setPhone(phoneh);//手机号设置到USER
-                        Y.USER.setSex(SEX);//性别设置到USER
-                        Y.USER.setProvince(sheng);//省设置到USER
-                        Y.USER.setCity(shi);//市设置到USER
+                        Y.t("上传成功");
+                        Y.USER.setUsername(Y.getData(result));//姓名设置到USER
+                        Y.USER.setPhone(Y.getData(result));//手机号设置到USER
+                        Y.USER.setSex(Y.getData(result));//性别设置到USER
+                        Y.USER.setProvince(Y.getData(result));//省设置到USER
+                        Y.USER.setCity(Y.getData(result));//市设置到USER
                     }
                 });
                 break;
