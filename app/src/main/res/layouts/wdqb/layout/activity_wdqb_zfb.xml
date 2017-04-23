@@ -10,6 +10,7 @@
         android:layout_height="50dp"
         MyTopBer:titleText="支付宝"
         MyTopBer:titleGB="#00cccc"
+        android:id="@+id/biaoti"
         android:padding="12dp"
         MyTopBer:leftGB="@mipmap/phon_fanhui"
         MyTopBer:titleTextSizc="10sp"
@@ -70,6 +71,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="8dp"
                     android:background="@mipmap/shu_fenge"/>
+
                 <EditText
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -79,7 +81,8 @@
                     android:singleLine="true"
                     android:inputType="number|phone|textCapSentences"
                     android:paddingLeft="10dp"
-                    android:textColor="#aeaeae"/>
+                    android:textColor="#aeaeae"
+                    android:id="@+id/zhifubaozhanghao_et" />
             </LinearLayout>
     <!--rlv开始-->
     <!--rlv开始-->
@@ -112,7 +115,7 @@
             android:hint="请输入您的支付宝的账号"
             android:textSize="13sp"
             android:singleLine="true"
-            android:inputType="number|phone|textCapSentences"
+            android:id="@+id/zhifubaoname_et"
             android:paddingLeft="10dp"
             android:textColor="#b2b2b2"/>
     </LinearLayout>

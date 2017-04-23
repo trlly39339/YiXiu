@@ -68,6 +68,12 @@
         <activity android:name=".app.activity.activity.denglu_zhuce.ZhuCeActivity"/>
         <!--我的资料-->
         <activity android:name=".app.activity.activity.grzx_activity.WoDeZiLiaoActivity"/>
+        <!--我的订单-->
+        <activity android:name=".app.activity.activity.grzx_activity.WoDeDingDanActivity"/>
+        <!--我的钱包-->
+        <activity android:name=".app.activity.activity.grzx_activity.wdqb_activity.WDQBActivity"/>
+        <!--支付宝-->
+        <activity android:name=".app.activity.activity.grzx_activity.wdqb_activity.ZhiFuBaoActivity"/>
 
 
     </application>

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.hss01248.dialog.StyledDialog;
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.app.activity.activity.grzx_activity.wdqb_activity.WDQBActivity;
 import com.zykj.yixiu.app.activity.base.BaseActivity;
 import com.zykj.yixiu.app.activity.yixiuge_utils.Y;
 import com.zykj.yixiu.app.activity.yixiuge_utils.YURL;
@@ -116,25 +117,28 @@ public class GRZXActivity extends BaseActivity {
                                 }
                             }
                         }
-
                     }
-
                     @Override
                     public void onHanlderFailure(int requestCode, String errorMsg) {
-
                     }
                 });
                 break;
             case R.id.fl_wwc:
+                Intent intent=new Intent(GRZXActivity.this,WoDeDingDanActivity.class);
+                intent.putExtra("zhuangtai","1");
+                startActivity(intent);
                 break;
             case R.id.fl_ywc:
+                startActivity(new Intent(GRZXActivity.this,WoDeDingDanActivity.class).putExtra("zhuangtai","2"));
                 break;
             case R.id.fl_yqx:
+                startActivity(new Intent(GRZXActivity.this,WoDeDingDanActivity.class).putExtra("zhuangtai","3"));
                 break;
             case R.id.ll_wdzl:
                 startActivity(new Intent(GRZXActivity.this,WoDeZiLiaoActivity.class));
                 break;
             case R.id.ll_wdqb:
+                startActivity(new Intent(GRZXActivity.this,WDQBActivity.class));
                 break;
             case R.id.ll_rzgl:
                 break;

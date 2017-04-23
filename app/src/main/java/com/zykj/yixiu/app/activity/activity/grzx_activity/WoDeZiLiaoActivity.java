@@ -94,16 +94,27 @@ public class WoDeZiLiaoActivity extends BaseActivity {
         if (!TextUtils.isEmpty(Y.USER.getUsername())){
             evName.setText(Y.USER.getUsername());//
             evName.setText(Gravity.RIGHT);
-            if (SEX.equals(rbNan)){
-                rbNan.setChecked(true);
-                return;
-            }else if (SEX.equals(rbNv)){
-                rbNv.setChecked(true);
-                return;
+            if (!TextUtils.isEmpty(Y.USER.getSex())) {
+                if (SEX.equals(rbNan)) {
+                    rbNan.setChecked(true);
+                    return;
+                } else if (SEX.equals(rbNv)) {
+                    rbNv.setChecked(true);
+                    return;
+                }
+            }else{
+                Y.t("请选择性别");
+
+            }
+            if (!TextUtils.isEmpty(Y.USER.getProvince())) {
+                tvSheng.setText(Y.USER.getProvince());
+                tvShi.setText(Y.USER.getCity());
+            }else{
+                Y.t("请选择城市");
             }
             etPhoneH.setText(Y.USER.getPhone());
-            tvSheng.setText(Y.USER.getProvince());
-            tvShi.setText(Y.USER.getCity());
+        }else {
+            Y.t("请完善个人信息");
         }
 //        ——————————————————————————————————————————————
 
@@ -177,7 +188,8 @@ public class WoDeZiLiaoActivity extends BaseActivity {
                 if (rbNan.isChecked()){
                     SEX= nan;
                     return;
-                }else if (rbNv.isChecked()){//是否选中  如果选中女 设置到user.setSex里  否则什么也不干
+                }
+                if (rbNv.isChecked()){//是否选中  如果选中女 设置到user.setSex里  否则什么也不干
                         SEX= nv;
                         return;
                     }
@@ -192,12 +204,16 @@ public class WoDeZiLiaoActivity extends BaseActivity {
                     @Override
                     public void onSuccess(String result) {
                         StyledDialog.dismissLoading();
-                        Y.t("上传成功");
-                        Y.USER.setUsername(Y.getData(result));//姓名设置到USER
-                        Y.USER.setPhone(Y.getData(result));//手机号设置到USER
-                        Y.USER.setSex(Y.getData(result));//性别设置到USER
-                        Y.USER.setProvince(Y.getData(result));//省设置到USER
-                        Y.USER.setCity(Y.getData(result));//市设置到USER
+                        if (Y.getRespCode(result)) {
+                            Y.t("上传成功");
+                            Y.USER.setUsername(Y.getData(result));//姓名设置到USER
+                            Y.USER.setPhone(Y.getData(result));//手机号设置到USER
+                            Y.USER.setSex(Y.getData(result));//性别设置到USER
+                            Y.USER.setProvince(Y.getData(result));//省设置到USER
+                            Y.USER.setCity(Y.getData(result));//市设置到USER
+                        }else {
+                            Y.t("上传失败");
+                        }
                     }
                 });
                 break;

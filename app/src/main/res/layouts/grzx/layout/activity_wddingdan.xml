@@ -8,6 +8,7 @@
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/biaoti"
         MyTopBer:titleText="我的订单"
         MyTopBer:titleGB="#00cccc"
         android:padding="12dp"
@@ -55,21 +56,23 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
+            android:id="@+id/wwc_ll"
             android:layout_height="match_parent">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="未完成"
+                android:id="@+id/wwc_tv"
                 android:gravity="center"
                 android:textColor="#03cccc"
                 android:textSize="20sp"/>
-            <ImageView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:src="@mipmap/bi_s"
-                android:visibility="visible"
-                android:scaleType="fitXY"/>
+                android:id="@+id/wwc_img"
+                android:background="#03cccc"
+                />
         </LinearLayout>
         <View
             android:layout_width="1dp"
@@ -83,21 +86,23 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
+            android:id="@+id/ywc_ll"
             android:layout_height="match_parent">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="已完成"
+                android:id="@+id/ywc_tv"
                 android:gravity="center"
                 android:textColor="#757575"
                 android:textSize="20sp"/>
-            <ImageView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:src="@mipmap/bi_s"
-                android:visibility="invisible"
-                android:scaleType="fitXY"/>
+                android:id="@+id/ywc_img"
+                android:background="#bababa"
+                />
         </LinearLayout>
         <View
             android:layout_width="1dp"
@@ -110,6 +115,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:orientation="vertical"
+            android:id="@+id/yqx_ll"
             android:gravity="center"
             android:layout_height="match_parent">
             <TextView
@@ -117,15 +123,16 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="已取消"
+                android:id="@+id/yqx_tv"
                 android:gravity="center"
                 android:textColor="#757575"
                 android:textSize="20sp"/>
-            <ImageView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:visibility="invisible"
-                android:src="@mipmap/bi_s"
-                android:scaleType="fitXY"/>
+                android:id="@+id/yqx_img"
+                android:background="#bababa"
+                />
         </LinearLayout>
         </LinearLayout>
     <android.support.v7.widget.RecyclerView
