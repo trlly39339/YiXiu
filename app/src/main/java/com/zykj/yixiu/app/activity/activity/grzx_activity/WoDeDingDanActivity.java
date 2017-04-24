@@ -15,6 +15,7 @@ import com.zykj.yixiu.R;
 import com.zykj.yixiu.app.activity.activity.adapters.WoDeDingDanAdapter;
 import com.zykj.yixiu.app.activity.activity_styles.MyTopBer;
 import com.zykj.yixiu.app.activity.base.BaseActivity;
+import com.zykj.yixiu.app.activity.yixiuge_utils.Y;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,16 +74,17 @@ public class WoDeDingDanActivity extends BaseActivity {
         dingDanAdapter.setClickListener(new WoDeDingDanAdapter.onChongXinFaBuClickListener() {
             @Override
             public void onChongXinClick(View view, int pos) {
-
+                Y.t("重新发");
             }
 
             @Override
             public void onChaKanXiangQingClick(View view, int pos) {
-
+                Y.t("查看详情");
             }
 
             @Override
             public void onQuXiaoDingDanClick(View view, int pos) {
+                Y.t("取消订单");
 
             }
         });

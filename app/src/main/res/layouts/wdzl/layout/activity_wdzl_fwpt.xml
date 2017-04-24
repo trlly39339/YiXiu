@@ -8,6 +8,7 @@
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/biaoti"
         MyTopBer:titleText="平台服务"
         MyTopBer:titleGB="#00cccc"
         android:padding="12dp"
@@ -46,52 +47,55 @@
     <!--绿线深浅结束-->
     <!--rlv开始-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:background="@mipmap/pinpai_bj"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="5dp"
-                android:layout_height="60dp">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="15dp"
-                        android:src="@mipmap/wdzl_fwpt_yxgzx_huang"
-                        android:scaleType="fitXY"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@mipmap/pinpai_bj"
+        android:gravity="center_vertical"
+        android:id="@+id/ll_yixiuzixun"
+        android:layout_marginBottom="5dp"
+        android:layout_height="60dp">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:src="@mipmap/wdzl_fwpt_yxgzx_huang"
+                android:scaleType="fitXY"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="一休哥资讯"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="18sp"
-                    android:textColor="#6d6d6d"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="一休哥资讯"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:textColor="#6d6d6d"/>
 
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:src="@mipmap/wdzl_fwpt_yxgzx_paopao"
-                        android:scaleType="fitXY"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5"
-                        android:layout_gravity="center"
-                        android:textSize="14sp"
-                        android:textColor="#fffefe"/>
-                </FrameLayout>
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:src="@mipmap/hui_fanhui"
-                    android:scaleType="fitXY"/>
-            </LinearLayout>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/yixiuzixun_shuliang_gon_fl"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/wdzl_fwpt_yxgzx_paopao"
+                android:scaleType="fitXY"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:id="@+id/yixiuzixun_shuliang_tv"
+                android:layout_gravity="center"
+                android:textSize="14sp"
+                android:textColor="#fffefe"/>
+        </FrameLayout>
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:src="@mipmap/hui_fanhui"
+            android:scaleType="fitXY"/>
+    </LinearLayout>
     <!--rlv开始-->
 
     <LinearLayout
@@ -99,6 +103,7 @@
         android:orientation="horizontal"
         android:background="@mipmap/pinpai_bj"
         android:gravity="center_vertical"
+        android:id="@+id/changjianwenti_ll"
         android:layout_marginBottom="5dp"
         android:layout_height="60dp">
         <FrameLayout

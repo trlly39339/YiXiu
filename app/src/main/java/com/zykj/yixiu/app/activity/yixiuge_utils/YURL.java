@@ -27,4 +27,8 @@ public class YURL {
     public static final String UP_LOAD_ICON=HOST+"uploadIcon";
 //    用户信息
     public static final String SET_USER_INFO=HOST+"setUserInfo";
+//    上传身份证
+    public static final String UPLOAD_ID_CARD=HOST+"uploadIdCard";
+//    绑定支付宝
+    public static final String BIND_ALI_PAY=HOST+"bindAliPay";
 }

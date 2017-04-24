@@ -151,17 +151,17 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                                 lists = JSON.parseArray(Y.getData(result), PhoneWeiXiuBean.class);
                                 //创建选择器
                                 if (opv==null)
-                                opv = new OptionsPickerView.Builder(PhoneWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
-                                    @Override
-                                    public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                                        //选择后的监听器
-                                        tvXh.setVisibility(View.GONE);
-                                        tvXinghao.setVisibility(View.VISIBLE);
-                                        tvXinghao.setText(lists.get(options1).getName());
-                                        opv=null;
+                                    opv = new OptionsPickerView.Builder(PhoneWeiXiuActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
+                                        @Override
+                                        public void onOptionsSelect(int options1, int options2, int options3, View v) {
+                                            //选择后的监听器
+                                            tvXh.setVisibility(View.GONE);
+                                            tvXinghao.setVisibility(View.VISIBLE);
+                                            tvXinghao.setText(lists.get(options1).getName());
+                                            opv=null;
 
-                                    }
-                                }).build();
+                                        }
+                                    }).build();
 
                                 //把lists 进行转换
                                 List<String> strs = new ArrayList<String>();
@@ -172,7 +172,7 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                                 opv.setPicker(strs, null, null);
                                 //显示选择器
                                 if (!opv.isShowing())
-                                opv.show();
+                                    opv.show();
                             } else {
                                 //失败
                                 Y.t("数据解析失败");

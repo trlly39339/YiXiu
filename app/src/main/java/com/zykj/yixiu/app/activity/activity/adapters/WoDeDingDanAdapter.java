@@ -71,6 +71,15 @@ public class WoDeDingDanAdapter extends RecyclerView.Adapter <WoDeDingDanAdapter
             }
         });
 //        __________________________________________________________________________
+        holder.zhonglei.setText(list.get(position));
+        if (holder.zhonglei.getText()=="手机"){
+            holder.ddjd.setVisibility(View.GONE);
+            holder.shijian.setVisibility(View.GONE);
+            holder.chongxinfabu.setVisibility(View.GONE);
+        }
+        if (holder.zhonglei.getText()=="电脑"){
+            holder.yjd.setVisibility(View.GONE);
+        }
     }
 
     @Override

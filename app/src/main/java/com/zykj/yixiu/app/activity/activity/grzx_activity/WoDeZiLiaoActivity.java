@@ -62,14 +62,14 @@ public class WoDeZiLiaoActivity extends BaseActivity {
     @Bind(R.id.but_queren)
     Button butQueren;
 
-//    储存选中的性别
-    private  String SEX;
-    private String name;
-    private String phoneh;
-    private String nan;
-    private String nv;
-    private String sheng;
-    private String shi;
+
+    private  String SEX;//    储存选中的性别
+    private String name;//姓名
+    private String phoneh;//手机号
+    private String nan;//男
+    private String nv;//女
+    private String sheng;//省
+    private String shi;//市
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,36 +85,39 @@ public class WoDeZiLiaoActivity extends BaseActivity {
         });
 
 //        ———————————————————————————————————————
-        //      检测是否已存在头像 如果存在并上传 否则什么也不干
+        //      检测是否已存在头像 如果存在并设置到空间上 否则什么也不干
         if (!TextUtils.isEmpty(Y.USER.getIcon())){//图片不为空的时候直接加载到控件上
             ImageOptions options=new ImageOptions.Builder().setCircular(true).setUseMemCache(true).build();
             x.image().bind(wdzlTxImg,Y.USER.getIcon(),options);
             wdzlGongImg.setVisibility(View.GONE);//隐藏头像叠加图片
         }
+//        用户姓名不为空的时候取出
         if (!TextUtils.isEmpty(Y.USER.getUsername())){
-            evName.setText(Y.USER.getUsername());//
+            evName.setText(Y.USER.getUsername());//姓名设置到空间上
+//            姓名显示到右侧去
             evName.setText(Gravity.RIGHT);
+//            用户性别不为空的时候
             if (!TextUtils.isEmpty(Y.USER.getSex())) {
-                if (SEX.equals(rbNan)) {
+//                用户性别与男的地址是否相等
+                if (Y.USER.getSex().equals(nan)) {
+//                    相等选中男
                     rbNan.setChecked(true);
                     return;
-                } else if (SEX.equals(rbNv)) {
+                } else  {
+//                    否则选中女
                     rbNv.setChecked(true);
                     return;
                 }
-            }else{
-                Y.t("请选择性别");
-
             }
+//            省不为空时候
             if (!TextUtils.isEmpty(Y.USER.getProvince())) {
+//                设置省
                 tvSheng.setText(Y.USER.getProvince());
+//                设置市
                 tvShi.setText(Y.USER.getCity());
-            }else{
-                Y.t("请选择城市");
             }
+//            设置手机号
             etPhoneH.setText(Y.USER.getPhone());
-        }else {
-            Y.t("请完善个人信息");
         }
 //        ——————————————————————————————————————————————
 
@@ -124,7 +127,7 @@ public class WoDeZiLiaoActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.wdzl_genggaitx_ll:
-                //   个人中心
+                //   单选头像
                 GalleryFinal.openGallerySingle(Y.REQUEST_CODE_GALLERY, new GalleryFinal.OnHanlderResultCallback() {
                     @Override
                     public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
@@ -135,7 +138,7 @@ public class WoDeZiLiaoActivity extends BaseActivity {
 //                                    Glide.with(GRZXActivity.this).load(info.getPhotoPath()).into(grzxTx);
                                     ImageOptions options=new ImageOptions.Builder().setCircular(true).setUseMemCache(true).build();
                                     x.image().bind(wdzlTxImg,info.getPhotoPath(),options);
-//                                    发送请求
+//                                    发送请求 上传头像图片
                                     RequestParams params=new RequestParams(YURL.UP_LOAD_ICON);
                                     params.addBodyParameter("icon",info.getPhotoPath());
                                     params.addBodyParameter("token", Y.TOKEN);
@@ -206,11 +209,11 @@ public class WoDeZiLiaoActivity extends BaseActivity {
                         StyledDialog.dismissLoading();
                         if (Y.getRespCode(result)) {
                             Y.t("上传成功");
-                            Y.USER.setUsername(Y.getData(result));//姓名设置到USER
-                            Y.USER.setPhone(Y.getData(result));//手机号设置到USER
-                            Y.USER.setSex(Y.getData(result));//性别设置到USER
-                            Y.USER.setProvince(Y.getData(result));//省设置到USER
-                            Y.USER.setCity(Y.getData(result));//市设置到USER
+//                            Y.USER.setUsername(Y.getData(result));//姓名设置到USER
+//                            Y.USER.setPhone(Y.getData(result));//手机号设置到USER
+//                            Y.USER.setSex(Y.getData(result));//性别设置到USER
+//                            Y.USER.setProvince(Y.getData(result));//省设置到USER
+//                            Y.USER.setCity(Y.getData(result));//市设置到USER
                         }else {
                             Y.t("上传失败");
                         }

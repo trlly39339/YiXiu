@@ -9,6 +9,7 @@
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/biaoti"
         MyTopBer:titleText="消息通知"
         MyTopBer:titleGB="#00cccc"
         android:padding="12dp"

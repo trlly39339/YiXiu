@@ -124,31 +124,46 @@ public class GRZXActivity extends BaseActivity {
                 });
                 break;
             case R.id.fl_wwc:
+//                未完成
                 Intent intent=new Intent(GRZXActivity.this,WoDeDingDanActivity.class);
                 intent.putExtra("zhuangtai","1");
                 startActivity(intent);
                 break;
             case R.id.fl_ywc:
+//                已完成
                 startActivity(new Intent(GRZXActivity.this,WoDeDingDanActivity.class).putExtra("zhuangtai","2"));
                 break;
             case R.id.fl_yqx:
+//                已取消
                 startActivity(new Intent(GRZXActivity.this,WoDeDingDanActivity.class).putExtra("zhuangtai","3"));
                 break;
             case R.id.ll_wdzl:
+//                我的资料
                 startActivity(new Intent(GRZXActivity.this,WoDeZiLiaoActivity.class));
                 break;
             case R.id.ll_wdqb:
+//                我的钱包
                 startActivity(new Intent(GRZXActivity.this,WDQBActivity.class));
                 break;
             case R.id.ll_rzgl:
+//                地址管理
                 break;
             case R.id.ll_rzxx:
+//                认证信息
+                startActivity(new Intent(GRZXActivity.this,RenZhengActivity.class));
                 break;
             case R.id.ll_ptfw:
+//                平台服务
+                startActivity(new Intent(GRZXActivity.this,PingTaiFuWuActivity.class));
                 break;
             case R.id.ll_gywm:
+//                关于我们
+                startActivity(new Intent(GRZXActivity.this,GuanYuWoMenActivity.class));
                 break;
             case R.id.ll_sz:
+
+//                设置
+                startActivity(new Intent(GRZXActivity.this,SheZhiActivity.class));
                 break;
         }
     }

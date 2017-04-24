@@ -9,6 +9,7 @@
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/biaoti"
         MyTopBer:titleText="一休哥资讯"
         MyTopBer:titleGB="#00cccc"
         android:padding="12dp"
@@ -81,19 +82,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@mipmap/wdzl_yxgzx_gg"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:id="@+id/biaoti_tu_img"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:text="一休哥在售，快捷生活轻松拥有 !"
+                        android:text="一休哥在手，快捷生活轻松拥有 !"
                         android:background="#000000"
                         android:layout_gravity="bottom"
                         android:singleLine="true"
                         android:gravity="center_vertical"
                         android:textSize="16sp"
-                        android:textColor="#fffefe"/>
+                        android:textColor="#fffefe"
+                        android:id="@+id/biaoyu_tv" />
                 </FrameLayout>
                 <!--第一条app新闻-->
                 <View
@@ -105,6 +109,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginLeft="15dp"
                     android:paddingTop="5dp"
+                    android:id="@+id/diyitiao_xinwen_ll"
                     android:paddingBottom="5dp"
                     android:gravity="center_vertical"
                     android:layout_height="wrap_content">
@@ -136,6 +141,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginLeft="15dp"
                     android:paddingTop="5dp"
+                    android:id="@+id/diertiao_xinwen_ll"
                     android:paddingBottom="5dp"
                     android:gravity="center_vertical"
                     android:layout_height="wrap_content">
@@ -153,8 +159,6 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginLeft="15dp"
-                        android:visibility="invisible"
-                        android:src="@mipmap/wdzl_yxgzx_tp"
                         android:scaleType="fitXY"/>
                 </LinearLayout>
                 <!--第一条app新闻-->
@@ -167,6 +171,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_marginLeft="15dp"
                     android:paddingTop="5dp"
+                    android:id="@+id/disantiao_xinwen_ll"
                     android:paddingBottom="10dp"
                     android:gravity="center_vertical"
                     android:layout_height="wrap_content">
@@ -181,7 +186,7 @@
                         android:layout_marginLeft="10dp"
                         android:textSize="13sp"
                         android:textColor="#6d6d6d"
-                        android:id="@+id/textView" />
+                         />
 
                     <ImageView
                         android:layout_width="60dp"

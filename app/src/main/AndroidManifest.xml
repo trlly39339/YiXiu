@@ -74,6 +74,22 @@
         <activity android:name=".app.activity.activity.grzx_activity.wdqb_activity.WDQBActivity"/>
         <!--支付宝-->
         <activity android:name=".app.activity.activity.grzx_activity.wdqb_activity.ZhiFuBaoActivity"/>
+        <!--认证信息-->
+        <activity android:name=".app.activity.activity.grzx_activity.RenZhengActivity"/>
+        <!--平台服务-->
+        <activity android:name=".app.activity.activity.grzx_activity.PingTaiFuWuActivity"/>
+        <!--一休哥资讯-->
+        <activity android:name=".app.activity.activity.grzx_activity.YiXiuGeZiXunActivity"/>
+        <!--常见问题-->
+        <activity android:name=".app.activity.activity.grzx_activity.ChangJianWenTiActivity"/>
+        <!--关于我们-->
+        <activity android:name=".app.activity.activity.grzx_activity.GuanYuWoMenActivity"/>
+        <!--设置-->
+        <activity android:name=".app.activity.activity.grzx_activity.SheZhiActivity"/>
+        <!--修改密码-->
+        <activity android:name=".app.activity.activity.grzx_activity.XiuGaiMiMaActivity"/>
+        <!--消息通知-->
+        <activity android:name=".app.activity.activity.grzx_activity.XiaoXiTongZhiActivity"/>
 
 
     </application>
