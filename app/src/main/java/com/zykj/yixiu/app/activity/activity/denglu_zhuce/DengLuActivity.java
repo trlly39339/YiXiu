@@ -19,6 +19,9 @@ import com.zykj.yixiu.app.activity.bean.ZhuCeBase;
 import com.zykj.yixiu.app.activity.yixiuge_utils.Y;
 import com.zykj.yixiu.app.activity.yixiuge_utils.YURL;
 
+import org.xutils.image.ImageOptions;
+import org.xutils.x;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,6 +56,10 @@ public class DengLuActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_denglu);
         ButterKnife.bind(this);
+//         if (!TextUtils.isEmpty(Y.USER.getIcon())){//图片不为空的时候直接加载到控件上
+//            ImageOptions options=new ImageOptions.Builder().setCircular(true).setUseMemCache(true).build();
+//            x.image().bind(dengluTx,Y.USER.getIcon(),options);
+//        }
 
     }
 
@@ -85,7 +92,7 @@ public class DengLuActivity extends BaseActivity {
                         StyledDialog.dismissLoading();
                         if (Y.getRespCode(result)){
                             User user = JSON.parseObject(Y.getData(result), User.class);
-                            user.setToken(getIntent().getStringExtra("data"));
+
                             Y.USER=user;
                             Y.TOKEN=user.getToken();
                             Y.t("登录成功");

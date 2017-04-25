@@ -74,4 +74,5 @@ public class App extends Application {
                 .setFunctionConfig(functionConfig).build();
         GalleryFinal.init(coreConfig);
 }
+
 }

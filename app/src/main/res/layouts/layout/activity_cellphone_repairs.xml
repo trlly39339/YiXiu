@@ -276,11 +276,13 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            android:id="@+id/tp_img"
             android:src="@mipmap/yuanquan"/>
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
+                android:id="@+id/tp_img_gon"
                 android:src="@mipmap/jiahao"/>
         </FrameLayout>
 

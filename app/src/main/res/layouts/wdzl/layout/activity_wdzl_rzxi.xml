@@ -79,6 +79,7 @@
                     android:textSize="18sp"
                     android:textColor="#13cece"/>
                 </LinearLayout>
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_gravity="center"
@@ -87,8 +88,8 @@
                     android:layout_marginRight="20dp"
                     android:layout_height="match_parent">
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="280dp"
+                        android:layout_height="90dp"
                         android:layout_gravity="center"
                         android:id="@+id/img_sfz_zm"
                         android:src="@mipmap/rzxx_tj_bj_fang"
@@ -144,8 +145,8 @@
             android:id="@+id/fl_sfz_fm"
             android:layout_height="match_parent">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="280dp"
+                android:layout_height="90dp"
                 android:layout_gravity="center"
                 android:id="@+id/img_sfz_fm"
                 android:src="@mipmap/rzxx_tj_bj_fang"

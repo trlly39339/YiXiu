@@ -21,6 +21,7 @@ import org.xutils.http.RequestParams;
 import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
+import java.io.File;
 import java.util.List;
 
 import butterknife.Bind;
@@ -73,9 +74,7 @@ public class GRZXActivity extends BaseActivity {
         setContentView(R.layout.activity_grzx);
         ButterKnife.bind(this);
         if (!TextUtils.isEmpty(Y.USER.getIcon())){//图片不为空的时候直接加载到控件上
-
-            ImageOptions options=new ImageOptions.Builder().setCircular(true).setUseMemCache(true).build();
-            x.image().bind(grzxTx,Y.USER.getIcon(),options);
+            Glide.with(GRZXActivity.this).load(YURL.HOST+Y.USER.getIcon()).into(grzxTx);
         }
 
     }
@@ -94,20 +93,24 @@ public class GRZXActivity extends BaseActivity {
 //                        检测请求吗
                         if (reqeustCode==Y.REQUEST_CODE_GALLERY){
                             if (resultList!=null){
-                                for (PhotoInfo info:resultList) {
-//                                    Glide.with(GRZXActivity.this).load(info.getPhotoPath()).into(grzxTx);
-                                    ImageOptions options=new ImageOptions.Builder().setCircular(true).setUseMemCache(true).build();
-                                    x.image().bind(grzxTx,info.getPhotoPath(),options);
+                                for (final PhotoInfo info:resultList) {
+//
+
 //                                    发送请求
+                                    Glide.with(GRZXActivity.this).load(info.getPhotoPath()).into(grzxTx);
+
                                     RequestParams params=new RequestParams(YURL.UP_LOAD_ICON);
-                                    params.addBodyParameter("icon",info.getPhotoPath());
+                                    params.addBodyParameter("icon",new File(info.getPhotoPath()));
+                                    params.setMultipart(true);
                                     params.addBodyParameter("token", Y.TOKEN);
                                     Y.post(params, new Y.MyCommonCall<String>() {
                                         @Override
                                         public void onSuccess(String result) {
-                                            StyledDialog.dismissLoading();
+
+                                         //   StyledDialog.dismissLoading();
                                             if (Y.getRespCode(result)) {
                                                 Y.t("上传成功");
+
                                                 Y.USER.setIcon(Y.getData(result));
                                             }else {
                                                 Y.t("上传失败");
@@ -147,6 +150,7 @@ public class GRZXActivity extends BaseActivity {
                 break;
             case R.id.ll_rzgl:
 //                地址管理
+                startActivity(new Intent(GRZXActivity.this,DiZhiGuanLiActivity.class));
                 break;
             case R.id.ll_rzxx:
 //                认证信息
@@ -165,6 +169,15 @@ public class GRZXActivity extends BaseActivity {
 //                设置
                 startActivity(new Intent(GRZXActivity.this,SheZhiActivity.class));
                 break;
+        }
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        if (!TextUtils.isEmpty(Y.USER.getIcon())){//图片不为空的时候直接加载到控件上
+            ImageOptions options=new ImageOptions.Builder().setCircular(true).setUseMemCache(true).build();
+            x.image().bind(grzxTx,Y.USER.getIcon(),options);
         }
     }
 }

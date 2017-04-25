@@ -5,9 +5,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/biaoti"
         MyTopBer:titleText="地理管理"
         MyTopBer:titleGB="#00cccc"
         android:padding="12dp"
@@ -15,6 +17,7 @@
         MyTopBer:titleTextSizc="10sp"
         >
     </com.zykj.yixiu.app.activity.activity_styles.MyTopBer>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp">
@@ -45,26 +48,26 @@
     </LinearLayout>
     <!--绿线深浅结束-->
     <!--rlv开始-->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_marginTop="5dp"
+            android:id="@+id/rlv"
             android:layout_height="wrap_content">
 
 
 
 
         </android.support.v7.widget.RecyclerView>
+    </ScrollView>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center|center_vertical"
+                android:id="@+id/xzdz_ll"
                 android:background="@mipmap/pinpai_bj"
                 android:layout_marginTop="3dp"
                 android:layout_height="60dp">
@@ -92,6 +95,5 @@
                     android:textSize="18sp"
                     android:textColor="#bbbbbb"/>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+
 </LinearLayout>

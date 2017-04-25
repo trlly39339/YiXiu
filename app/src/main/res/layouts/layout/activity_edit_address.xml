@@ -8,6 +8,7 @@
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/biaoti"
         MyTopBer:titleText="编辑地址"
         MyTopBer:titleGB="#00cccc"
         android:padding="12dp"
@@ -58,7 +59,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="姓名"
+            android:text="姓名        "
             android:layout_margin="15dp"
             android:textSize="20sp"
         />
@@ -67,8 +68,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="30dp"
+            android:id="@+id/xingming_et"
             android:textSize="16sp"
+            android:background="@null"
             android:singleLine="true"
             android:hint="请输入您的姓名"/>
 
@@ -97,7 +99,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="手机号"
+            android:text="手机号    "
             android:layout_margin="15dp"
             android:textSize="20sp"
             />
@@ -106,10 +108,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="10dp"
             android:textSize="18sp"
             android:singleLine="true"
-            android:gravity="center_vertical|right"
+            android:id="@+id/shojihao_tv"
+            android:gravity="center_vertical"
             android:text="13874678412"/>
         <ImageView
             android:layout_width="10dp"
@@ -140,14 +142,16 @@
             android:textSize="20sp"
             />
 
-        <EditText
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="30dp"
             android:textSize="16sp"
+            android:gravity="center_vertical"
             android:singleLine="true"
-            android:hint="请输入您的详细地址"/>
+            android:hint="请输入您的详细地址"
+            android:id="@+id/baidudizhi_et"
+            android:background="@null"/>
 
 
     </LinearLayout>
@@ -174,48 +178,13 @@
             android:textSize="20sp"
             />
         <!--选中开始-->
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            >
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="20dp"
-                android:layout_gravity="right|center_vertical"
-                android:layout_marginRight="20dp"
-                android:src="@mipmap/edit_address_s_tiao"/>
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="right|center_vertical"
-                android:layout_marginRight="20dp"
-                android:scaleType="fitXY"
-                android:src="@mipmap/edit_address_s_yuan"/>
-        </FrameLayout>
-        <!--选中结束-->
-        <!--未选中开始-->
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            android:layout_weight="1"
-            >
-            <ImageView
-                android:layout_width="55dp"
-                android:layout_height="20dp"
-                android:layout_gravity="right|center_vertical"
-                android:layout_marginRight="20dp"
-                android:scaleType="fitXY"
-                android:src="@mipmap/edit_address_q_tiao"/>
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="right|center_vertical"
-                android:layout_marginRight="50dp"
-                android:src="@mipmap/edit_address_s_yuan"/>
-        </FrameLayout>
-        <!--未选中结束-->
+       <Switch
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:checked="true"
+           android:layout_marginRight="20dp"
+           android:id="@+id/moren_sch"/>
     </LinearLayout>
     <ImageView
         android:layout_width="match_parent"

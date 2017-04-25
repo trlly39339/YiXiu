@@ -23,7 +23,9 @@ import org.xutils.http.RequestParams;
 import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -87,7 +89,7 @@ public class WoDeZiLiaoActivity extends BaseActivity {
 //        ———————————————————————————————————————
         //      检测是否已存在头像 如果存在并设置到空间上 否则什么也不干
         if (!TextUtils.isEmpty(Y.USER.getIcon())){//图片不为空的时候直接加载到控件上
-            ImageOptions options=new ImageOptions.Builder().setCircular(true).setUseMemCache(true).build();
+            ImageOptions options=new ImageOptions.Builder().setCircular(true).build();
             x.image().bind(wdzlTxImg,Y.USER.getIcon(),options);
             wdzlGongImg.setVisibility(View.GONE);//隐藏头像叠加图片
         }
@@ -95,18 +97,17 @@ public class WoDeZiLiaoActivity extends BaseActivity {
         if (!TextUtils.isEmpty(Y.USER.getUsername())){
             evName.setText(Y.USER.getUsername());//姓名设置到空间上
 //            姓名显示到右侧去
-            evName.setText(Gravity.RIGHT);
+            evName.setGravity(Gravity.RIGHT);
 //            用户性别不为空的时候
             if (!TextUtils.isEmpty(Y.USER.getSex())) {
 //                用户性别与男的地址是否相等
-                if (Y.USER.getSex().equals(nan)) {
+                if ("男".equals(Y.USER.getSex())) {
 //                    相等选中男
                     rbNan.setChecked(true);
-                    return;
-                } else  {
+                }
+                if ("女".equals(Y.USER.getSex())){
 //                    否则选中女
                     rbNv.setChecked(true);
-                    return;
                 }
             }
 //            省不为空时候
@@ -138,6 +139,7 @@ public class WoDeZiLiaoActivity extends BaseActivity {
 //                                    Glide.with(GRZXActivity.this).load(info.getPhotoPath()).into(grzxTx);
                                     ImageOptions options=new ImageOptions.Builder().setCircular(true).setUseMemCache(true).build();
                                     x.image().bind(wdzlTxImg,info.getPhotoPath(),options);
+                                    Y.i(info.getPhotoPath());
 //                                    发送请求 上传头像图片
                                     RequestParams params=new RequestParams(YURL.UP_LOAD_ICON);
                                     params.addBodyParameter("icon",info.getPhotoPath());
@@ -176,31 +178,35 @@ public class WoDeZiLiaoActivity extends BaseActivity {
                     }
                 });
                 break;
+//            ________________________________________________________________________
             case R.id.but_queren:
+
                 //姓名shez
                 name = evName.getText().toString().trim();
+                Y.USER.setUsername(name);
                 //电话号
                 phoneh = etPhoneH.getText().toString().trim();
+                Y.USER.setPhone(phoneh);
                 //                设置省份
                 sheng = tvSheng.getText().toString();
+                Y.USER.setProvince(sheng);
 //                设置市
                 shi = tvShi.getText().toString();
+                Y.USER.setCity(shi);
                 //是否选中  如果选中男 设置到user.setSex里  否则什么也不干
                 nan = rbNan.getText().toString();
                 nv = rbNv.getText().toString();
                 if (rbNan.isChecked()){
-                    SEX= nan;
-                    return;
+                    Y.USER.setSex(nan);
                 }
                 if (rbNv.isChecked()){//是否选中  如果选中女 设置到user.setSex里  否则什么也不干
-                        SEX= nv;
-                        return;
+                    Y.USER.setSex(nv);
                     }
                 RequestParams params=new RequestParams(YURL.SET_USER_INFO);
-                params.addBodyParameter("username", name);
-                params.addBodyParameter("sex",SEX);
-                params.addBodyParameter("province", sheng);
-                params.addBodyParameter("city", shi);
+                params.addBodyParameter("username", Y.USER.getUsername()+"");
+                params.addBodyParameter("sex",Y.USER.getSex()+"");
+                params.addBodyParameter("province", Y.USER.getProvince()+"");
+                params.addBodyParameter("city", Y.USER.getCity()+"");
                 params.addBodyParameter("user_id",Y.USER.getUser_id()+"");
                 params.addBodyParameter("token",Y.TOKEN);
                 Y.post(params, new Y.MyCommonCall<String>() {
@@ -209,11 +215,6 @@ public class WoDeZiLiaoActivity extends BaseActivity {
                         StyledDialog.dismissLoading();
                         if (Y.getRespCode(result)) {
                             Y.t("上传成功");
-//                            Y.USER.setUsername(Y.getData(result));//姓名设置到USER
-//                            Y.USER.setPhone(Y.getData(result));//手机号设置到USER
-//                            Y.USER.setSex(Y.getData(result));//性别设置到USER
-//                            Y.USER.setProvince(Y.getData(result));//省设置到USER
-//                            Y.USER.setCity(Y.getData(result));//市设置到USER
                         }else {
                             Y.t("上传失败");
                         }

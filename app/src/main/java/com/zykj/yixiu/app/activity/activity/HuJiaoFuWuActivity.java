@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zykj.yixiu.R;
+import com.zykj.yixiu.app.activity.activity.grzx_activity.BaiDudiZhiActivity;
 import com.zykj.yixiu.app.activity.activity_styles.MyTopBer;
 import com.zykj.yixiu.app.activity.base.BaseActivity;
 
@@ -57,7 +58,7 @@ public class HuJiaoFuWuActivity extends BaseActivity {
             case R.id.ll_shijian:
                 break;
             case R.id.ll_dizhi:
-                Intent intent=new Intent(HuJiaoFuWuActivity.this,BaiDuDiZhiActivity.class);
+                Intent intent=new Intent(HuJiaoFuWuActivity.this,BaiDudiZhiActivity.class);
                 startActivity(intent);
                 break;
             case R.id.qrfb_but:

@@ -53,7 +53,8 @@
         <!--编辑地址BianJiDiZhiActivity-->
         <activity android:name=".app.activity.activity.BianJiDiZhiActivity"/>
         <!--百度地址BaiDuDiZhiActivity-->
-        <activity android:name=".app.activity.activity.BaiDuDiZhiActivity"/>
+        <activity android:name=".app.activity.activity.grzx_activity.BaiDudiZhiActivity"/>
+
         <!--更换手机号GengHuanShouJiHaoActivity-->
         <activity android:name=".app.activity.activity.GengHuanShouJiHaoActivity"/>
         <!--个人中心GRZXActivity-->
@@ -90,6 +91,8 @@
         <activity android:name=".app.activity.activity.grzx_activity.XiuGaiMiMaActivity"/>
         <!--消息通知-->
         <activity android:name=".app.activity.activity.grzx_activity.XiaoXiTongZhiActivity"/>
+        <!--地址管理-->
+        <activity android:name=".app.activity.activity.grzx_activity.DiZhiGuanLiActivity"/>
 
 
     </application>

@@ -50,8 +50,10 @@ public class Y {
      */
     public static boolean getRespCode(String result) {
         if ("0".equals(JSON.parseObject(result).getString("resp_code"))) {
+            i(result);
             return true;
         } else {
+            i(result);
             return false;
         }
     }
@@ -60,6 +62,7 @@ public class Y {
      * 如果成功获取数据
      */
     public static String getData(String result) {
+        i(result);
         return JSON.parseObject(result).getString("data");
     }
 
@@ -95,7 +98,8 @@ public class Y {
      * @return
      */
     public static Callback.Cancelable post(RequestParams params, MyCommonCall<String> call) {
-        StyledDialog.buildLoading().show();
+        //StyledDialog.buildLoading().show();
+        i(params.toString());
         return x.http().post(params, call);
     }
 
@@ -105,10 +109,12 @@ public class Y {
     public abstract static class MyCommonCall<String> implements Callback.CommonCallback<String> {
         @Override
         public void onFinished() {
+            t("onFinished");
         }
 
         @Override
         public void onCancelled(CancelledException cex) {
+            t("onCancelled");
         }
 
         @Override
