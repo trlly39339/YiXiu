@@ -8,6 +8,7 @@
     <com.zykj.yixiu.app.activity.activity_styles.MyTopBer
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:id="@+id/biaoti"
         MyTopBer:titleText="更换手机号"
         MyTopBer:titleGB="#00cccc"
 
@@ -74,6 +75,7 @@
             android:layout_weight="1"
             android:padding="10dp"
             android:textSize="16sp"
+            android:id="@+id/et_phone"
             android:singleLine="true"
             android:hint="请选择您的手机号"/>
         <ImageView
@@ -95,6 +97,7 @@
         android:layout_height="60dp"
         android:layout_margin="20dp"
         android:text="确 认"
+        android:id="@+id/but_queren"
         android:textSize="20sp"
         android:textColor="#ffffff"
         android:background="@mipmap/but_lan"/>

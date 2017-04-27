@@ -60,17 +60,30 @@ public class BianJiDiZhiActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.shojihao_tv:
-                startActivity(new Intent(BianJiDiZhiActivity.this,GengGaiShouJiHaoActivity.class));
+//                跳转到更换手机号
+                Intent intent = new Intent(BianJiDiZhiActivity.this, GengGaiShouJiHaoActivity.class);
+               startActivityForResult(intent,100);
 
                 break;
             case R.id.baidudizhi_et:
-                startActivity(new Intent(BianJiDiZhiActivity.this,BaiDudiZhiActivity.class));
+//                跳转到百度地址
+                Intent intent1 = new Intent(BianJiDiZhiActivity.this, BaiDudiZhiActivity.class);
+                startActivityForResult(intent1,101);
 
                 break;
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+//        接受传来的数据 设置到手机号控件上
+        if (requestCode==100&&resultCode==100){
+            String phone = data.getStringExtra("phone");
+            shojihaoTv.setText(phone);
+        }
 
+    }
 //
 
 }

@@ -72,7 +72,7 @@ public class ChaXunAddress {
         return lon;
     }
 
-    public void setLon(String lon) {
+    public void setLon(double lon) {
         this.lon = lon;
     }
 
@@ -124,7 +124,7 @@ public class ChaXunAddress {
         this.isdel = isdel;
     }
 
-    public String getCity_code() {
+    public String getCity_code(String cityCode) {
         return city_code;
     }
 
@@ -144,7 +144,7 @@ public class ChaXunAddress {
         return lat;
     }
 
-    public void setLat(String lat) {
+    public void setLat(double lat) {
         this.lat = lat;
     }
 }

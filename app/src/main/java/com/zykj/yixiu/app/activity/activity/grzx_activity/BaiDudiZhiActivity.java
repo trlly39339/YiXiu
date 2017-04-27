@@ -1,5 +1,6 @@
 package com.zykj.yixiu.app.activity.activity.grzx_activity;
 
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -9,6 +10,8 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+
+import com.baidu.location.Address;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -17,6 +20,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapPoi;
+import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
@@ -35,6 +39,7 @@ import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.app.activity.activity_styles.MyTopBer;
 import com.zykj.yixiu.app.activity.base.BaseActivity;
+import com.zykj.yixiu.app.activity.bean.ChaXunAddress;
 import com.zykj.yixiu.app.activity.yixiuge_utils.Y;
 
 import butterknife.Bind;
@@ -57,6 +62,9 @@ public class BaiDudiZhiActivity extends BaseActivity {
     @Bind(R.id.map)
     MapView map;
 
+    private String addrStr;
+    private ChaXunAddress address=new ChaXunAddress();//用于储存百度地图所有属性
+
     private BaiduMap mBaiduMap;//百度地图管理对象
 
     LocationClient mClient;//客户端定位对象
@@ -64,6 +72,7 @@ public class BaiDudiZhiActivity extends BaseActivity {
     boolean isFirstLoc = true;//把isFirstLoc默认为ture
 
     private LatLng latLng;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +97,7 @@ public class BaiDudiZhiActivity extends BaseActivity {
                     //发起地理编码
                     GeoCoder geoCoder=GeoCoder.newInstance();
                     //发起地理编码
-                    geoCoder.geocode(new GeoCodeOption().city("哈尔滨").address(city_name));
+                    geoCoder.geocode(new GeoCodeOption().city(Y.USER.getCity()).address(city_name));
                     geoCoder.setOnGetGeoCodeResultListener(new OnGetGeoCoderResultListener() {
                         @Override
                         public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
@@ -100,6 +109,7 @@ public class BaiDudiZhiActivity extends BaseActivity {
                                 MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(geoCodeResult.getLocation());
                                 //把更新的信息告诉百度
                                 mBaiduMap.animateMapStatus(msu);
+
                             }
                         }
 
@@ -151,8 +161,23 @@ public class BaiDudiZhiActivity extends BaseActivity {
             public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
 
                 if (reverseGeoCodeResult != null) {
+//                    打印一下
                     Y.t(reverseGeoCodeResult.getAddress());
-                    etCityName.setText(reverseGeoCodeResult.getAddress());
+//                    把地址设置到顶部输入框中
+                    etCityName.setText(reverseGeoCodeResult.getAddress().toString());
+//                    获取详细地址
+                    ReverseGeoCodeResult.AddressComponent addressDetail=reverseGeoCodeResult.getAddressDetail();
+//                    设置信息地址信息
+                    address.setAddress(reverseGeoCodeResult.getAddress());
+//                    设置区
+                    address.setRegion(addressDetail.district);
+//                    设置市
+                    address.setCity_name(addressDetail.city);
+//                    设置经纬度
+                    LatLng ll = reverseGeoCodeResult.getLocation();
+                    address.setLat(ll.latitude);
+                    address.setLon(ll.longitude);
+
                 }
             }
         });
@@ -162,17 +187,17 @@ public class BaiDudiZhiActivity extends BaseActivity {
         //创建定位对象
         mClient = new LocationClient(this);
         //使用LocationClientOption来定位所有信息
-        LocationClientOption option = new LocationClientOption();
+        LocationClientOption clientOption = new LocationClientOption();
         //百度经纬度
-        option.setCoorType("bd09ll");
+        clientOption.setCoorType("bd09ll");
         //是否开启GPS定位 ture为开启 false为关闭
-        option.setOpenGps(true);
+        clientOption.setOpenGps(true);
         //定位时间，1000毫秒=1
-        option.setScanSpan(60000);
+        clientOption.setScanSpan(5000);
         // 定位成功后，返回当前的地址
-        option.setIsNeedAddress(true);
+        clientOption.setIsNeedAddress(true);
         //把配置的信息传给LocationClient对象
-        mClient.setLocOption(option);
+        mClient.setLocOption(clientOption);
         //定位的监听事件
         mClient.registerLocationListener(new BDLocationListener() {
             @Override
@@ -181,7 +206,10 @@ public class BaiDudiZhiActivity extends BaseActivity {
                     Y.t("定位失败");
                     return;
                 }
+//                吐一下
                 Y.t(bdLocation.getAddrStr());
+                addrStr=bdLocation.getAddrStr();
+                etCityName.setText(addrStr);
                 //获取BDLocation数据转换成MyLocationData
                 MyLocationData myLocationData = new MyLocationData.Builder()
                         .accuracy(bdLocation.getRadius()) // 设置半径
@@ -190,31 +218,41 @@ public class BaiDudiZhiActivity extends BaseActivity {
                         .build();
                 // 把定位的信息传给百度地图上
                 mBaiduMap.setMyLocationData(myLocationData);
-
+//                更新地图位置  获取经纬度
                 latLng = new LatLng(bdLocation.getLatitude(), bdLocation.getLongitude());
-
+//                第一次的时候更新
                 if (isFirstLoc) {
                     // 更新百度地图
-                    MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
-                    //每一次更新的信息都传给百度
-                    mBaiduMap.animateMapStatus(msu);
-                    //好污的（自己理解）
+                    MapStatus.Builder builder=new MapStatus.Builder();
+                    builder.target(latLng).zoom(18.0f);
+//                    MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
+                    //把地图移动到当前定位的地点
+                    mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+                    // 不是第一次了 次判断不在执行
                     isFirstLoc = false;
                 }
+                com.baidu.location.Address add = bdLocation.getAddress();
+//                把城市编码保存到对象中
+                address.getCity_code(add.cityCode);
+//                设置地址信息
+                address.setAddress(add.address);
+//                设置区
+                address.setRegion(add.district);
+//                设置市
+                address.setCity_name(add.city);
+//                s设置经纬度
+                address.setLat(latLng.latitude);
+                address.setLon(latLng.longitude);
 
-                //定位的小图标
-                MyLocationConfiguration configuration = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.NORMAL, true, BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
-                mBaiduMap.setMyLocationConfigeration(configuration);
-
+                //在当前绘制一个标注
+              setBitmap(latLng);
             }
-
-            @Override  //兴趣
+            @Override  //返回兴趣点信息
             public void onConnectHotSpotMessage(String s, int i) {
             }
         });
     }
-
-    //我的位置信息
+    //回到我的位置信息
     public void center() {
         // 更新百度地图
         MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
