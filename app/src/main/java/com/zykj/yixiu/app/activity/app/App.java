@@ -34,7 +34,7 @@ public class App extends Application {
         super.onCreate();
         MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
         x.Ext.init(this);
-        Y.Context=this;
+        Y.context=this;
         StyledDialog.init(this);
 
 //    在activity生命周期callback中拿到顶层activity引用:

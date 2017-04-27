@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hss01248.dialog.StyledDialog;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.app.activity.activity_styles.MyTopBer;
@@ -23,6 +24,7 @@ import org.xutils.http.RequestParams;
 import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,12 +87,11 @@ public class WoDeZiLiaoActivity extends BaseActivity {
                 finish();
             }
         });
-
 //        ———————————————————————————————————————
         //      检测是否已存在头像 如果存在并设置到空间上 否则什么也不干
         if (!TextUtils.isEmpty(Y.USER.getIcon())){//图片不为空的时候直接加载到控件上
             ImageOptions options=new ImageOptions.Builder().setCircular(true).build();
-            x.image().bind(wdzlTxImg,Y.USER.getIcon(),options);
+            x.image().bind(wdzlTxImg,YURL.HOST+Y.USER.getIcon(),options);
             wdzlGongImg.setVisibility(View.GONE);//隐藏头像叠加图片
         }
 //        用户姓名不为空的时候取出
@@ -135,19 +136,19 @@ public class WoDeZiLiaoActivity extends BaseActivity {
 //                        检测请求吗
                         if (reqeustCode==Y.REQUEST_CODE_GALLERY){
                             if (resultList!=null){
-                                for (PhotoInfo info:resultList) {
-//                                    Glide.with(GRZXActivity.this).load(info.getPhotoPath()).into(grzxTx);
-                                    ImageOptions options=new ImageOptions.Builder().setCircular(true).setUseMemCache(true).build();
-                                    x.image().bind(wdzlTxImg,info.getPhotoPath(),options);
+                                for (final PhotoInfo info:resultList) {
+                                        ImageOptions options=new ImageOptions.Builder().setCircular(true).build();
+                                        x.image().bind(wdzlTxImg,info.getPhotoPath(),options);
+                                        wdzlGongImg.setVisibility(View.GONE);//隐藏头像叠加图片
                                     Y.i(info.getPhotoPath());
 //                                    发送请求 上传头像图片
+                                    File file = new File(info.getPhotoPath());
                                     RequestParams params=new RequestParams(YURL.UP_LOAD_ICON);
-                                    params.addBodyParameter("icon",info.getPhotoPath());
+                                    params.addBodyParameter("icon",file);
                                     params.addBodyParameter("token", Y.TOKEN);
-                                    Y.post(params, new Y.MyCommonCall<String>() {
+                                    Y.postFlie(params, new Y.MyCommonCall<String>() {
                                         @Override
                                         public void onSuccess(String result) {
-
                                             StyledDialog.dismissLoading();
                                             if (Y.getRespCode(result)) {
                                                 Y.t("上传成功");

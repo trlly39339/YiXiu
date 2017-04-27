@@ -12,10 +12,18 @@ import com.zykj.yixiu.app.activity.bean.User;
 import com.zykj.yixiu.app.activity.bean.ZhuCeBase;
 
 import org.xutils.common.Callback;
+import org.xutils.common.util.KeyValue;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.io.File;
+import java.util.List;
 import java.util.Map;
+
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
+
+import static android.R.attr.value;
 
 /**
  * 工具类
@@ -23,7 +31,7 @@ import java.util.Map;
  */
 
 public class Y {
-    public static Context Context;//全局上下文
+    public static Context context;//全局上下文
     public static boolean isLog = true;//控制打印日志的开关
     public static User USER;//
     public static String TOKEN;
@@ -35,7 +43,7 @@ public class Y {
      * @param str
      */
     public static void t(String str) {
-        Toast.makeText(Context, str, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -90,6 +98,43 @@ public class Y {
 
     }
 
+    /**
+     * postFlie请求  返回成功回调
+     *
+     * @param params
+     * @param call
+     * @return
+     */
+    public static void postFlie(final RequestParams params, final MyCommonCall<String> call) {
+        StyledDialog.buildLoading().show();
+//        从参数中把文件取出来
+        List<KeyValue> fileParams = params.getFileParams();
+//        迭代
+        for (final KeyValue k:fileParams) {
+//            获取文件
+            File file= (File) k.value;//没压缩的
+            i("压缩前的大小"+file.length());
+//            进行压缩
+            Luban.get(context).load(file).putGear(Luban.THIRD_GEAR).setCompressListener(new OnCompressListener() {
+                @Override
+                public void onStart() {//开始}
+                }
+                @Override
+                public void onSuccess(File file) {
+                    i("压缩后的大小"+file.length());
+
+                    params.addBodyParameter(k.key,file);
+                    params.setMultipart(true);//上传的是文件
+//                    把压缩后的文件重新放入参数中
+                    i(params.toString());
+                    x.http().post(params, call);
+                }
+                @Override
+                public void onError(Throwable e) {
+                    i("压缩失败");
+                }
+            }).launch();
+        }}
     /**
      * post请求  返回成功回调
      *

@@ -1,20 +1,37 @@
 package com.zykj.yixiu.app.activity.activity.grzx_activity;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.SDKInitializer;
+import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapPoi;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.search.district.DistrictSearch;
-import com.baidu.mapapi.search.district.DistrictSearchOption;
-import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
-import com.baidu.mapapi.search.poi.PoiCitySearchOption;
-import com.baidu.mapapi.search.poi.PoiDetailResult;
-import com.baidu.mapapi.search.poi.PoiIndoorResult;
-import com.baidu.mapapi.search.poi.PoiResult;
-import com.baidu.mapapi.search.poi.PoiSearch;
+import com.baidu.mapapi.map.MarkerOptions;
+import com.baidu.mapapi.map.MyLocationConfiguration;
+import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.OverlayOptions;
+import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.search.core.SearchResult;
+import com.baidu.mapapi.search.geocode.GeoCodeOption;
+import com.baidu.mapapi.search.geocode.GeoCodeResult;
+import com.baidu.mapapi.search.geocode.GeoCoder;
+import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
+import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.app.activity.activity_styles.MyTopBer;
 import com.zykj.yixiu.app.activity.base.BaseActivity;
@@ -30,54 +47,230 @@ import butterknife.OnClick;
 
 public class BaiDudiZhiActivity extends BaseActivity {
 
+
     @Bind(R.id.biaoti)
     MyTopBer biaoti;
-    @Bind(R.id.ev_dizhi)
-    EditText evDizhi;
-    @Bind(R.id.fl_queding)
-    FrameLayout flQueding;
-    @Bind(R.id.bmapView)
-    MapView bmapView;
+    @Bind(R.id.et_city_name)
+    EditText etCityName;
+    @Bind(R.id.btOk)
+    FrameLayout btOk;
+    @Bind(R.id.map)
+    MapView map;
 
+    private BaiduMap mBaiduMap;//百度地图管理对象
 
+    LocationClient mClient;//客户端定位对象
+
+    boolean isFirstLoc = true;//把isFirstLoc默认为ture
+
+    private LatLng latLng;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_address_management);
         ButterKnife.bind(this);
-        biaoti.setOnLeftClickListener(new MyTopBer.OnLeftClickListener() {
+        mBaiduMap = map.getMap();
+        //设置缩放级别，默认级别为12
+        MapStatusUpdate mapstatusUpdate = MapStatusUpdateFactory.zoomTo(20);
+        mBaiduMap.setMapStatus(mapstatusUpdate);
+
+        init();//調用
+        selectMap();
+        btOk.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onLeftClickListener() {
-                finish();
+            public void onClick(View v) {
+                String city_name=etCityName.getText().toString();
+                if (TextUtils.isEmpty(city_name)){
+                    Y.t("请输出或选择地址");
+                    return;
+                }else {
+                    //发起地理编码
+                    GeoCoder geoCoder=GeoCoder.newInstance();
+                    //发起地理编码
+                    geoCoder.geocode(new GeoCodeOption().city("哈尔滨").address(city_name));
+                    geoCoder.setOnGetGeoCodeResultListener(new OnGetGeoCoderResultListener() {
+                        @Override
+                        public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
+                            if (geoCodeResult==null||geoCodeResult.error!= SearchResult.ERRORNO.NO_ERROR){
+                                Y.t("请输入合法地址");
+                            }else {
+                                Y.t("地址添加成功");
+                                // 更新百度地图对象
+                                MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(geoCodeResult.getLocation());
+                                //把更新的信息告诉百度
+                                mBaiduMap.animateMapStatus(msu);
+                            }
+                        }
+
+                        @Override
+                        public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
+
+                        }
+                    });
+                }
             }
         });
 
+    }
+    public void selectMap(){
+        //添加地址的监听事件
+        mBaiduMap.setOnMapClickListener(new BaiduMap.OnMapClickListener() {
+            @Override//地图点击回调
+            public void onMapClick(LatLng latLng) {
+                jieMa(latLng); //反地理
+                setBitmap(latLng); // 添加标注
+            }
 
+            @Override//当前位置的兴趣点
+            public boolean onMapPoiClick(MapPoi mapPoi) {
+                return false;
+            }
+        });
+    }
+    //添加标注
+    public void setBitmap(LatLng latLng){
+        mBaiduMap.clear();
+        OverlayOptions options = new MarkerOptions()
+                .position(latLng)
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
+        mBaiduMap.addOverlay(options);
+    }
+    // 地理编码
+    public void jieMa(LatLng latLng) {
+        GeoCoder geoCoder = GeoCoder.newInstance();  // 创建地理编码对象
+
+        //发起反地理
+        geoCoder.reverseGeoCode(new ReverseGeoCodeOption().location(latLng));
+
+        geoCoder.setOnGetGeoCodeResultListener(new OnGetGeoCoderResultListener() {
+            @Override  //  地理编码的回调
+            public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
+            }
+            @Override      //反地理编码的回调
+            public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
+
+                if (reverseGeoCodeResult != null) {
+                    Y.t(reverseGeoCodeResult.getAddress());
+                    etCityName.setText(reverseGeoCodeResult.getAddress());
+                }
+            }
+        });
+    }
+    //初始化定位
+    public void init() {
+        //创建定位对象
+        mClient = new LocationClient(this);
+        //使用LocationClientOption来定位所有信息
+        LocationClientOption option = new LocationClientOption();
+        //百度经纬度
+        option.setCoorType("bd09ll");
+        //是否开启GPS定位 ture为开启 false为关闭
+        option.setOpenGps(true);
+        //定位时间，1000毫秒=1
+        option.setScanSpan(60000);
+        // 定位成功后，返回当前的地址
+        option.setIsNeedAddress(true);
+        //把配置的信息传给LocationClient对象
+        mClient.setLocOption(option);
+        //定位的监听事件
+        mClient.registerLocationListener(new BDLocationListener() {
+            @Override
+            public void onReceiveLocation(BDLocation bdLocation) {
+                if (bdLocation == null || mBaiduMap == null) {
+                    Y.t("定位失败");
+                    return;
+                }
+                Y.t(bdLocation.getAddrStr());
+                //获取BDLocation数据转换成MyLocationData
+                MyLocationData myLocationData = new MyLocationData.Builder()
+                        .accuracy(bdLocation.getRadius()) // 设置半径
+                        .latitude(bdLocation.getLatitude()) //设置经纬度
+                        .longitude(bdLocation.getLongitude())//设置经纬度
+                        .build();
+                // 把定位的信息传给百度地图上
+                mBaiduMap.setMyLocationData(myLocationData);
+
+                latLng = new LatLng(bdLocation.getLatitude(), bdLocation.getLongitude());
+
+                if (isFirstLoc) {
+                    // 更新百度地图
+                    MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
+                    //每一次更新的信息都传给百度
+                    mBaiduMap.animateMapStatus(msu);
+                    //好污的（自己理解）
+                    isFirstLoc = false;
+                }
+
+                //定位的小图标
+                MyLocationConfiguration configuration = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.NORMAL, true, BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher));
+                mBaiduMap.setMyLocationConfigeration(configuration);
+
+            }
+
+            @Override  //兴趣
+            public void onConnectHotSpotMessage(String s, int i) {
+            }
+        });
     }
 
-    @OnClick(R.id.fl_queding)
-    public void onViewClicked() {
+    //我的位置信息
+    public void center() {
+        // 更新百度地图
+        MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
+        //每次更新的信息告訴百度
+        mBaiduMap.animateMapStatus(msu);
+    }
 
+    @Override
+    //定位调用
+    protected void onStart() {
+        super.onStart();
+        mBaiduMap.setMyLocationEnabled(true);
+        if (!mClient.isStarted()) {
+            mClient.start();
+        }
+    }
+
+    @Override
+    //选项菜单
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("回到我的位置");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mBaiduMap.setMyLocationEnabled(false);
+        mClient.stop();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.toString()) {
+            case "回到我的位置":
+                center();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
-        bmapView.onDestroy();
+        map.onDestroy();
     }
 
     @Override
     public void onResume() {
-        super.onResume();
-        //在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
-        bmapView.onResume();
+        super.onRestart();
+        map.onResume();
     }
+
     @Override
     public void onPause() {
         super.onPause();
-        //在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
-        bmapView.onPause();
+        map.onPause();
     }
 }

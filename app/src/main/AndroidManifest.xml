@@ -29,6 +29,12 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="MrKHrHbUD6kv93x6sVAKRq62BGyLGIr8" />
+        <!--添加定位服务-->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
 
         <!--登录DengLuActivity-->
         <activity android:name=".app.activity.activity.denglu_zhuce.DengLuActivity">
@@ -93,6 +99,8 @@
         <activity android:name=".app.activity.activity.grzx_activity.XiaoXiTongZhiActivity"/>
         <!--地址管理-->
         <activity android:name=".app.activity.activity.grzx_activity.DiZhiGuanLiActivity"/>
+        <!--更换手机号-->
+        <activity android:name=".app.activity.activity.grzx_activity.GengGaiShouJiHaoActivity"/>
 
 
     </application>

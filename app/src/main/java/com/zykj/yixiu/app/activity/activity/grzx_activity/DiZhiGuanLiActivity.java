@@ -39,7 +39,6 @@ public class DiZhiGuanLiActivity extends BaseActivity {
             }
         });
     }
-
     @OnClick(R.id.xzdz_ll)
     public void onViewClicked() {
         startActivity(new Intent(DiZhiGuanLiActivity.this,BianJiDiZhiActivity.class));

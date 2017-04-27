@@ -31,4 +31,8 @@ public class YURL {
     public static final String UPLOAD_ID_CARD=HOST+"uploadIdCard";
 //    绑定支付宝
     public static final String BIND_ALI_PAY=HOST+"bindAliPay";
+//    查询地址
+    public static final String SELECT_ADDRESS=HOST+"selectAddress";
+//    添加地址
+    public static final String ADDADDRESS=HOST+"addaddress";
 }
