@@ -15,11 +15,11 @@ public class BaseActivity extends Activity {
         super.onCreate(savedInstanceState);
 
     }
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
         MobclickAgent.onResume(this);
     }
-    public void onPause() {
+    protected void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);
     }

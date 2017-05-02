@@ -151,7 +151,7 @@
             android:singleLine="true"
             android:hint="请输入您的详细地址"
             android:id="@+id/baidudizhi_et"
-            android:background="@null"/>
+            />
 
 
     </LinearLayout>

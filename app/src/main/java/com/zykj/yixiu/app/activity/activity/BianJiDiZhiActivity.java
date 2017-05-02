@@ -82,6 +82,10 @@ public class BianJiDiZhiActivity extends BaseActivity {
             String phone = data.getStringExtra("phone");
             shojihaoTv.setText(phone);
         }
+        if (requestCode==101&&resultCode==101){
+            String phone = data.getStringExtra("phone");
+            baidudizhiEt.setText(phone);
+        }
 
     }
 //

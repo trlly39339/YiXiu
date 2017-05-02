@@ -23,7 +23,7 @@ public class ChaXunAddress {
 
     private String region;
     private String city_name;
-    private String lon;
+    private double lon;
     private String phone;
     private int isdefault;
     private String address;
@@ -32,7 +32,7 @@ public class ChaXunAddress {
     private int isdel;
     private String city_code;
     private int user_id;
-    private String lat;
+    private double lat;
 
     @Override
     public String toString() {
@@ -68,7 +68,7 @@ public class ChaXunAddress {
         this.city_name = city_name;
     }
 
-    public String getLon() {
+    public double getLon() {
         return lon;
     }
 
@@ -140,7 +140,7 @@ public class ChaXunAddress {
         this.user_id = user_id;
     }
 
-    public String getLat() {
+    public double getLat() {
         return lat;
     }
 
