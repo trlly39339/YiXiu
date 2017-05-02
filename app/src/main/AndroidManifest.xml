@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zykj.yixiu">
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
@@ -10,9 +11,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <!--友盟开始-->
-    <uses-sdk android:minSdkVersion="8"></uses-sdk>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--友盟开始-->
+    <!--<uses-sdk android:minSdkVersion="8"></uses-sdk>-->
+    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE"/>-->
     <!--重了-->
     <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>-->
     <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
@@ -28,7 +30,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="MrKHrHbUD6kv93x6sVAKRq62BGyLGIr8" />
+            android:value="oxkCjOND6BSlG1tvfP6F0HxIogMYz12n" />
         <!--添加定位服务-->
         <service
             android:name="com.baidu.location.f"

@@ -1,10 +1,12 @@
 package com.zykj.yixiu.app.activity.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by zykj on 2017/4/27.
  */
 
-public class ChaXunAddress {
+public class ChaXunAddress  implements Serializable{
 
     /**
      * region : 南岗区
@@ -124,7 +126,7 @@ public class ChaXunAddress {
         this.isdel = isdel;
     }
 
-    public String getCity_code(String cityCode) {
+    public String getCity_code() {
         return city_code;
     }
 

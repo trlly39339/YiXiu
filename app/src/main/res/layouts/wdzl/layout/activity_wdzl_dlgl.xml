@@ -52,6 +52,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_marginTop="5dp"
@@ -62,7 +66,7 @@
 
 
         </android.support.v7.widget.RecyclerView>
-    </ScrollView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
@@ -95,5 +99,6 @@
                     android:textSize="18sp"
                     android:textColor="#bbbbbb"/>
             </LinearLayout>
-
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

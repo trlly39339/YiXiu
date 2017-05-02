@@ -3,16 +3,15 @@ package com.zykj.yixiu.app.activity.activity.grzx_activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.baidu.location.Address;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -38,11 +37,8 @@ import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.app.activity.activity_styles.MyTopBer;
 import com.zykj.yixiu.app.activity.base.BaseActivity;
-
 import com.zykj.yixiu.app.activity.bean.ChaXunAddress;
 import com.zykj.yixiu.app.activity.yixiuge_utils.Y;
-
-import java.io.Serializable;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -64,7 +60,6 @@ public class BaiDudiZhiActivity extends BaseActivity {
     FrameLayout btOk;
     @Bind(R.id.map)
     MapView bmapView;
-
     //百度地图管理器
     private BaiduMap baiduMap;
     LocationClient mClient;//客户端对象
@@ -83,6 +78,7 @@ public class BaiDudiZhiActivity extends BaseActivity {
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_address_management);
         ButterKnife.bind(this);
+
         //设置缩放级别，默认级别为12
         MapStatusUpdate mapstatusUpdate = MapStatusUpdateFactory.zoomTo(20);
         baiduMap = bmapView.getMap();
@@ -118,53 +114,10 @@ public class BaiDudiZhiActivity extends BaseActivity {
         baiduMap.clear();
         OverlayOptions overlayOptions = new MarkerOptions()
                 .position(latLng)
-                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.zb));
+                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.dingwei));
+
         baiduMap.addOverlay(overlayOptions);
 
-    }
-
-    /**
-     * button的点击事件
-     *
-     * @param v
-     */
-    @OnClick(R.id.btOk)
-    public void onClick(View v) {
-        //获取信息
-        string = etCityName.getText().toString();
-        if (TextUtils.isEmpty(string)) {
-            Toast.makeText(this, "请输入地址", Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            //发起地理编码
-            GeoCoder geoCoder = GeoCoder.newInstance();
-            geoCoder.geocode(new GeoCodeOption().city(Y.USER.getCity()).address(string));
-            //设置地理编码的监听事件
-            geoCoder.setOnGetGeoCodeResultListener(new OnGetGeoCoderResultListener() {
-                @Override
-                public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
-                    //判断数据是否为空或者是否合法
-                    if (geoCodeResult == null || geoCodeResult.error != SearchResult.ERRORNO.NO_ERROR) {
-                        Toast.makeText(BaiDudiZhiActivity.this, "请输入合法地址", Toast.LENGTH_SHORT).show();
-                    } else {
-                        biaoZhu(geoCodeResult.getLocation());
-                        location = geoCodeResult.getLocation();
-                        MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(geoCodeResult.getLocation());//更新百度地图对象
-                        baiduMap.animateMapStatus(update);//把更新的位置交给百度
-                        Intent intent = new Intent();
-                        intent.putExtra("address",address+"");
-                        setResult(101, intent);
-                        finish();
-                    }
-                }
-
-                @Override
-                public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
-                }
-            });
-
-
-        }
     }
 
     /**
@@ -174,7 +127,8 @@ public class BaiDudiZhiActivity extends BaseActivity {
      */
     public void jieMa(LatLng latLng) {
         GeoCoder geoCoder = GeoCoder.newInstance();
-        geoCoder.reverseGeoCode(new ReverseGeoCodeOption().location(latLng));
+        ReverseGeoCodeOption location = new ReverseGeoCodeOption().location(latLng);
+        geoCoder.reverseGeoCode(location);
         geoCoder.setOnGetGeoCodeResultListener(new OnGetGeoCoderResultListener() {
             @Override
             public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
@@ -182,7 +136,12 @@ public class BaiDudiZhiActivity extends BaseActivity {
 
             @Override
             public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
+               address.setCity_name(reverseGeoCodeResult.getAddress());
+                address.setLon(reverseGeoCodeResult.getLocation().longitude);
+                address.setLat(reverseGeoCodeResult.getLocation().latitude);
                 etCityName.setText(reverseGeoCodeResult.getAddress());
+
+
             }
         });
     }
@@ -208,6 +167,7 @@ public class BaiDudiZhiActivity extends BaseActivity {
                     Toast.makeText(BaiDudiZhiActivity.this, "定位失败", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 //成功并吐司位置
 
                 //获取BDLocation数据 转换成MyLocationData
@@ -229,20 +189,18 @@ public class BaiDudiZhiActivity extends BaseActivity {
                         }
                     });
                     Y.USER.setCity(bdLocation.getCity());
-                    com.baidu.location.Address add = bdLocation.getAddress();
-
+                    Address add = bdLocation.getAddress();
                     address.setAddress(add.address);
                     address.setCity_name(add.city);
                     address.setRegion(add.district);
-                    address.setCity_code(add.cityCode);
-
+                    address.setCity_code(bdLocation.getAddress().cityCode);
 
 
                     isFirstLoc = false;//改成false 已经不是第一次定位了
                 }
                 //绘制一个标注
                 OverlayOptions overlayOptions = new MarkerOptions()
-                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.zb))
+                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.dingwei))
                         .position(latLng);
                 baiduMap.addOverlay(overlayOptions);
             }
@@ -311,5 +269,53 @@ public class BaiDudiZhiActivity extends BaseActivity {
     protected void onPause() {
         super.onPause();
         bmapView.onPause();
+    }
+    /**
+     * button的点击事件
+     *
+     * @param
+     */
+    @OnClick(R.id.btOk)
+    public void onViewClicked() {
+        {
+            //获取信息
+            string = etCityName.getText().toString();
+            Y.i(string);
+            if (TextUtils.isEmpty(string)) {
+                Toast.makeText(this, "请输入地址", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                //发起地理编码
+                GeoCoder geoCoder = GeoCoder.newInstance();
+                Y.i(geoCoder+"");
+                geoCoder.geocode(new GeoCodeOption().city(Y.USER.getCity()).address(string));
+                //设置地理编码的监听事件
+                geoCoder.setOnGetGeoCodeResultListener(new OnGetGeoCoderResultListener() {
+                    @Override
+                    public void onGetGeoCodeResult(GeoCodeResult geoCodeResult) {
+                        Y.i(geoCodeResult+"");
+                        //判断数据是否为空或者是否合法
+                        if (geoCodeResult == null || geoCodeResult.error != SearchResult.ERRORNO.NO_ERROR) {
+                            Toast.makeText(BaiDudiZhiActivity.this, "请输入合法地址", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Y.i(address+"");
+                            biaoZhu(geoCodeResult.getLocation());
+                            location = geoCodeResult.getLocation();
+                            MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(geoCodeResult.getLocation());//更新百度地图对象
+                            baiduMap.animateMapStatus(update);//把更新的位置交给百度
+                            Intent intent = new Intent();
+                            intent.putExtra("address", address);
+                            setResult(101, intent);
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
+                    }
+                });
+
+            }
+        }
     }
 }

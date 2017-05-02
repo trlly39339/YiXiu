@@ -110,6 +110,7 @@
             android:inputType="textPassword"
             />
     </LinearLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"

@@ -9,6 +9,7 @@
         android:gravity="center_vertical"
         android:paddingRight="5dp"
         android:paddingLeft="5dp"
+        android:id="@+id/ll_item"
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
         android:background="@mipmap/pinpai_bj"
@@ -21,6 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="李雪剑"
+            android:id="@+id/name_tv"
             android:layout_margin="15dp"
             android:textSize="18sp"
             />
@@ -30,6 +32,7 @@
             android:layout_weight="1"
             android:text="18978789921"
             android:gravity="right"
+            android:id="@+id/phone_tv"
             android:layout_margin="15dp"
             android:textSize="18sp"
             />
@@ -39,6 +42,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
             android:paddingRight="10dp"
+            android:id="@+id/dizhi_tv"
             android:text="黑龙江省哈尔滨市道里区安广街7号永平小区7单元409室"
             android:textSize="16sp"/>
         <View
@@ -57,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="默认"
+                android:id="@+id/moren_rb"
                 android:textColor="#ff4182"
                 android:textSize="16sp"/>
             <View
@@ -73,6 +78,7 @@
                     android:layout_gravity="center_vertical|right"
                     android:scaleType="fitXY"
                     android:src="@mipmap/grzx_item_but"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -81,7 +87,7 @@
                     android:layout_margin="15dp"
                     android:layout_gravity="center_vertical|center"
                     android:textSize="16sp"
-                    />
+                    android:id="@+id/bianji_tv" />
             </FrameLayout>
             <FrameLayout
                 android:layout_width="wrap_content"
@@ -94,6 +100,7 @@
                     android:layout_gravity="center_vertical|right"
                     android:scaleType="fitXY"
                     android:src="@mipmap/grzx_item_but"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -102,7 +109,7 @@
                     android:layout_margin="15dp"
                     android:layout_gravity="center_vertical|center"
                     android:textSize="16sp"
-                    />
+                    android:id="@+id/shanchu_tv" />
             </FrameLayout>
 
         </LinearLayout>

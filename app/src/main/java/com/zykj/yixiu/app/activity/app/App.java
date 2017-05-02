@@ -32,7 +32,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
+//        MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
         x.Ext.init(this);
         Y.context=this;
         StyledDialog.init(this);

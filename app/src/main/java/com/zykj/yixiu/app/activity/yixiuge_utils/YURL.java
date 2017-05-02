@@ -34,5 +34,5 @@ public class YURL {
 //    查询地址
     public static final String SELECT_ADDRESS=HOST+"selectAddress";
 //    添加地址
-    public static final String ADDADDRESS=HOST+"addaddress";
+    public static final String ADD_ADDRESS=HOST+"addaddress";
 }
