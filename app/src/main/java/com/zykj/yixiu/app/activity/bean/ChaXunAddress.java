@@ -41,7 +41,7 @@ public class ChaXunAddress  implements Serializable{
         return "ChaXunAddress{" +
                 "region='" + region + '\'' +
                 ", city_name='" + city_name + '\'' +
-                ", lon='" + lon + '\'' +
+                ", lon=" + lon +
                 ", phone='" + phone + '\'' +
                 ", isdefault=" + isdefault +
                 ", address='" + address + '\'' +
@@ -50,7 +50,7 @@ public class ChaXunAddress  implements Serializable{
                 ", isdel=" + isdel +
                 ", city_code='" + city_code + '\'' +
                 ", user_id=" + user_id +
-                ", lat='" + lat + '\'' +
+                ", lat=" + lat +
                 '}';
     }
 

@@ -21,6 +21,7 @@ import java.util.List;
 public class DiZhiGuanLiAdapters extends RecyclerView.Adapter<DiZhiGuanLiAdapters.VH>{
     private List<ChaXunAddress> list;
     private Context context;
+
 //--------set   get  list----------------------------
     public List<ChaXunAddress> getList() {
         return list;
@@ -66,13 +67,16 @@ public class DiZhiGuanLiAdapters extends RecyclerView.Adapter<DiZhiGuanLiAdapter
          * 判断是否为默认
          */
         if (chaXunAddress.getIsdefault()==1){
-        holder.moren.setChecked(true);
+            holder.moren.setChecked(true);
+            notifyDataSetChanged();
         }else {
             holder.moren.setChecked(false);
+            notifyDataSetChanged();
         }
         /**
          * item跳转页面
          */
+        holder.ll_item.setTag(chaXunAddress.getAddress_id());
         holder.ll_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +86,7 @@ public class DiZhiGuanLiAdapters extends RecyclerView.Adapter<DiZhiGuanLiAdapter
         /**
          * 编辑事件
          */
-
+        holder.bianji.setTag(chaXunAddress.getAddress_id());
         holder.bianji.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,10 +96,12 @@ public class DiZhiGuanLiAdapters extends RecyclerView.Adapter<DiZhiGuanLiAdapter
         /**
          * 删除事件
          */
+        holder.shanchu.setTag(chaXunAddress.getAddress_id());//捆绑ID地址
         holder.shanchu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clickLister.shanchu_Click(holder.shanchu,position);
+                notifyDataSetChanged();
             }
         });
     }
