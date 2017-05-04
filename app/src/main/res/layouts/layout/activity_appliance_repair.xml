@@ -345,12 +345,14 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:src="@mipmap/yuanquan"/>
+            android:src="@mipmap/yuanquan"
+            android:id="@+id/img"/>
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/jiahao"/>
+                android:src="@mipmap/jiahao"
+                android:id="@+id/gong"/>
         </FrameLayout>
 
     </LinearLayout>

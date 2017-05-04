@@ -35,4 +35,6 @@ public class YURL {
     public static final String SELECT_ADDRESS=HOST+"selectAddress";
 //    添加地址
     public static final String ADD_ADDRESS=HOST+"addaddress";
+//    发布订单
+    public static final String ADD_ORDER=HOST+"addOrder";
 }

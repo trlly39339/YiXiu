@@ -341,6 +341,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            android:id="@+id/img"
             android:src="@mipmap/yuanquan"/>
 
             <ImageView
@@ -348,7 +349,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:src="@mipmap/jiahao"
-                android:id="@+id/imageView" />
+                android:id="@+id/gong" />
         </FrameLayout>
 
     </LinearLayout>

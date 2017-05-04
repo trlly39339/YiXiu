@@ -1,5 +1,6 @@
 package com.zykj.yixiu.app.activity.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import com.hss01248.dialog.StyledDialog;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.app.activity.activity_styles.MyTopBer;
 import com.zykj.yixiu.app.activity.base.BaseActivity;
+import com.zykj.yixiu.app.activity.bean.PhoneBean;
 import com.zykj.yixiu.app.activity.bean.PhoneWeiXiuBean;
 import com.zykj.yixiu.app.activity.yixiuge_utils.Y;
 import com.zykj.yixiu.app.activity.yixiuge_utils.YURL;
@@ -23,6 +25,7 @@ import org.xutils.http.RequestParams;
 import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,6 +75,9 @@ public class PhoneWeiXiuActivity extends BaseActivity {
     @Bind(R.id.tp_img_gon)
     ImageView tpImgGon;
     private OptionsPickerView opv;
+    private String photoPath;
+//    手机对象
+    private PhoneBean phoneBean=new PhoneBean();
 
 
     @Override
@@ -111,7 +117,9 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                                         //选择后的监听器
                                         tvPp.setVisibility(View.GONE);
                                         tvPinpai.setVisibility(View.VISIBLE);
-                                        tvPinpai.setText(lists.get(options1).getName());
+                                        String pinpai = lists.get(options1).getName();
+                                        tvPinpai.setText(pinpai);
+                                        phoneBean.setTvPinpai(pinpai);
                                         if (mobileIndex != options1) {
                                             tvXh.setVisibility(View.VISIBLE);
                                             tvXinghao.setVisibility(View.GONE);
@@ -133,12 +141,9 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                         } else {
                             //失败
                             Y.t("数据解析失败");
-
                         }
                     }
                 });
-
-
                 break;
             case R.id.ll_xinghao:
                 //检测是否选择了品牌
@@ -164,7 +169,9 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                                             //选择后的监听器
                                             tvXh.setVisibility(View.GONE);
                                             tvXinghao.setVisibility(View.VISIBLE);
-                                            tvXinghao.setText(lists.get(options1).getName());
+                                            String xinghao = lists.get(options1).getName();
+                                            tvXinghao.setText(xinghao);
+                                            phoneBean.setTvXinghao(xinghao);
                                             opv = null;
 
                                         }
@@ -205,7 +212,9 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                                         //选择后的监听器
                                         tvGz.setVisibility(View.GONE);
                                         tvGuzhang.setVisibility(View.VISIBLE);
-                                        tvGuzhang.setText(lists.get(options1).getName());
+                                        String guzhang = lists.get(options1).getName();
+                                        tvGuzhang.setText(guzhang);
+                                        phoneBean.setTvGuzhang(guzhang);
                                         opv = null;
                                     }
                                 }).build();
@@ -235,25 +244,13 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                             if (resultList != null) {
                                 for (PhotoInfo info : resultList) {
 //                                    Glide.with(GRZXActivity.this).load(info.getPhotoPath()).into(grzxTx);
-                                    ImageOptions options = new ImageOptions.Builder().setCircular(true).build();
-                                    x.image().bind(tpImg, info.getPhotoPath(), options);
+
+                                    ImageOptions options = new ImageOptions.Builder().build();
+                                    x.image().bind(tpImg,info.getPhotoPath(), options);
+                                    tpImgGon.setVisibility(View.GONE);
 //                                    发送请求
-                                    RequestParams params = new RequestParams(YURL.UP_LOAD_ICON);
-                                    params.addBodyParameter("icon", info.getPhotoPath());
-                                    params.addBodyParameter("token", Y.TOKEN);
-                                    Y.post(params, new Y.MyCommonCall<String>() {
-                                        @Override
-                                        public void onSuccess(String result) {
-                                            StyledDialog.dismissLoading();
-                                            if (Y.getRespCode(result)) {
-                                                Y.t("上传成功");
-                                                tpImgGon.setVisibility(View.GONE);
-                                                Y.USER.setIcon(Y.getData(result));
-                                            } else {
-                                                Y.t("上传失败");
-                                            }
-                                        }
-                                    });
+                                    photoPath = info.getPhotoPath();
+                                    phoneBean.setFile(photoPath);
                                 }
                             }
                         }
@@ -264,7 +261,16 @@ public class PhoneWeiXiuActivity extends BaseActivity {
                 });
                 break;
             case R.id.but_queren:
-
+//                获取故障描述
+                String guzhangmiaoshu = evGuzhangMiaoshu.getText().toString().trim();
+                if (guzhangmiaoshu !=null) {
+//                    故障描述设置到手机类里
+                    phoneBean.setEvGuzhangMiaoshu(guzhangmiaoshu);
+                }
+                Intent intent=new Intent(PhoneWeiXiuActivity.this,HuJiaoFuWuActivity.class);
+                intent.putExtra("phoneBean",phoneBean);
+                intent.putExtra("LeiXing","1");
+                startActivity(intent);
                 break;
         }
     }

@@ -1,6 +1,7 @@
 package com.zykj.yixiu.app.activity.activity.grzx_activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -109,10 +110,10 @@ public class BaiDudiZhiActivity extends BaseActivity {
                                 MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(geoCodeResult.getLocation());
                                 //把更新的信息告诉百度
                                 mBaiduMap.animateMapStatus(msu);
-
+                                setResult(101,new Intent().putExtra("address",address));
+                                finish();
                             }
                         }
-
                         @Override
                         public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult) {
 
@@ -193,7 +194,7 @@ public class BaiDudiZhiActivity extends BaseActivity {
         //是否开启GPS定位 ture为开启 false为关闭
         clientOption.setOpenGps(true);
         //定位时间，1000毫秒=1
-        clientOption.setScanSpan(5000);
+        clientOption.setScanSpan(50000000);
         // 定位成功后，返回当前的地址
         clientOption.setIsNeedAddress(true);
         //把配置的信息传给LocationClient对象
@@ -207,9 +208,15 @@ public class BaiDudiZhiActivity extends BaseActivity {
                     return;
                 }
 //                吐一下
-                Y.t(bdLocation.getAddrStr());
+                Y.t(bdLocation.getAddrStr()+"shiwo ");
                 addrStr=bdLocation.getAddrStr();
-                etCityName.setText(addrStr);
+                etCityName.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        etCityName.setText(addrStr);
+                    }
+                });
+
                 //获取BDLocation数据转换成MyLocationData
                 MyLocationData myLocationData = new MyLocationData.Builder()
                         .accuracy(bdLocation.getRadius()) // 设置半径
@@ -234,7 +241,7 @@ public class BaiDudiZhiActivity extends BaseActivity {
                 com.baidu.location.Address add = bdLocation.getAddress();
 //                把城市编码保存到对象中
 
-                address.getCity_code(add.cityCode);
+                address.setCity_code(add.cityCode);
 //                设置地址信息
                 address.setAddress(add.address);
 //                设置区
