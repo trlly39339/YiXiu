@@ -77,6 +77,7 @@ public class WoDeDingDanActivity extends BaseActivity {
             }
         });
         Intent intent = getIntent();
+//        如果intent不为空
         if (intent != null) {
             zhuangtai = intent.getStringExtra("zhuangtai");
         }
