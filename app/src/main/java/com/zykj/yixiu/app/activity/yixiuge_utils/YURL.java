@@ -37,4 +37,6 @@ public class YURL {
     public static final String ADD_ADDRESS=HOST+"addaddress";
 //    发布订单
     public static final String ADD_ORDER=HOST+"addOrder";
+//    根据状态查找订单
+    public static final String FIND_ORDER_BYS_TATE=HOST+"findOrderByState";
 }

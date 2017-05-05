@@ -329,7 +329,7 @@ public class JiaDianWeiXiuActivity extends BaseActivity {
                 }
                 Intent intent = new Intent(JiaDianWeiXiuActivity.this, HuJiaoFuWuActivity.class);
                 intent.putExtra("jiaDianBean", jiaDianBean);
-                intent.putExtra("LeiXing", "3");
+                intent.putExtra("LeiXing","3");
                 startActivity(intent);
                 break;
         }

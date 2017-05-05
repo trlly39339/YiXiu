@@ -80,8 +80,8 @@ public class BianJiDiZhiActivity extends BaseActivity {
 //                isdefault: 是否是默认 0 不默认  1 默认
                 Map map=new HashMap();
                 map.put("name",xingmingEt.getText().toString());
-                map.put("phone",shojihaoTv.getText());
-                map.put("address",dz.getAddress());
+                map.put("phone",shojihaoTv.getText().toString());
+                map.put("address",baidudizhiEt.getText().toString());
                 map.put("user_id",Y.USER.getUser_id()+"");
                 map.put("region",dz.getRegion());
                 map.put("lat",dz.getLat()+"");

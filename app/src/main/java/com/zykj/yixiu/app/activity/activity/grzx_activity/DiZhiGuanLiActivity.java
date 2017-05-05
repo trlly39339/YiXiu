@@ -54,20 +54,21 @@ public class DiZhiGuanLiActivity extends BaseActivity {
                 finish();
             }
         });
+        if (adapters!=null) {
+            adapters = new DiZhiGuanLiAdapters(null, DiZhiGuanLiActivity.this);
+            rlv.setAdapter(adapters);//
+            rlv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    address = adapters.getList().get(position);
+                    Intent intent = new Intent();
+                    intent.putExtra("address", address);
+                    setResult(110, intent);
+                    finish();
+                }
+            });
+        }
 
-        rlv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                address = adapters.getList().get(position);
-                Intent intent=new Intent();
-                intent.putExtra("address",address);
-                setResult(110,intent);
-                finish();
-            }
-        });
-
-        adapters = new DiZhiGuanLiAdapters(null, DiZhiGuanLiActivity.this);
-        rlv.setAdapter(adapters);//
 //        adapters.setClickLister(new DiZhiGuanLiAdapters.setOnDiZhiClickLister() {
 //            @Override
 //            public void ll_item_Click(View v, int ops) {
