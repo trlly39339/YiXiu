@@ -54,6 +54,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:gravity="center_vertical"
+        android:visibility="gone"
         android:layout_height="70dp">
         <ImageView
             android:layout_width="55dp"
@@ -650,6 +651,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"
+        android:visibility="gone"
         android:layout_height="wrap_content">
     <ImageView
         android:layout_width="match_parent"

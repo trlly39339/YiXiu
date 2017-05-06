@@ -10,7 +10,8 @@ public class YURL {
     public static final String BASE_HOST="http://221.207.184.124:7071/";
     //项目名称
     public static final String HOST=BASE_HOST+"yxg/";
-
+    //http://221.207.184.124:7071/yxg/robOrder?order_id=327&engineer_id=110
+    //http://221.207.184.124:7071/yxg/finishOrder?order_id=339&engineer_id=110
     //查找手机品牌
     public static final String FIND_PHONE_BRAND=HOST+"findPhoneBrand";
     //根据品牌查找型号
@@ -41,6 +42,10 @@ public class YURL {
     public static final String FIND_ORDER_BYS_TATE=HOST+"findOrderByState";
 //    设置默认地址
     public static final String DEF_ADDRESS=HOST+"defAddress";
+//    取消订单
+    public static final String CANCEL_ORDER=HOST+"cancelOrder";
+//    删除订单
+    public static final String DEL_ORDER=HOST+"delOrder";
 //
 
 }

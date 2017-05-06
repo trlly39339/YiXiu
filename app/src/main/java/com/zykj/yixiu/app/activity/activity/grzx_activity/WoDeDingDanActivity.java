@@ -60,6 +60,7 @@ public class WoDeDingDanActivity extends BaseActivity {
     @Bind(R.id.grzx_rlv)
     ListView grzxRlv;
 
+
 //    private List<String> list = new ArrayList<String>();
 //    private String[] leixing = {"手机", "电脑"};
     private String zhuangtai;
@@ -89,26 +90,6 @@ public class WoDeDingDanActivity extends BaseActivity {
 
 
     }
-    public void Lv(){
-        //        FIND_ORDER_BYS_TATE
-        Map map=new HashMap();
-        map.put("custom_id",Y.USER.getUser_id()+"");
-        map.put("order_state",zhuangtai);
-        Y.get(YURL.FIND_ORDER_BYS_TATE, map, new Y.MyCommonCall<String>() {
-            @Override
-            public void onSuccess(String result) {
-                StyledDialog.dismissLoading();
-                if (Y.getRespCode(result)){
-                    chaXunDingDanBeen = JSON.parseArray(Y.getData(result), ChaXunDingDanBean.class);
-                    Y.i(result+"我item");
-                    //        创建Adapter 对象
-                    dingDanAdapter = new WoDeDingDanAdapter(WoDeDingDanActivity.this, chaXunDingDanBeen);
-                    //10.添加适配器
-                    grzxRlv.setAdapter(dingDanAdapter);
-                }
-            }
-        });
-    }
 
     public void DingDanZhuangTai() {
         switch (zhuangtai) {
@@ -123,7 +104,7 @@ public class WoDeDingDanActivity extends BaseActivity {
                 //                已取消选中颜色值
                 yqxTv.setTextColor(Color.parseColor("#757575"));
                 yqxImg.setBackgroundColor(Color.parseColor("#bababa"));
-                Lv();
+
                 break;
             case "2":
                 //已完成
@@ -136,7 +117,7 @@ public class WoDeDingDanActivity extends BaseActivity {
                 //                已取消选中颜色值
                 yqxTv.setTextColor(Color.parseColor("#757575"));
                 yqxImg.setBackgroundColor(Color.parseColor("#bababa"));
-                Lv();
+
                 break;
             case "3":
 //已取消
@@ -149,7 +130,8 @@ public class WoDeDingDanActivity extends BaseActivity {
                 //                已取消选中颜色值
                 yqxTv.setTextColor(Color.parseColor("#03cccc"));
                 yqxImg.setBackgroundColor(Color.parseColor("#03cccc"));
-                Lv();
+
+
                 break;
 
         }
@@ -169,6 +151,23 @@ public class WoDeDingDanActivity extends BaseActivity {
                 //                已取消选中颜色值
                 yqxTv.setTextColor(Color.parseColor("#757575"));
                 yqxImg.setBackgroundColor(Color.parseColor("#bababa"));
+                Map map=new HashMap();
+                map.put("custom_id",Y.USER.getUser_id()+"");
+                map.put("order_state",1+"");
+                Y.get(YURL.FIND_ORDER_BYS_TATE, map, new Y.MyCommonCall<String>() {
+                    @Override
+                    public void onSuccess(String result) {
+                        StyledDialog.dismissLoading();
+                        if (Y.getRespCode(result)){
+                            chaXunDingDanBeen = JSON.parseArray(Y.getData(result), ChaXunDingDanBean.class);
+                            Y.i(result+"我item");
+                            //        创建Adapter 对象
+                            dingDanAdapter = new WoDeDingDanAdapter(WoDeDingDanActivity.this, chaXunDingDanBeen,0);
+                            //10.添加适配器
+                            grzxRlv.setAdapter(dingDanAdapter);
+                        }
+                    }
+                });
                 break;
             case R.id.ywc_ll:
                 DingDanZhuangTai();
@@ -181,6 +180,23 @@ public class WoDeDingDanActivity extends BaseActivity {
                 //                已取消选中颜色值
                 yqxTv.setTextColor(Color.parseColor("#757575"));
                 yqxImg.setBackgroundColor(Color.parseColor("#bababa"));
+                Map map2=new HashMap();
+                map2.put("custom_id",Y.USER.getUser_id()+"");
+                map2.put("order_state",2+"");
+                Y.get(YURL.FIND_ORDER_BYS_TATE, map2, new Y.MyCommonCall<String>() {
+                    @Override
+                    public void onSuccess(String result) {
+                        StyledDialog.dismissLoading();
+                        if (Y.getRespCode(result)){
+                            chaXunDingDanBeen = JSON.parseArray(Y.getData(result), ChaXunDingDanBean.class);
+                            Y.i(result+"我item");
+                            //        创建Adapter 对象
+                            dingDanAdapter = new WoDeDingDanAdapter(WoDeDingDanActivity.this, chaXunDingDanBeen,1);
+                            //10.添加适配器
+                            grzxRlv.setAdapter(dingDanAdapter);
+                        }
+                    }
+                });
                 break;
             case R.id.yqx_ll:
                 DingDanZhuangTai();
@@ -193,7 +209,46 @@ public class WoDeDingDanActivity extends BaseActivity {
                 //                已取消选中颜色值
                 yqxTv.setTextColor(Color.parseColor("#03cccc"));
                 yqxImg.setBackgroundColor(Color.parseColor("#03cccc"));
+                Map map3=new HashMap();
+                map3.put("custom_id",Y.USER.getUser_id()+"");
+                map3.put("order_state",3+"");
+                Y.get(YURL.FIND_ORDER_BYS_TATE, map3 , new Y.MyCommonCall<String>() {
+                    @Override
+                    public void onSuccess(String result) {
+                        StyledDialog.dismissLoading();
+                        if (Y.getRespCode(result)){
+                            chaXunDingDanBeen = JSON.parseArray(Y.getData(result), ChaXunDingDanBean.class);
+                            Y.i(result+"我item");
+                            //        创建Adapter 对象
+                            dingDanAdapter = new WoDeDingDanAdapter(WoDeDingDanActivity.this, chaXunDingDanBeen,1);
+                            //10.添加适配器
+                            grzxRlv.setAdapter(dingDanAdapter);
+                        }
+                    }
+                });
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Map map=new HashMap();
+        map.put("custom_id",Y.USER.getUser_id()+"");
+        map.put("order_state",zhuangtai);
+        Y.get(YURL.FIND_ORDER_BYS_TATE, map, new Y.MyCommonCall<String>() {
+            @Override
+            public void onSuccess(String result) {
+                StyledDialog.dismissLoading();
+                if (Y.getRespCode(result)){
+                    chaXunDingDanBeen = JSON.parseArray(Y.getData(result), ChaXunDingDanBean.class);
+                    Y.i(result+"我item");
+                    //        创建Adapter 对象
+                    dingDanAdapter = new WoDeDingDanAdapter(WoDeDingDanActivity.this, chaXunDingDanBeen,0);
+                    //10.添加适配器
+                    grzxRlv.setAdapter(dingDanAdapter);
+                }
+            }
+        });
     }
 }

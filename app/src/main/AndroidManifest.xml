@@ -103,6 +103,8 @@
         <activity android:name=".app.activity.activity.grzx_activity.DiZhiGuanLiActivity"/>
         <!--更换手机号-->
         <activity android:name=".app.activity.activity.grzx_activity.GengGaiShouJiHaoActivity"/>
+        <!--订单详情 未完成-->
+        <activity android:name=".app.activity.activity.grzx_activity.DingDanXiangQingActivity"/>
 
 
     </application>

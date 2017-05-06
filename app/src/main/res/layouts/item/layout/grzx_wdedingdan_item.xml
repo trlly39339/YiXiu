@@ -31,14 +31,7 @@
             android:visibility="visible"
             android:textColor="#ff9a02"
             android:textSize="16sp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="等待接单"
-            android:id="@+id/ddjd_tv"
-            android:visibility="gone"
-            android:textColor="#25d2d2"
-            android:textSize="16sp"/>
+
     </LinearLayout>
     <View
         android:layout_width="match_parent"
@@ -81,7 +74,7 @@
                     android:layout_marginLeft="10dp"
                     android:id="@+id/xiadan_shijian_tv"
                     android:textColor="#aeaeae"
-                    android:textSize="16sp"/>
+                    android:textSize="14sp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -107,9 +100,11 @@
                     android:text="黑龙江哈尔滨银行街2号卓雅科技有限公司"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="7dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
                     android:id="@+id/xiadan_dizhi_tv"
                     android:textColor="#aeaeae"
-                    android:textSize="16sp"/>
+                    android:textSize="13sp"/>
             </LinearLayout>
         </LinearLayout>
         <ImageView
@@ -133,6 +128,7 @@
         android:orientation="horizontal"
         android:background="@mipmap/pinpai_bj">
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00:15:46"
@@ -140,27 +136,29 @@
             android:layout_marginLeft="20dp"
             android:id="@+id/shijian_tv"
             android:textColor="#898989"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
         <FrameLayout
+
             android:layout_width="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:id="@+id/chongxin_fabu_tv"
             android:visibility="visible"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="80dp"
+                android:layout_width="70dp"
                 android:layout_height="30dp"
                 android:scaleType="fitXY"
                 android:src="@mipmap/grzx_item_but"/>
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="重新发布"
                 android:layout_marginTop="6dp"
                 android:layout_marginLeft="8dp"
                 android:textColor="#898989"
-                android:textSize="16sp"
+                android:textSize="14sp"
                  />
         </FrameLayout>
     <FrameLayout
@@ -170,7 +168,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-        android:layout_width="80dp"
+        android:layout_width="70dp"
         android:layout_height="30dp"
         android:scaleType="fitXY"
         android:layout_gravity="right"
@@ -184,13 +182,13 @@
             android:layout_marginRight="8dp"
             android:layout_gravity="right"
             android:textColor="#898989"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
         <ImageView
-            android:layout_width="80dp"
+            android:layout_width="70dp"
             android:layout_height="30dp"
             android:scaleType="fitXY"
             android:layout_gravity="right"
-            android:layout_marginRight="90dp"
+            android:layout_marginRight="81dp"
             android:src="@mipmap/grzx_item_but"/>
         <TextView
             android:layout_width="wrap_content"
@@ -199,9 +197,9 @@
             android:layout_marginTop="6dp"
             android:layout_gravity="right"
             android:id="@+id/chakan_xiangqin_tv"
-            android:layout_marginRight="98dp"
+            android:layout_marginRight="90dp"
             android:textColor="#898989"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
 
     </FrameLayout>
 
