@@ -56,7 +56,9 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:orientation="horizontal">
+
             <RadioButton
+                android:focusable="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -64,6 +66,7 @@
                 android:id="@+id/moren_rb"
                 android:textColor="#ff4182"
                 android:textSize="16sp"/>
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

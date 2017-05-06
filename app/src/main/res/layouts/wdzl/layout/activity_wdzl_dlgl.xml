@@ -49,9 +49,6 @@
     <!--绿线深浅结束-->
     <!--rlv开始-->
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,10 +57,8 @@
             android:layout_width="match_parent"
             android:layout_marginTop="5dp"
             android:id="@+id/rlv"
-            android:layout_height="wrap_content">
-
-
-
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
         </ListView>
 
@@ -100,5 +95,4 @@
                     android:textColor="#bbbbbb"/>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
 </LinearLayout>

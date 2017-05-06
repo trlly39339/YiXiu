@@ -1,25 +1,25 @@
 package com.zykj.yixiu.app.activity.activity.adapters;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.TextView;
+        import android.content.Context;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.BaseAdapter;
+        import android.widget.LinearLayout;
+        import android.widget.RadioButton;
+        import android.widget.TextView;
 
-import com.hss01248.dialog.StyledDialog;
-import com.zykj.yixiu.R;
-import com.zykj.yixiu.app.activity.bean.ChaXunAddress;
-import com.zykj.yixiu.app.activity.yixiuge_utils.Y;
-import com.zykj.yixiu.app.activity.yixiuge_utils.YURL;
+        import com.hss01248.dialog.StyledDialog;
+        import com.zykj.yixiu.R;
+        import com.zykj.yixiu.app.activity.bean.ChaXunAddress;
+        import com.zykj.yixiu.app.activity.yixiuge_utils.Y;
+        import com.zykj.yixiu.app.activity.yixiuge_utils.YURL;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+        import java.util.HashMap;
+        import java.util.List;
+        import java.util.Map;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+        import butterknife.Bind;
+        import butterknife.ButterKnife;
 
 /**
  * Created by zykj on 2017/5/2.
@@ -35,6 +35,7 @@ public class DiZhiGuanLiAdapters extends BaseAdapter {
 
     public void setList(List<ChaXunAddress> list) {
         this.list = list;
+        notifyDataSetChanged();
     }
 
     public DiZhiGuanLiAdapters(List<ChaXunAddress> list, Context context) {
@@ -75,12 +76,6 @@ public class DiZhiGuanLiAdapters extends BaseAdapter {
         holder.nameTv.setText(address.getName());
         holder.phoneTv.setText(address.getPhone());
         holder.dizhiTv.setText(address.getAddress());
-//        检测默认
-        if (address.getIsdefault()==1){//勾选
-            holder.morenRb.setChecked(true);
-        }else {//不勾选
-            holder.morenRb.setChecked(false);
-        }
 //        选择默认事件
         holder.morenRb.setTag(address.getAddress_id());
         holder.morenRb.setOnClickListener(new View.OnClickListener() {
@@ -89,10 +84,10 @@ public class DiZhiGuanLiAdapters extends BaseAdapter {
                 Map map=new HashMap();
                 map.put("user_id",Y.USER.getUser_id()+"");
                 map.put("address_id",v.getTag()+"");
-                Y.get(YURL.ADD_ADDRESS, map, new Y.MyCommonCall<String>() {
+                Y.get(YURL.DEF_ADDRESS, map, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
-                   StyledDialog.dismissLoading();
+                        StyledDialog.dismissLoading();
                         if (Y.getRespCode(result)){
                             Y.t("设置成功");
                             for (int i = 0; i <list.size() ; i++) {
@@ -108,6 +103,13 @@ public class DiZhiGuanLiAdapters extends BaseAdapter {
                 });
             }
         });
+        //        检测默认
+        if (address.getIsdefault()==1){//勾选
+            holder.morenRb.setChecked(true);
+        }else {//不勾选
+            holder.morenRb.setChecked(false);
+        }
+
 //        删除
         holder.shanchuTv.setTag(address.getAddress_id());//
         holder.shanchuTv.setOnClickListener(new View.OnClickListener() {
@@ -135,9 +137,9 @@ public class DiZhiGuanLiAdapters extends BaseAdapter {
 }
 class ViewHolder {
 
-        TextView nameTv,phoneTv,dizhiTv,bianjiTv,shanchuTv;
-        RadioButton morenRb;
-        LinearLayout llItem;
+    TextView nameTv,phoneTv,dizhiTv,bianjiTv,shanchuTv;
+    RadioButton morenRb;
+    LinearLayout llItem;
 
 
 

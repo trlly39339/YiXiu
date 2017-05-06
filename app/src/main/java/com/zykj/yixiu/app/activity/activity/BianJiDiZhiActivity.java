@@ -83,12 +83,12 @@ public class BianJiDiZhiActivity extends BaseActivity {
                 map.put("phone",shojihaoTv.getText().toString());
                 map.put("address",baidudizhiEt.getText().toString());
                 map.put("user_id",Y.USER.getUser_id()+"");
-                map.put("region",dz.getRegion());
+                map.put("region",dz.getRegion()+"");
                 map.put("lat",dz.getLat()+"");
                 map.put("lon",dz.getLon()+"");
-                map.put("city_name",dz.getCity_name());
-                map.put("city_code",dz.getCity_code());
-                map.put("isdefault",1);
+                map.put("city_name",dz.getCity_name()+"");
+                map.put("city_code",dz.getCity_code()+"");
+                map.put("isdefault","1");
                 Y.get(YURL.ADD_ADDRESS, map, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {

@@ -40,9 +40,8 @@ public class DiZhiGuanLiActivity extends BaseActivity {
     @Bind(R.id.rlv)
     ListView rlv;//显示地址listview
     private DiZhiGuanLiAdapters adapters;
-//    List<ChaXunAddress> list = new ArrayList<ChaXunAddress>();
+   private List<ChaXunAddress> list = new ArrayList<ChaXunAddress>();
     private ChaXunAddress address;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,20 +53,21 @@ public class DiZhiGuanLiActivity extends BaseActivity {
                 finish();
             }
         });
-        if (adapters!=null) {
-            adapters = new DiZhiGuanLiAdapters(null, DiZhiGuanLiActivity.this);
-            rlv.setAdapter(adapters);//
+        adapters = new DiZhiGuanLiAdapters(list, DiZhiGuanLiActivity.this);
+        rlv.setAdapter(adapters);//
             rlv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     address = adapters.getList().get(position);
+                    Y.i(address.toString());
                     Intent intent = new Intent();
                     intent.putExtra("address", address);
                     setResult(110, intent);
                     finish();
                 }
             });
-        }
+
+
 
 //        adapters.setClickLister(new DiZhiGuanLiAdapters.setOnDiZhiClickLister() {
 //            @Override

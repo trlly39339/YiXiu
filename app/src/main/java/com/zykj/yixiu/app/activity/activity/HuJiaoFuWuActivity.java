@@ -232,7 +232,7 @@ public class HuJiaoFuWuActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==110&&resultCode==110){
             dz = (ChaXunAddress) data.getSerializableExtra("address");
-            dizhiTv.setText(dz.getAddress());
+            dizhiTv.setText(dz.getAddress()+"");
         }
     }
 }

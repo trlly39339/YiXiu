@@ -13,6 +13,7 @@ import com.zykj.yixiu.R;
 import com.zykj.yixiu.app.activity.bean.ChaXunDingDanBean;
 import com.zykj.yixiu.app.activity.yixiuge_utils.YURL;
 
+import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
 import java.util.List;
@@ -137,7 +138,8 @@ public class WoDeDingDanAdapter extends BaseAdapter{
 //                取消订单
                 holder.xiadandizhi.setText(chaXunDingDanBean.getService_address());
 //                添加图片
-                x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1());
+                ImageOptions options = new ImageOptions.Builder().build();
+                x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1(),options);
 //                holder.tp.set(chaXunDingDanBean.getImage1()+"");
             }
             if ("2".equals(leixing)){//1为手机 刚刚下的的 等待接单中
@@ -156,7 +158,8 @@ public class WoDeDingDanAdapter extends BaseAdapter{
 //                取消订单
                 holder.xiadandizhi.setText(chaXunDingDanBean.getService_address());
 //                添加图片
-                x.image().bind(holder.tp, chaXunDingDanBean.getImage1());
+                ImageOptions options = new ImageOptions.Builder().build();
+                x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1(),options);
 //                holder.tp.set(chaXunDingDanBean.getImage1()+"");
             }
             if ("3".equals(leixing)){//1为手机 刚刚下的的 等待接单中
@@ -175,7 +178,8 @@ public class WoDeDingDanAdapter extends BaseAdapter{
 //                取消订单
                 holder.xiadandizhi.setText(chaXunDingDanBean.getService_address());
 //                添加图片
-                x.image().bind(holder.tp,chaXunDingDanBean.getImage1());
+                ImageOptions options = new ImageOptions.Builder().build();
+                x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1(),options);
 //                holder.tp.set(chaXunDingDanBean.getImage1()+"");
             }
         }
@@ -199,7 +203,8 @@ public class WoDeDingDanAdapter extends BaseAdapter{
 //                取消订单
                 holder.xiadandizhi.setText(chaXunDingDanBean.getService_address());
 //                添加图片
-                x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1());
+                ImageOptions options = new ImageOptions.Builder().build();
+                x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1(),options);
 //                holder.tp.set(chaXunDingDanBean.getImage1()+"");
             }
             if ("2".equals(leixing)){//1为手机 刚刚下的的 等待接单中
@@ -218,7 +223,8 @@ public class WoDeDingDanAdapter extends BaseAdapter{
 //                取消订单
                 holder.xiadandizhi.setText(chaXunDingDanBean.getService_address());
 //                添加图片
-                x.image().bind(holder.tp, chaXunDingDanBean.getImage1());
+                ImageOptions options = new ImageOptions.Builder().build();
+                x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1(),options);
 //                holder.tp.set(chaXunDingDanBean.getImage1()+"");
             }
             if ("3".equals(leixing)){//1为手机 刚刚下的的 等待接单中
@@ -237,7 +243,8 @@ public class WoDeDingDanAdapter extends BaseAdapter{
 //                取消订单
                 holder.xiadandizhi.setText(chaXunDingDanBean.getService_address());
 //                添加图片
-                x.image().bind(holder.tp,chaXunDingDanBean.getImage1());
+                ImageOptions options = new ImageOptions.Builder().build();
+                x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1(),options);
 //                holder.tp.set(chaXunDingDanBean.getImage1()+"");
             }
         }
@@ -261,7 +268,8 @@ public class WoDeDingDanAdapter extends BaseAdapter{
 //                取消订单
                 holder.xiadandizhi.setText(chaXunDingDanBean.getService_address());
 //                添加图片
-                x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1());
+                ImageOptions options = new ImageOptions.Builder().build();
+                x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1(),options);
 //                holder.tp.set(chaXunDingDanBean.getImage1()+"");
             }
             if ("2".equals(leixing)){//1为手机 刚刚下的的 等待接单中
@@ -280,7 +288,8 @@ public class WoDeDingDanAdapter extends BaseAdapter{
 //                取消订单
                 holder.xiadandizhi.setText(chaXunDingDanBean.getService_address());
 //                添加图片
-                x.image().bind(holder.tp, chaXunDingDanBean.getImage1());
+                ImageOptions options = new ImageOptions.Builder().build();
+                x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1(),options);
 //                holder.tp.set(chaXunDingDanBean.getImage1()+"");
             }
             if ("3".equals(leixing)){//1为手机 刚刚下的的 等待接单中
@@ -299,10 +308,17 @@ public class WoDeDingDanAdapter extends BaseAdapter{
 //                取消订单
                 holder.xiadandizhi.setText(chaXunDingDanBean.getService_address());
 //                添加图片
-                x.image().bind(holder.tp,chaXunDingDanBean.getImage1());
+                ImageOptions options = new ImageOptions.Builder().build();
+                x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1(),options);
 //                holder.tp.set(chaXunDingDanBean.getImage1()+"");
             }
         }
+        holder.chakanxiangqing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         return convertView;
     }
 

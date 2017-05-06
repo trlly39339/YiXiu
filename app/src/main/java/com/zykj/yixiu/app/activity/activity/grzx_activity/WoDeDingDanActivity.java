@@ -11,11 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.hss01248.dialog.StyledDialog;
 import com.zykj.yixiu.R;
 import com.zykj.yixiu.app.activity.activity.adapters.WoDeDingDanAdapter;
 import com.zykj.yixiu.app.activity.activity_styles.MyTopBer;
 import com.zykj.yixiu.app.activity.base.BaseActivity;
+import com.zykj.yixiu.app.activity.bean.ChaXunDingDanBean;
 import com.zykj.yixiu.app.activity.yixiuge_utils.Y;
 import com.zykj.yixiu.app.activity.yixiuge_utils.YURL;
 
@@ -62,6 +64,7 @@ public class WoDeDingDanActivity extends BaseActivity {
 //    private String[] leixing = {"手机", "电脑"};
     private String zhuangtai;
     private WoDeDingDanAdapter dingDanAdapter;
+    private List<ChaXunDingDanBean> chaXunDingDanBeen;
 
 
     @Override
@@ -96,9 +99,10 @@ public class WoDeDingDanActivity extends BaseActivity {
             public void onSuccess(String result) {
                 StyledDialog.dismissLoading();
                 if (Y.getRespCode(result)){
+                    chaXunDingDanBeen = JSON.parseArray(Y.getData(result), ChaXunDingDanBean.class);
                     Y.i(result+"我item");
                     //        创建Adapter 对象
-                    dingDanAdapter = new WoDeDingDanAdapter(WoDeDingDanActivity.this, null);
+                    dingDanAdapter = new WoDeDingDanAdapter(WoDeDingDanActivity.this, chaXunDingDanBeen);
                     //10.添加适配器
                     grzxRlv.setAdapter(dingDanAdapter);
                 }
