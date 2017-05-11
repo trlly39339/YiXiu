@@ -112,6 +112,11 @@ public class HuJiaoFuWuActivity extends BaseActivity {
             case R.id.qrfb_but:
                 String shijian = shijianTv.getText().toString().trim();
                 String dizhi = dizhiTv.getText().toString().trim();
+                if (shijian==""){
+                    Y.t("请选择时间日期");
+                }else if (dizhi==""){
+                    Y.t("请选择地址");
+                }else {
 //                order_type: 订单类型,1手机,2电脑,3家电
 //                brand: 品牌
 //                model:型号
@@ -128,101 +133,103 @@ public class HuJiaoFuWuActivity extends BaseActivity {
 //                custom_id:客户ID
 //                address_id:客户关联的地址ID
 
-                if ("1".equals(leiXing)) {//手机
-                    RequestParams params = new RequestParams(YURL.ADD_ORDER);
-                    params.setMultipart(true);
-                    params.addBodyParameter("order_type", leiXing);
-                    params.addBodyParameter("brand",phoneBean.getTvPinpai());
-                    params.addBodyParameter("model",phoneBean.getTvXinghao());
-                    params.addBodyParameter("fault",phoneBean.getTvGuzhang());
-                    params.addBodyParameter("fault_desc",phoneBean.getEvGuzhangMiaoshu());
-                    params.addBodyParameter("category","");
-                    params.addBodyParameter("image1", new File(phoneBean.getFile()));
-                    params.addBodyParameter("service_time",shijian);
-                    params.addBodyParameter("service_address",dizhi);
-                    params.addBodyParameter("custom_phone", Y.USER.getPhone());
-                    params.addBodyParameter("custom_name",Y.USER.getUsername());
-                    params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
-                    params.addBodyParameter("address_id",dz.getAddress_id()+"");
-                    Y.postFlie(params, new Y.MyCommonCall<String>() {
-                        @Override
-                        public void onSuccess(String result) {
-                            StyledDialog.dismissLoading();
-                            if (Y.getRespCode(result)){
-                                Y.t("下单成功");
-                                Intent intent1=new Intent(HuJiaoFuWuActivity.this,MainActivity.class);
-                                startActivity(intent1);
+                    if ("1".equals(leiXing)) {//手机
+                        RequestParams params = new RequestParams(YURL.ADD_ORDER);
+                        params.setMultipart(true);
+                        params.addBodyParameter("order_type", leiXing);
+                        params.addBodyParameter("brand", phoneBean.getTvPinpai());
+                        params.addBodyParameter("model", phoneBean.getTvXinghao());
+                        params.addBodyParameter("fault", phoneBean.getTvGuzhang());
+                        params.addBodyParameter("fault_desc", phoneBean.getEvGuzhangMiaoshu());
+                        params.addBodyParameter("category", "");
+                        params.addBodyParameter("image1", new File(phoneBean.getFile()));
+                        params.addBodyParameter("service_time", shijian);
+                        params.addBodyParameter("service_address", dizhi);
+                        params.addBodyParameter("custom_phone", Y.USER.getPhone());
+                        params.addBodyParameter("custom_name", Y.USER.getUsername());
+                        params.addBodyParameter("custom_id", Y.USER.getUser_id() + "");
+                        params.addBodyParameter("address_id", dz.getAddress_id() + "");
+                        Y.postFlie(params, new Y.MyCommonCall<String>() {
+                            @Override
+                            public void onSuccess(String result) {
+                                StyledDialog.dismissLoading();
+                                if (Y.getRespCode(result)) {
+                                    Y.t("下单成功");
+                                    Intent intent1 = new Intent(HuJiaoFuWuActivity.this, MainActivity.class);
+                                    startActivity(intent1);
+                                    finish();
 
-                            }else {
-                                Y.t("下单失败");
+                                } else {
+                                    Y.t("下单失败");
+                                }
                             }
-                        }
-                    });
+                        });
 
-                }
-                if ("2".equals(leiXing)) {//电脑
-                    RequestParams params = new RequestParams(YURL.ADD_ORDER);
-                    params.setMultipart(true);
-                    params.addBodyParameter("order_type", leiXing);
-                    params.addBodyParameter("brand",dianNaoBean.getPinpai());
-                    params.addBodyParameter("model",dianNaoBean.getXinghao());
-                    params.addBodyParameter("fault",dianNaoBean.getGuzhang());
-                    params.addBodyParameter("fault_desc",dianNaoBean.getGuzhangmiaoshu());
-                    params.addBodyParameter("category",dianNaoBean.getLeixing());
-                    params.addBodyParameter("image1", new File(dianNaoBean.getFileimg()));
-                    params.addBodyParameter("service_time",shijian);
-                    params.addBodyParameter("service_address",dizhi);
-                    params.addBodyParameter("custom_phone", Y.USER.getPhone());
-                    params.addBodyParameter("custom_name",Y.USER.getUsername());
-                    params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
-                    params.addBodyParameter("address_id",dz.getAddress_id()+"");
-                    Y.postFlie(params, new Y.MyCommonCall<String>() {
-                        @Override
-                        public void onSuccess(String result) {
-                            StyledDialog.dismissLoading();
-                            if (Y.getRespCode(result)){
-                                Y.t("下单成功");
-                                Intent intent1=new Intent(HuJiaoFuWuActivity.this,MainActivity.class);
-                                startActivity(intent1);
-
-                            }else {
-                                Y.t("下单失败");
+                    }
+                    if ("2".equals(leiXing)) {//电脑
+                        RequestParams params = new RequestParams(YURL.ADD_ORDER);
+                        params.setMultipart(true);
+                        params.addBodyParameter("order_type", leiXing);
+                        params.addBodyParameter("brand", dianNaoBean.getPinpai());
+                        params.addBodyParameter("model", dianNaoBean.getXinghao());
+                        params.addBodyParameter("fault", dianNaoBean.getGuzhang());
+                        params.addBodyParameter("fault_desc", dianNaoBean.getGuzhangmiaoshu());
+                        params.addBodyParameter("category", dianNaoBean.getLeixing());
+                        params.addBodyParameter("image1", new File(dianNaoBean.getFileimg()));
+                        params.addBodyParameter("service_time", shijian);
+                        params.addBodyParameter("service_address", dizhi);
+                        params.addBodyParameter("custom_phone", Y.USER.getPhone());
+                        params.addBodyParameter("custom_name", Y.USER.getUsername());
+                        params.addBodyParameter("custom_id", Y.USER.getUser_id() + "");
+                        params.addBodyParameter("address_id", dz.getAddress_id() + "");
+                        Y.postFlie(params, new Y.MyCommonCall<String>() {
+                            @Override
+                            public void onSuccess(String result) {
+                                StyledDialog.dismissLoading();
+                                if (Y.getRespCode(result)) {
+                                    Y.t("下单成功");
+                                    Intent intent1 = new Intent(HuJiaoFuWuActivity.this, MainActivity.class);
+                                    startActivity(intent1);
+                                    finish();
+                                } else {
+                                    Y.t("下单失败");
+                                }
                             }
-                        }
-                    });
+                        });
 
-                }
-                if ("3".equals(leiXing)) {//家电
-                    RequestParams params = new RequestParams(YURL.ADD_ORDER);
-                    params.setMultipart(true);
-                    params.addBodyParameter("order_type", leiXing);
-                    params.addBodyParameter("brand",jiaDianBean.getPinpai());
-                    params.addBodyParameter("model",jiaDianBean.getXinghao());
-                    params.addBodyParameter("fault",jiaDianBean.getGuzhang());
-                    params.addBodyParameter("fault_desc",jiaDianBean.getGuzhangmiaoshu());
-                    params.addBodyParameter("category",jiaDianBean.getLeixing());
-                    params.addBodyParameter("image1", new File(jiaDianBean.getFileimg()));
-                    params.addBodyParameter("service_time",shijian);
-                    params.addBodyParameter("service_address",dizhi);
-                    params.addBodyParameter("custom_phone", Y.USER.getPhone());
-                    params.addBodyParameter("custom_name",Y.USER.getUsername());
-                    params.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
-                    params.addBodyParameter("address_id",dz.getAddress_id()+"");
-                    Y.postFlie(params, new Y.MyCommonCall<String>() {
-                        @Override
-                        public void onSuccess(String result) {
-                            StyledDialog.dismissLoading();
-                            if (Y.getRespCode(result)){
-                                Y.t("下单成功");
-                                Intent intent1=new Intent(HuJiaoFuWuActivity.this,MainActivity.class);
-                                startActivity(intent1);
-
-                            }else {
-                                Y.t("下单失败");
+                    }
+                    if ("3".equals(leiXing)) {//家电
+                        RequestParams params = new RequestParams(YURL.ADD_ORDER);
+                        params.setMultipart(true);
+                        params.addBodyParameter("order_type", leiXing);
+                        params.addBodyParameter("brand", jiaDianBean.getPinpai());
+                        params.addBodyParameter("model", jiaDianBean.getXinghao());
+                        params.addBodyParameter("fault", jiaDianBean.getGuzhang());
+                        params.addBodyParameter("fault_desc", jiaDianBean.getGuzhangmiaoshu());
+                        params.addBodyParameter("category", jiaDianBean.getLeixing());
+                        params.addBodyParameter("image1", new File(jiaDianBean.getFileimg()));
+                        params.addBodyParameter("service_time", shijian);
+                        params.addBodyParameter("service_address", dizhi);
+                        params.addBodyParameter("custom_phone", Y.USER.getPhone());
+                        params.addBodyParameter("custom_name", Y.USER.getUsername());
+                        params.addBodyParameter("custom_id", Y.USER.getUser_id() + "");
+                        params.addBodyParameter("address_id", dz.getAddress_id() + "");
+                        Y.postFlie(params, new Y.MyCommonCall<String>() {
+                            @Override
+                            public void onSuccess(String result) {
+                                StyledDialog.dismissLoading();
+                                if (Y.getRespCode(result)) {
+                                    Y.t("下单成功");
+                                    Intent intent1 = new Intent(HuJiaoFuWuActivity.this, MainActivity.class);
+                                    startActivity(intent1);
+                                    finish();
+                                } else {
+                                    Y.t("下单失败");
+                                }
                             }
-                        }
-                    });
+                        });
 
+                    }
                 }
                 break;
         }

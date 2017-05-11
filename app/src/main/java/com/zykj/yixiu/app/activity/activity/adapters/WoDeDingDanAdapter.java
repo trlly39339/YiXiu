@@ -34,7 +34,9 @@ public class WoDeDingDanAdapter extends BaseAdapter{
     private Context context;//定义上下文
     private List<ChaXunDingDanBean> list;//数据源
     private int index=-1;
-//    getList
+    private ChaXunDingDanBean chaXunDingDanBean;
+
+    //    getList
     public List<ChaXunDingDanBean> getList() {
         return list;
     }
@@ -122,7 +124,7 @@ public class WoDeDingDanAdapter extends BaseAdapter{
  * city_name : 哈尔滨市
  * city_code : 48
  */
-        final ChaXunDingDanBean chaXunDingDanBean = list.get(position);
+        chaXunDingDanBean = list.get(position);
         int order_type = chaXunDingDanBean.getOrder_type();
         final int order_state = chaXunDingDanBean.getOrder_state();
         Y.i( chaXunDingDanBean.getId()+"");
@@ -171,15 +173,15 @@ public class WoDeDingDanAdapter extends BaseAdapter{
 //        订单类型
         switch (order_type){
             case 1:
-                holder.zhonglei.setText("手机"+chaXunDingDanBean.getId());
+                holder.zhonglei.setText("手机"+ chaXunDingDanBean.getId());
 
                 break;
             case 2:
-                holder.zhonglei.setText("手机"+chaXunDingDanBean.getId());
+                holder.zhonglei.setText("电脑"+ chaXunDingDanBean.getId());
 
                 break;
             case 3:
-                holder.zhonglei.setText("手机"+chaXunDingDanBean.getId());
+                holder.zhonglei.setText("家电"+ chaXunDingDanBean.getId());
                 break;
         }
 
@@ -189,7 +191,7 @@ public class WoDeDingDanAdapter extends BaseAdapter{
         holder.xiadandizhi.setText(chaXunDingDanBean.getService_address());
 //                添加图片
         ImageOptions options = new ImageOptions.Builder().build();
-        x.image().bind(holder.tp,YURL.HOST+chaXunDingDanBean.getImage1(),options);
+        x.image().bind(holder.tp,YURL.HOST+ chaXunDingDanBean.getImage1(),options);
 
         holder.chakanxiangqing.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,7 +207,7 @@ public class WoDeDingDanAdapter extends BaseAdapter{
                 public void onClick(View v) {
 //                    CANCEL_ORDER
                     RequestParams map=new RequestParams(YURL.CANCEL_ORDER);
-                    map.addBodyParameter("id",chaXunDingDanBean.getId()+"");
+                    map.addBodyParameter("id", chaXunDingDanBean.getId()+"");
                     map.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
                     Y.post(map, new Y.MyCommonCall<String>() {
                         @Override
@@ -230,7 +232,7 @@ public class WoDeDingDanAdapter extends BaseAdapter{
                 public void onClick(View v) {
 //delOrder
                     RequestParams map=new RequestParams(YURL.DEL_ORDER);
-                    map.addBodyParameter("id",chaXunDingDanBean.getId()+"");
+                    map.addBodyParameter("id", chaXunDingDanBean.getId()+"");
                     map.addBodyParameter("custom_id",Y.USER.getUser_id()+"");
                     Y.post(map, new Y.MyCommonCall<String>() {
                         @Override
@@ -247,7 +249,6 @@ public class WoDeDingDanAdapter extends BaseAdapter{
                     });
                 }
             });
-
         }
 //        查看详情
         holder.chakanxiangqing.setOnClickListener(new View.OnClickListener() {
@@ -255,24 +256,26 @@ public class WoDeDingDanAdapter extends BaseAdapter{
             public void onClick(View v) {
                 switch (order_state){
                     case  1:
-                        Intent intent=new Intent(context, DingDanXiangQingActivity.class);
-                        intent.putExtra("chaXunDingDanBean",chaXunDingDanBean);
-                        context.startActivity(intent);
+                        Intent intent1=new Intent(context, DingDanXiangQingActivity.class);
+                        intent1.putExtra("chaXunDingDanBean", chaXunDingDanBean);
+                        intent1.putExtra("zhuangtai","1");
+                        context.startActivity(intent1);
                         break;
                     case  2:
-
+                        Intent intent2=new Intent(context, DingDanXiangQingActivity.class);
+                        intent2.putExtra("chaXunDingDanBean", chaXunDingDanBean);
+                        intent2.putExtra("zhuangtai","2");
+                        context.startActivity(intent2);
                         break;
                     case  3:
-
+                        Intent intent3=new Intent(context, DingDanXiangQingActivity.class);
+                        intent3.putExtra("chaXunDingDanBean", chaXunDingDanBean);
+                        intent3.putExtra("zhuangtai","3");
+                        context.startActivity(intent3);
                         break;
-
                 }
-
-
-
             }
         });
-
         return convertView;
     }
 

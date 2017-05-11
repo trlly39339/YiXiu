@@ -1,6 +1,7 @@
 package com.zykj.yixiu.app.activity.activity.adapters;
 
         import android.content.Context;
+        import android.content.Intent;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.BaseAdapter;
@@ -9,6 +10,7 @@ package com.zykj.yixiu.app.activity.activity.adapters;
         import android.widget.TextView;
 
         import com.hss01248.dialog.StyledDialog;
+        import com.umeng.a.e;
         import com.zykj.yixiu.R;
         import com.zykj.yixiu.app.activity.bean.ChaXunAddress;
         import com.zykj.yixiu.app.activity.yixiuge_utils.Y;
@@ -77,6 +79,12 @@ public class DiZhiGuanLiAdapters extends BaseAdapter {
         holder.phoneTv.setText(address.getPhone());
         holder.dizhiTv.setText(address.getAddress());
 //        选择默认事件
+        //        检测默认
+        if (address.getIsdefault()==1){//勾选
+            holder.morenRb.setChecked(true);
+        }else {//不勾选
+            holder.morenRb.setChecked(false);
+        }
         holder.morenRb.setTag(address.getAddress_id());
         holder.morenRb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,12 +97,12 @@ public class DiZhiGuanLiAdapters extends BaseAdapter {
                     public void onSuccess(String result) {
                         StyledDialog.dismissLoading();
                         if (Y.getRespCode(result)){
-                            Y.t("设置成功");
+                            Y.t("默认设置成功");
                             for (int i = 0; i <list.size() ; i++) {
                                 if (i==position){//需要勾选的位置
-                                    list.get(position).setIsdefault(1);
+                                    list.get(i).setIsdefault(1);
                                 }else {//取消勾选
-                                    list.get(position).setIsdefault(0);
+                                    list.get(i).setIsdefault(0);
                                 }
                             }
                             notifyDataSetChanged();//刷新列表
@@ -103,12 +111,7 @@ public class DiZhiGuanLiAdapters extends BaseAdapter {
                 });
             }
         });
-        //        检测默认
-        if (address.getIsdefault()==1){//勾选
-            holder.morenRb.setChecked(true);
-        }else {//不勾选
-            holder.morenRb.setChecked(false);
-        }
+
 
 //        删除
         holder.shanchuTv.setTag(address.getAddress_id());//
@@ -118,7 +121,7 @@ public class DiZhiGuanLiAdapters extends BaseAdapter {
                 Map map=new HashMap();
                 map.put("user_id", Y.USER.getUser_id()+"");
                 map.put("address_id",v.getTag()+"");
-                Y.get(YURL.ADD_ADDRESS, map, new Y.MyCommonCall<String>() {
+                Y.get(YURL.DEL_ADDRESS, map, new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         StyledDialog.dismissLoading();

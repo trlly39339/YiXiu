@@ -82,7 +82,7 @@
             android:id="@+id/shijian_tv"
             android:textSize="16sp"
             android:singleLine="true"
-            android:text="请选择您的服务时间"/>
+            android:hint="请选择您的服务时间"/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
@@ -137,7 +137,7 @@
             android:gravity="center_vertical"
             android:id="@+id/dizhi_tv"
             android:singleLine="true"
-            android:text="请选择您的服务地址"/>
+            android:hint="请选择您的服务地址"/>
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"

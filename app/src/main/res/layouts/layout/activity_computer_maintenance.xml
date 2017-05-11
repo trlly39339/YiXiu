@@ -94,7 +94,7 @@
             android:id="@+id/tv_pinpai_xianshi"
             android:textColor="#02cccc"
             android:gravity="center_vertical|right"
-            android:text="联想"/>
+            />
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
@@ -161,7 +161,7 @@
             android:visibility="gone"
             android:id="@+id/tv_leixing_xianshi"
             android:gravity="center_vertical|right"
-            android:text=""/>
+            />
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
@@ -223,7 +223,7 @@
                 android:visibility="gone"
                 android:id="@+id/tv_xinghao_xianshi"
                 android:gravity="center_vertical|right"
-                android:text=""/>
+                />
 
             <ImageView
             android:layout_width="10dp"
@@ -292,7 +292,7 @@
                     android:visibility="gone"
                     android:id="@+id/tv_guzhang_xianshi"
                     android:gravity="center_vertical|right"
-                    android:text=""/>
+                    />
 
                 <ImageView
                 android:layout_width="10dp"

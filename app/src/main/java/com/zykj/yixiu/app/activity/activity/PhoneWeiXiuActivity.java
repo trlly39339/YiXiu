@@ -267,10 +267,21 @@ public class PhoneWeiXiuActivity extends BaseActivity {
 //                    故障描述设置到手机类里
                     phoneBean.setEvGuzhangMiaoshu(guzhangmiaoshu);
                 }
-                Intent intent=new Intent(PhoneWeiXiuActivity.this,HuJiaoFuWuActivity.class);
-                intent.putExtra("phoneBean",phoneBean);
-                intent.putExtra("LeiXing","1");
-                startActivity(intent);
+                if (tvPinpai.getText().toString()==""){
+                    Y.t("请输入品牌");
+                }else if (tvXinghao.getText().toString()==""){
+                    Y.t("请输入型号");
+                }else if (tvGuzhang.getText().toString()==""){
+                    Y.t("请输入故障信息");
+                }else if (phoneBean.getFile()==null){
+                    Y.t("必须上传一张图片");
+                }else {
+                    Intent intent = new Intent(PhoneWeiXiuActivity.this, HuJiaoFuWuActivity.class);
+                    intent.putExtra("phoneBean", phoneBean);
+                    intent.putExtra("LeiXing", "1");
+                    startActivity(intent);
+                    finish();
+                }
                 break;
         }
     }

@@ -95,7 +95,7 @@
                 android:id="@+id/tv_pinpai"
                 android:textColor="#02cccc"
                 android:visibility="gone"
-                android:text=""/>
+                />
         <ImageView
             android:layout_width="10dp"
             android:layout_height="20dp"
@@ -161,7 +161,7 @@
                 android:gravity="center_vertical|right"
                 android:id="@+id/tv_xinghao"
                 android:textColor="#02cccc"
-                android:text=""/>
+                />
             <ImageView
                 android:layout_width="10dp"
                 android:layout_height="20dp"
@@ -229,7 +229,7 @@
                     android:gravity="center_vertical|right"
                     android:id="@+id/tv_guzhang"
                     android:textColor="#02cccc"
-                    android:text=""/>
+                    />
                 <ImageView
                     android:layout_width="10dp"
                     android:layout_height="20dp"

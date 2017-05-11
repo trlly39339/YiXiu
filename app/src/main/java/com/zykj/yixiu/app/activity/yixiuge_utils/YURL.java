@@ -46,6 +46,7 @@ public class YURL {
     public static final String CANCEL_ORDER=HOST+"cancelOrder";
 //    删除订单
     public static final String DEL_ORDER=HOST+"delOrder";
-//
+//    删除地址
+    public static final String DEL_ADDRESS=HOST+"delAddress";
 
 }

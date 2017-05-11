@@ -329,10 +329,23 @@ public class DianNaoWeiXiu extends BaseActivity {
 //                    故障描述设置到手机类里
                     dianNaoBean.setGuzhangmiaoshu(guzhangmiaoshu);
                 }
-                Intent intent=new Intent(DianNaoWeiXiu.this,HuJiaoFuWuActivity.class);
-                intent.putExtra("dianNaoBean",dianNaoBean);
-                intent.putExtra("LeiXing","2");
-                startActivity(intent);
+                if (tvPinpaiXianshi.getText().toString()==""){
+                    Y.t("请输入品牌");
+                }else if (tvLeixingXianshi.getText().toString()==""){
+                    Y.t("请输入类型");
+                }else if (tvXinghaoXianshi.getText().toString()==""){
+                    Y.t("请输入型号");
+                }else if (tvGuzhangXianshi.getText().toString()==""){
+                    Y.t("请输入故障信息");
+                }else if (dianNaoBean.getFileimg()==null){
+                    Y.t("必须上传一张图片");
+                }else {
+                    Intent intent = new Intent(DianNaoWeiXiu.this, HuJiaoFuWuActivity.class);
+                    intent.putExtra("dianNaoBean", dianNaoBean);
+                    intent.putExtra("LeiXing", "2");
+                    startActivity(intent);
+                    finish();
+                }
 
                 break;
         }

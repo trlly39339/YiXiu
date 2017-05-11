@@ -327,10 +327,23 @@ public class JiaDianWeiXiuActivity extends BaseActivity {
                 if (guzhangmiaoshu != null) {
                     jiaDianBean.setGuzhangmiaoshu(guzhangmiaoshu);
                 }
-                Intent intent = new Intent(JiaDianWeiXiuActivity.this, HuJiaoFuWuActivity.class);
-                intent.putExtra("jiaDianBean", jiaDianBean);
-                intent.putExtra("LeiXing","3");
-                startActivity(intent);
+                if (pinpaiX.getText().toString()==""){
+                    Y.t("请输入品牌");
+                }else if (leixingX.getText().toString()==""){
+                    Y.t("请输入类型");
+                }else if (xinghaoX.getText().toString()==""){
+                    Y.t("请输入型号");
+                }else if (guzhangX.getText().toString()==""){
+                    Y.t("请输入故障信息");
+                }else if (jiaDianBean.getFileimg()==null){
+                    Y.t("必须上传一张图片");
+                }{
+                    Intent intent = new Intent(JiaDianWeiXiuActivity.this, HuJiaoFuWuActivity.class);
+                    intent.putExtra("jiaDianBean", jiaDianBean);
+                    intent.putExtra("LeiXing", "3");
+                    startActivity(intent);
+                    finish();
+                }
                 break;
         }
     }
