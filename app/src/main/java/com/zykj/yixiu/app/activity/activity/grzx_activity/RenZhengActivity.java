@@ -14,6 +14,7 @@ import com.zykj.yixiu.app.activity.bean.RenZhengBean;
 import com.zykj.yixiu.app.activity.yixiuge_utils.Y;
 import com.zykj.yixiu.app.activity.yixiuge_utils.YURL;
 
+import org.xutils.http.RequestParams;
 import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
@@ -144,12 +145,13 @@ public class RenZhengActivity extends BaseActivity {
                 });
                 break;
             case R.id.fl_but_tj:
+
                 //                                    发送请求
-                Map<String, String> map = new HashMap<String, String>();
-                map.put("idcard_image1", photoPath);
-                map.put("idcard_image2", photoPath1);
-                map.put("token", Y.TOKEN);
-                Y.get(YURL.UPLOAD_ID_CARD, map, new Y.MyCommonCall<String>() {
+                RequestParams params=new RequestParams(YURL.UPLOAD_ID_CARD);
+                params.addBodyParameter("idcard_image1", photoPath);
+                params.addBodyParameter("idcard_image2", photoPath1);
+                params.addBodyParameter("token", Y.TOKEN);
+                Y.postFlie(params,new Y.MyCommonCall<String>() {
                     @Override
                     public void onSuccess(String result) {
                         Y.i(result);//打印一下看看是否为0

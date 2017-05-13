@@ -48,5 +48,7 @@ public class YURL {
     public static final String DEL_ORDER=HOST+"delOrder";
 //    删除地址
     public static final String DEL_ADDRESS=HOST+"delAddress";
+//    未完成订单数量
+    public static final String FIND_UN_FINISH_COUNT=HOST+"findUnFinishCount";
 
 }
